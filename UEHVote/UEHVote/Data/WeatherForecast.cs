@@ -1,6 +1,6 @@
 using System;
 
-namespace UEH_Vote.Data
+namespace UEHVote.Data
 {
     public class WeatherForecast
     {
