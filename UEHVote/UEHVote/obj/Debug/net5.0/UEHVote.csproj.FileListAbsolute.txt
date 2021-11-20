@@ -1,0 +1,134 @@
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\appsettings.json
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Resources\package-lock.json
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Resources\package.json
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.StaticWebAssets.xml
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.exe
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.deps.json
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.runtimeconfig.json
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.runtimeconfig.dev.json
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\ref\UEHVote.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.pdb
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.Views.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\UEHVote.Views.pdb
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\AntDesign.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Humanizer.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\OneOf.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.csproj.AssemblyReference.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.AssemblyInfoInputs.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.AssemblyInfo.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.csproj.CoreCompileInputs.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorComponent.input.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Shared\LoginDisplay.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Pages\HomePage\Component.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorComponent.output.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\UEHVote.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.TagHelpers.input.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.TagHelpers.output.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorCoreGenerate.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\App.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Shared\LoginDisplay.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Pages\HomePage\Component.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\LogOut.cshtml.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\Razor\Pages\_Host.cshtml.g.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorAssemblyInfo.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorAssemblyInfo.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\staticwebassets\UEHVote.StaticWebAssets.Manifest.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\staticwebassets\UEHVote.StaticWebAssets.xml
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\scopedcss\Pages\HomePage\Component.razor.rz.scp.css
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\scopedcss\bundle\UEHVote.styles.css
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\scopedcss\projectbundle\UEHVote.bundle.scp.css
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorTargetAssemblyInfo.cache
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorTargetAssemblyInfo.cs
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.Views.pdb
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.csproj.CopyComplete
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\ref\UEHVote.dll
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.pdb
+C:\Users\phuon\Source\Repos\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.genruntimeconfig.cache
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.csproj.AssemblyReference.cache
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.AssemblyInfoInputs.cache
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.AssemblyInfo.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.csproj.CoreCompileInputs.cache
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorComponent.input.cache
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Shared\LoginDisplay.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Pages\HomePage\Component.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.RazorComponent.output.cache
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.dll
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\ref\UEHVote.dll
+C:\Users\phuon\OneDrive - nguyenphuong254\Desktop\TDC_Tech_Stack\UEHVote\UEHVote\UEHVote\obj\Debug\net5.0\UEHVote.pdb
