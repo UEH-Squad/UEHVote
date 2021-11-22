@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Resources\scss\IdentityCss\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
 </Project>
