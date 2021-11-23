@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UEHVote.Areas.Identity;
 using UEHVote.Data;
+using UEHVote.Models;
 
 namespace UEHVote
 {
@@ -34,7 +35,7 @@ namespace UEHVote
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<User,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
