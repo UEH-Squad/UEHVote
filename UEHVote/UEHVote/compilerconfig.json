@@ -6,5 +6,9 @@
   {
     "outputFile": "Pages/RankPage/CandidateList.razor.css",
     "inputFile": "Pages/RankPage/CandidateList.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/RatingDetail.razor.css",
+    "inputFile": "Pages/RankPage/RatingDetail.razor.scss"
   }
 ]

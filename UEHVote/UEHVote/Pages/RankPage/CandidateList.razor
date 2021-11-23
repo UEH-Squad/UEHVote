@@ -1,20 +1,65 @@
-﻿<div class="row">
-    <div class="candidate d-flex flex-column align-items-center position-relative">
+﻿<div class="row mb-5">
+    <div class="d-flex flex-column align-items-center">
         <h4>Top 1</h4>
         <div class="position-relative">
             <img src="./img/layouttop1.png" alt="Candidate Layout" />
             <img src="./img/candidate.png" alt="Candidate" class="position-absolute" />
+            <button class="position-absolute">
+                <span class="material-icons-outlined">
+                    thumb_up
+                </span>
+            </button>
         </div>
-        <p class="mb-0">Tran Minh Nhat Anh</p>
-        <p><span>19940</span> bình chọn</p>
-        <button class="position-absolute">
-            <span class="material-icons-outlined">
-                thumb_up
-            </span>
-        </button>
+        <h6 class="mb-0">Tran Minh Nhat Anh</h6>
+        <p><span>19940</span> lượt bình chọn</p>
     </div>
 </div>
 
-@code {
+<div class="row d-flex flex-wrap justify-content-around">
+    @foreach (var item in fakedatas)
+    {
+        <div class="col-4 mb-5 d-flex flex-column align-items-center">
+            <div class="d-flex mb-3 align-items-center">
+                <button class="me-3">
+                    <span class="material-icons-outlined">
+                        thumb_up
+                    </span>
+                </button>
+                <div>
+                    <p class="mb-0">Thứ hạng <span>@item.Rank</span></p>
+                    <p><span>@item.Count</span> lượt bình chọn</p>
+                </div>
+            </div>
+            <div class="position-relative">
+                <img src="./img/layout.png" alt="Candidate Layout" class="position-absolute" />
+                <img src="./img/candidate.png" alt="Candidate" />
+            </div>
+            <h6 class="mt-4 text-center">@item.Name</h6>
+        </div>
+    }
+</div>
 
+@code {
+    protected override void OnInitialized()
+    {
+        for (int i = 0; i <= 20; i++)
+        {
+            fakedatas.Add(new Fakedata()
+            {
+                Name = "Khưu Nguyễn Lan Anh",
+                Rank = 2,
+                Count = 19909
+            });
+        }
+    }
+
+    private List<Fakedata> fakedatas = new();
+
+    private class Fakedata
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Rank { get; set; }
+        public int Count { get; set; }
+    }
 }

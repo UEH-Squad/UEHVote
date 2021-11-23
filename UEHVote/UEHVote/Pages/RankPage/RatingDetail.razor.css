@@ -1,0 +1,29 @@
+﻿h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #18A0FB; }
+
+button {
+  background-color: #fff;
+  border: none;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px; }
+  button .triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 20px solid #FACC14;
+    border-bottom: 10px solid transparent; }
+  button .triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 20px solid #FACC14;
+    border-bottom: 10px solid transparent; }
+  button span {
+    font-size: 24px;
+    color: #18A0FB;
+    font-weight: 600; }
+
+.collapse video {
+  height: 634px; }

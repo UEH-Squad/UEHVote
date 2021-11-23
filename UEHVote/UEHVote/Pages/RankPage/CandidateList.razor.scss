@@ -1,21 +1,24 @@
 ﻿@import '../../Resources/scss/common/_variables';
 
-.candidate {
+.row {
 
     h4 {
         font-weight: 600;
         color: $yellow;
     }
 
-    p {
+    h6 {
         font-weight: 800;
         color: $blue;
+        font-size: 16px;
+    }
 
-        &:last-of-type {
-            font-weight: 400;
-            span {
-                color: $yellow;
-            }
+    p {
+        margin-bottom: 0;
+        font-weight: 400;
+
+        span {
+            color: $yellow;
         }
     }
 
@@ -31,8 +34,9 @@
     button {
         width: 64px;
         height: 64px;
-        bottom: 21%;
-        right: 25%;
+        bottom: 7%;
+        right: -10%;
+        line-height: 0;
         background-color: rgba(24,160,251,.2);
         border: none;
         border-radius: 10px;
@@ -40,6 +44,17 @@
         span {
             color: $blue;
             font-size: 30px;
+        }
+    }
+
+    .col-4 {
+        img:first-of-type {
+            z-index: -1;
+            top: -22px;
+            right: -50px;
+        }
+        div:first-child {
+            margin-left: -65px;
         }
     }
 }

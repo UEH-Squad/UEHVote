@@ -1,16 +1,19 @@
-﻿.candidate h4 {
+﻿.row h4 {
   font-weight: 600;
   color: #FACC14; }
 
-.candidate p {
+.row h6 {
   font-weight: 800;
-  color: #18A0FB; }
-  .candidate p:last-of-type {
-    font-weight: 400; }
-    .candidate p:last-of-type span {
-      color: #FACC14; }
+  color: #18A0FB;
+  font-size: 16px; }
 
-.candidate img:last-of-type {
+.row p {
+  margin-bottom: 0;
+  font-weight: 400; }
+  .row p span {
+    color: #FACC14; }
+
+.row img:last-of-type {
   left: 11%;
   width: 296px;
   height: 296px;
@@ -18,14 +21,23 @@
   object-fit: cover;
   object-position: center; }
 
-.candidate button {
+.row button {
   width: 64px;
   height: 64px;
-  bottom: 21%;
-  right: 25%;
+  bottom: 7%;
+  right: -10%;
+  line-height: 0;
   background-color: rgba(24, 160, 251, 0.2);
   border: none;
   border-radius: 10px; }
-  .candidate button span {
+  .row button span {
     color: #18A0FB;
     font-size: 30px; }
+
+.row .col-4 img:first-of-type {
+  z-index: -1;
+  top: -22px;
+  right: -50px; }
+
+.row .col-4 div:first-child {
+  margin-left: -65px; }
