@@ -1,19 +1,29 @@
-﻿<div class="mb-5">
+﻿@inject IJSRuntime JS;
+
+<div class="mb-5">
     <h2 class="text-center mt-5 mb-4">Bảng xếp hạng</h2>
-    <button data-bs-toggle="collapse" data-bs-target="#detail" aria-expanded="false" class="d-flex align-items-center mx-auto px-4 py-4 mb-5">
-        <div class="triangle-right"></div>
-        <span class="mx-4">Cán bộ đoàn hội xuất sắc 2021</span>
-        <div class="triangle-left"></div>
+    <button @onclick="DisplayDetail" data-bs-toggle="collapse" data-bs-target="#detail" aria-expanded="false" class="d-flex align-items-center mx-auto px-4 py-4 mb-5" style="@(isDisplayDetail?"background-color: #18A0FB":"")">
+        <div class="triangle-right" style="@(isDisplayDetail?"transform: rotate(90deg);":"")"></div>
+        <span class="mx-4" style="@(isDisplayDetail?"color: #fff":"")">Cán bộ đoàn hội xuất sắc 2021</span>
+        <div class="triangle-left" style="@(isDisplayDetail?"transform: rotate(-90deg);":"")"></div>
     </button>
     <div class="collapse" id="detail">
-        <p>
+        <p class="mb-5">
             What is Lorem Ipsum?
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             Why do we use it?
             It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
         </p>
-        <div class="mx-auto">
-            <video class="w-100" controls="controls">
+        <div class="owl-carousel owl-theme description__carousel mb-5">
+            <img src="./img/meomeo.png" alt="RatingDetail" />
+            <img src="./img/meomeo.png" alt="RatingDetail" />
+            <img src="./img/meomeo.png" alt="RatingDetail" />
+            <img src="./img/meomeo.png" alt="RatingDetail" />
+            <img src="./img/meomeo.png" alt="RatingDetail" />
+            <img src="./img/meomeo.png" alt="RatingDetail" />
+        </div>
+        <div class="d-flex justify-content-center">
+            <video controls="controls">
                 <source src="./img/BƯỚC QUA NHAU.mp4" type="video/mp4" />
             </video>
         </div>
@@ -21,9 +31,15 @@
 </div>
 
 @code {
-    private bool isShowDetail = false;
-    private async Task ShowDetail()
+    public bool isDisplayDetail = false;
+
+    private void DisplayDetail()
     {
-        isShowDetail = !isShowDetail;
+        isDisplayDetail = !isDisplayDetail;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JS.InvokeVoidAsync("uehvote.DescriptionCarousel");
     }
 }

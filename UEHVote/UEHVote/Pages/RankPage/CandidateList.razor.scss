@@ -40,6 +40,7 @@
         background-color: rgba(24,160,251,.2);
         border: none;
         border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
 
         span {
             color: $blue;
@@ -53,8 +54,28 @@
             top: -22px;
             right: -50px;
         }
+
         div:first-child {
             margin-left: -65px;
         }
+    }
+}
+
+.voting-btn {
+    .btn:first-of-type {
+        border: none;
+        background-color: #fff;
+        color: $yellow;
+        width: 150px;
+        height: 56px;
+        font-size: 24px;
+    }
+    .btn:last-of-type {
+        border: none;
+        background-color: $yellow;
+        color: #fff;
+        width: 150px;
+        height: 56px;
+        font-size: 24px;
     }
 }

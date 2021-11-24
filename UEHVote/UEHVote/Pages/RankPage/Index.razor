@@ -1,7 +1,8 @@
 ﻿@attribute [Route(Routes.RankPage)];
-    <div class="container">
-        <RatingDetail/>
-        <CandidateList />
-    </div>
+<div class="container">
+    <RatingDetail />
+    <CandidateList Top1Candidate="true" />
+    <CandidateList OtherCandidate="true" />
+</div>
 @code {
 }
