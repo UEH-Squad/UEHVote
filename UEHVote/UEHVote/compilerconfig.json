@@ -10,5 +10,9 @@
   {
     "outputFile": "Pages/RankPage/RatingDetail.razor.css",
     "inputFile": "Pages/RankPage/RatingDetail.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/Index.razor.css",
+    "inputFile": "Pages/RankPage/Index.razor.scss"
   }
 ]

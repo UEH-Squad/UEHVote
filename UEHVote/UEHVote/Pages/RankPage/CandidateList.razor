@@ -1,114 +1,90 @@
 ﻿<div class="row mb-5 d-flex flex-wrap justify-content-around">
-    @foreach (var item in fakeDatas)
-    {
-        <div class="col-4 d-flex flex-column align-items-center">
-            @if (Top1Candidate)
-            {
-                <h4>Top 1</h4>
-                <div class="position-relative">
-                    <img src="./img/layouttop1.png" alt="Candidate Layout" />
-                    <img src="./img/meomeo.png" alt="Candidate" class="position-absolute" />
-                    @if(voteCount != maxVote)
-                    {
-
-                    }
-                    <button @onclick="() => Rating(item.Id)" class="position-absolute" style="@(item.isRated ? "background: rgba(250, 204, 20, 0.2);":"") @(item.isDisabled ? "background: #E5E5E5; cursor: default;":"")">
-                        <span class="material-icons-outlined" style="@(item.isRated ? "color: #FACC14":"") @(item.isDisabled ? "color: #707070; cursor: default;":"")">
-                            thumb_up
-                        </span>
-                    </button>
-                </div>
-                <h6 class="mb-0">@item.Name</h6>
-                <p><span>@item.Count</span> lượt bình chọn</p>
-            }
-            @if (OtherCandidate)
-            {
-                <div class="d-flex mb-3 align-items-center">
-                    <button @onclick="() => Rating(item.Id)" class="me-3" style="@(item.isRated ? "background: rgba(250, 204, 20, 0.2);":"") @(item.isDisabled ? "background: #E5E5E5; cursor: default;":"")">
-                        <span class="material-icons-outlined" style="@(item.isRated ? "color: #FACC14;":"") @(item.isDisabled ? "color: #707070; cursor: default;":"")">
-                            thumb_up
-                        </span>
-                    </button>
-                    <div>
-                        <p class="mb-0">Thứ hạng <span>@item.Rank</span></p>
-                        <p><span>@item.Count</span> lượt bình chọn</p>
-                    </div>
-                </div>
-                <div class="position-relative">
-                    <img src="./img/layout.png" alt="Candidate Layout" class="position-absolute" />
-                    <img src="./img/meomeo.png" alt="Candidate" />
-                </div>
-                <h6 class="mt-4 mb-5 text-center">@item.Name</h6>
-            }
+    <div class="col-4 d-flex flex-column align-items-center">
+        <h4>Top 1</h4>
+        <div class="position-relative">
+            <img src="./img/layouttop1.png" alt="Candidate Layout" />
+            <img src="./img/meomeo.png" alt="Candidate" class="position-absolute" />
+            <button @onclick="() => Rating(topData.Id)" class="position-absolute" style="@(topData.isRated ? "background: rgba(250, 204, 20, 0.2);":"") @(voteCount == maxVote && !topData.isRated ? "background: #E5E5E5; cursor: default;":"")">
+                <span class="material-icons-outlined" style="@(topData.isRated ? "color: #FACC14":"") @(voteCount == maxVote && !topData.isRated ? "background: #E5E5E5; cursor: default;":"")">
+                    thumb_up
+                </span>
+            </button>
         </div>
-    }
+        <h6 class="mb-0">@topData.Name</h6>
+        <p><span>@topData.Count</span> lượt bình chọn</p>
+    </div>
 </div>
 
-@if (OtherCandidate)
-{
-    <div class="voting-btn d-flex justify-content-center mb-5">
-        <button class="btn me-2">Hủy</button>
-        <button class="btn">Xác nhận</button>
-    </div>
-}
+<div class="row d-flex flex-wrap justify-content-around">
+    @foreach (var item in fakeDatas.Skip(1).Take(fakeDatas.Count-1))
+    {
+        <div class="col-4 d-flex flex-column align-items-center">
+            <div class="d-flex mb-3 align-items-center">
+                <button @onclick="() => Rating(item.Id)" class="me-3" style="@(item.isRated ? "background: rgba(250, 204, 20, 0.2);":"") @(voteCount == maxVote && !item.isRated ? "background: #E5E5E5; cursor: default;":"")">
+                    <span class="material-icons-outlined" style="@(item.isRated ? "color: #FACC14;":"") @(voteCount == maxVote && !item.isRated ? "color: #707070; cursor: default;":"")">
+                        thumb_up
+                    </span>
+                </button>
+                <div>
+                    <p class="mb-0">Thứ hạng <span>@item.Rank</span></p>
+                    <p><span>@item.Count</span> lượt bình chọn</p>
+                </div>
+            </div>
+            <div class="position-relative">
+                <img src="./img/layout.png" alt="Candidate Layout" class="position-absolute" />
+                <img src="./img/meomeo.png" alt="Candidate" />
+            </div>
+            <h6 class="mt-4 mb-5 text-center">@item.Name</h6>
+        </div>
+    }
+
+</div>
+
+<div class="voting-btn d-flex justify-content-center mb-5">
+    <button class="btn me-2">Hủy</button>
+    <button class="btn">Xác nhận</button>
+</div>
 
 @code {
-    [Parameter]
-    public bool Top1Candidate { get; set; }
-    [Parameter]
-    public bool OtherCandidate { get; set; }
-    private int voteCount;
     private int maxVote = 3;
+    private int voteCount = 0;
+    private Fakedata topData;
 
     private void Rating(int id)
     {
-        if (id == 0 && Top1Candidate)
+        var item = fakeDatas.Find(x => x.Id == id);
+
+        if (item.isRated)
         {
-            if(fakeDatas[id].isRated)
-            {
-                voteCount--;
-            }
-            fakeDatas[id].isRated = !fakeDatas[id].isRated;
+            item.isRated = false;
+            item.Count--;
+            voteCount--;
         }
-        else if (OtherCandidate)
+        else
         {
-            var item = fakeDatas.FirstOrDefault(x => x.Id == id);
-            if(item.isRated)
+            if (voteCount < maxVote)
             {
-                voteCount--;
+                item.isRated = true;
+                item.Count++;
+                voteCount++;
             }
-            item.isRated = !item.isRated;
         }
-        voteCount++;
     }
 
     protected override void OnInitialized()
     {
-        if (Top1Candidate)
+        for (int i = 1; i <= 20; i++)
         {
-            for (int i = 0; i < 1; i++)
+            fakeDatas.Add(new Fakedata()
             {
-                fakeDatas.Add(new Fakedata()
-                {
-                    Name = "Nguyễn Thị Meo Meo",
-                    Count = 19909,
-                    Id = i
-                });
-            }
+                Name = "Nguyễn Thị Meo Meo",
+                Count = 2021 - i,
+                Id = i,
+                Rank = i
+            });
         }
-        if (OtherCandidate)
-        {
-            for (int i = 1; i <= 20; i++)
-            {
-                fakeDatas.Add(new Fakedata()
-                {
-                    Name = "Nguyễn Thị Meo Meo",
-                    Rank = 2,
-                    Count = 19909,
-                    Id = i
-                });
-            }
-        }
+
+        topData = fakeDatas.First();
     }
 
     private List<Fakedata> fakeDatas = new();
@@ -120,6 +96,5 @@
         public int Rank { get; set; }
         public int Count { get; set; }
         public bool isRated { get; set; } = false;
-        public bool isDisabled { get; set; } = false;
     }
 }
