@@ -64,7 +64,7 @@
 .voting-btn {
     .btn:first-of-type {
         border: none;
-        background-color: #fff;
+        background-color: $white;
         color: $yellow;
         width: 150px;
         height: 56px;
@@ -73,7 +73,7 @@
     .btn:last-of-type {
         border: none;
         background-color: $yellow;
-        color: #fff;
+        color: $white;
         width: 150px;
         height: 56px;
         font-size: 24px;
