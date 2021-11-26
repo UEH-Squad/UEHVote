@@ -25,7 +25,6 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="Resources\scss\IdentityCss\" />
-    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
 </Project>

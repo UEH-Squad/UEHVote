@@ -2,5 +2,9 @@
   {
     "outputFile": "Pages/HomePage/Component.razor.css",
     "inputFile": "Pages/HomePage/Component.razor.scss"
+  },
+  {
+    "outputFile": "Pages/DetailVote/Index.razor.css",
+    "inputFile": "Pages/DetailVote/Index.razor.scss"
   }
 ]
