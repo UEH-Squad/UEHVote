@@ -14,5 +14,9 @@
   {
     "outputFile": "Pages/RankPage/Index.razor.css",
     "inputFile": "Pages/RankPage/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/PopUp.razor.css",
+    "inputFile": "Pages/RankPage/PopUp.razor.scss"
   }
 ]

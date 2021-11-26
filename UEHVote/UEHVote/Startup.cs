@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using UEHVote.Areas.Identity;
 using UEHVote.Data;
 using UEHVote.Models;
+using Blazored.Modal;
 
 namespace UEHVote
 {
@@ -43,6 +44,7 @@ namespace UEHVote
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
             services.AddAntDesign();
+            services.AddBlazoredModal();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
