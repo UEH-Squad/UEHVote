@@ -1,0 +1,34 @@
+﻿@import "../../Resources/scss/common/_variables";
+
+/*.ant-carousel .slick-slide {
+    text-align: center;
+    height: 160px;
+    line-height: 160px;
+    background: #364d79;
+    overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+    color: #fff;
+}
+
+.slick-track{
+    width: 100vw !important;
+}*/
+
+.carousel__banner{
+    width: 98.9vw;
+    height: 644px;
+}
+
+.banner__img {
+    background: url(/img/601973.jpg);
+    background:{
+        position: center;
+        repeat: no-repeat;
+        size: cover;
+    }   
+
+    width: 100%;
+    height: 644px;
+}
