@@ -20,7 +20,6 @@
         </p>
     </div>
 </section>
-
 <section class="my-img container ">
     <h4 class="my-4">Hình ảnh đề cử</h4>
     <div class="owl-carousel owl-theme">
@@ -32,7 +31,6 @@
         }
     </div>
 </section>
-
 <section class="my-video">
     <div class="container">
         <h4>Video về đề cử</h4>
@@ -48,7 +46,6 @@
         {
             await JSRuntinme.InvokeVoidAsync("uehvote.DetailVoteCarousel");
         }
-
     }
     private bool IsAct = true;
     class FakeData
@@ -59,14 +56,12 @@
     private List<FakeData> imgDetail = new();
     protected override void OnInitialized()
     {
-
         for (int i = 1; i < 7; i++)
         {
             imgDetail.Add(new FakeData()
             {
                 Id = i,
                 Img ="./img/ảnh-đề-cử"+ i + ".png",
-
             });
         }
     }

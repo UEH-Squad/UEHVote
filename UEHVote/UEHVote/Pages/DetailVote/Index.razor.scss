@@ -82,12 +82,18 @@ h4 {
         font-size: 24px;
         color: $blue;
     }
+
     .owl-carousel {
         position: relative;
     }
-    .item{
+
+    .item {
         border-radius: 20px;
         overflow: hidden;
+    }
+
+    img{
+        height:416px;
     }
 
     ::deep .owl-nav {
@@ -97,8 +103,15 @@ h4 {
             left: 5px;
             transform: translateY(-65%);
 
-
             span {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 35px;
+                border-radius: 50%;
+                opacity: 0.6;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                background: #FFFFFF;
                 font-size: 80px;
                 color: $blue;
                 transition: all 0.3s linear;
@@ -121,6 +134,14 @@ h4 {
             transform: translateY(-65%);
 
             span {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 35px;
+                border-radius: 50%;
+                opacity: 0.6;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                background: #FFFFFF;
                 font-size: 80px;
                 color: $blue;
                 transition: all 0.3s linear;
