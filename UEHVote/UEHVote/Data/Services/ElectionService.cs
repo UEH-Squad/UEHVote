@@ -18,60 +18,53 @@ namespace UEHVote.Data
         {
             _db = db;
         }
-
         /// <summary>
-        /// GET ELECTION
+        ///  HANDLE ELECTION
         /// </summary>
-
+        #region HANDLE ELECTION
         public Task<List<Election>> GetAllElectionsAsync()
         {
             return  _db.Elections.ToListAsync();
         }
-
-        /// <summary>
-        /// INSERT ELECTION
-        /// </summary>
-        #region Insert Election
-        public async Task InsertElection(Election election)
-        {
-           await _db.Elections.AddAsync(election);
-           await  _db.SaveChangesAsync();
-        }
-
-        #endregion
-
-        /// <summary>
-        /// GET ELECTION BY ID
-        /// </summary>
-        #region Get Election by Id
         public async Task<Election> GetElectionAsync(int Id)
         {
             Election election = await _db.Elections.FirstOrDefaultAsync(c => c.Id.Equals(Id));
             return election;
         }
-        #endregion
-
-        /// <summary>
-        /// CRUD Election
-        /// </summary>
-        
-        #region Update Election
+        public async Task InsertElection(Election election)
+        {
+           await _db.Elections.AddAsync(election);
+           await  _db.SaveChangesAsync();
+        }
         public async Task UpdateElection(Election election)
         {
             _db.Elections.Update(election);
-           await  _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
-        #endregion
-
-        /// <summary>
-        /// DELETE ELECTION
-        /// </summary>
-        
-        #region DeleteElection
         public async Task DeleteElection(Election election)
         {
-            _db.Remove(election);
-           await _db.SaveChangesAsync();
+            _db.Elections.Remove(election);
+            await _db.SaveChangesAsync();
+        }
+        #endregion
+        /// <summary>
+        /// HANDLE ELECTION IMAGES
+        /// </summary>
+        /// <returns></returns>
+        #region HANDLE ELECTION IMAGES
+        public Task<List<ActivityImage>> GetAllActivityImagesAsync()
+        {
+            return _db.ActivityImages.ToListAsync();
+        }
+        public async Task InsertActivityImage(ActivityImage activityImage)
+        {
+            await _db.ActivityImages.AddAsync(activityImage);
+            await _db.SaveChangesAsync();
+        }
+        public async Task DeleteActivityImage(ActivityImage activityImage)
+        {
+            _db.ActivityImages.Remove(activityImage);
+            await _db.SaveChangesAsync();
         }
         #endregion
     }

@@ -1,11 +1,7 @@
 ﻿@page "/UpdateElection/{CurrentId}"
-
-@using UEHVote.Models
-
 <div class="modal-header container">
     <h3 class="text-center">AddElection</h3>
 </div>
-
 <EditForm method="post" Model="election">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -21,25 +17,34 @@
             </div>
             <div class="col-5">
                 <label for="dateEnd" class="form-label">Finish Date</label>
-                <InputDate  id="dateFinish" class="form-control" @bind-Value="@election.FinishDate"></InputDate>
+                <InputDate id="dateFinish" class="form-control" @bind-Value="@election.FinishDate"></InputDate>
             </div>
-
         </div>
         <div class="mb-3 d-flex justify-content-between">
             <div class="col-5">
                 <label for="banner" class="form-label">Banner</label>
-                <InputFile OnChange="OnUpDateFile" type="file" class="form-control" name="banner" @bind-Value="@election.Banner"></InputFile>
+                <InputFile OnChange="OnUpdateBanner" type="file" class="form-control" name="banner" @bind-Value="@election.Banner"></InputFile>
                 <div class="d-flex align-items-center">
                     <i class="material-icons my-icon-upload">
                         cloud_upload
                     </i>
-                    <span class="@(isChangeFile ? "d-none" : "d-block")">Kéo và thả hình ảnh liên quan tại dây</span>
+                    <span class="@(isChangeBanner ? "d-none" : "d-block")">Kéo và thả hình ảnh liên quan tại dây</span>
                 </div>
             </div>
             <div class="col-5">
-                <label for="video" class="form-label">Video</label>
-                <InputText name="Video" class="form-control" @bind-Value="@election.Video"></InputText>
+                <label for="imagesList" class="form-label">Hình ảnh nổi bật</label>
+                <InputFile name="imagesList" OnChange="OnUpdateFile" multiple type="file" class="form-control"></InputFile>
+                <div class="d-flex align-items-center">
+                    <i class="material-icons my-icon-upload">
+                        cloud_upload
+                    </i>
+                    <span class="@(isChangeFile ? "d-none" : "d-block")">Kéo và thả file hình ảnh liên quan tại dây</span>
+                </div>
             </div>
+        </div>
+        <div class="mb-3">
+            <label for="video" class="form-label">Video</label>
+            <InputText name="Video" class="form-control" @bind-Value="@election.Video"></InputText>
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Details</label>
@@ -70,6 +75,3 @@
     </div>
 </EditForm>
 
-@code {
-    Election election = new Election();
-}

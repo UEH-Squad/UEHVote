@@ -2,62 +2,82 @@
 @using UEHVote.Data.Interfaces
 @using UEHVote.Models
 @inject IElectionService IElectionService
-
 <NavLink class="nav-link" href="AddElection">
     <span class="oi oi-plus border-success" aria-hidden="true"></span>Add
 </NavLink>
-
-
 @if (elections == null)
 {
-    <p><em>Loading...</em></p> }
+<p><em>Loading...</em></p> }
 else
 {
-    <div class="container-fluid">
-        <table class="table-bordered col-12 table-striped text-center">
-            <thead class="">
+<div class="container-fluid">
+    <table class="table-bordered col-12 table-striped text-center">
+        <thead class="">
+            <tr>
+                <th>Election Id</th>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>Finish Date</th>
+                <th>Details</th>
+                <th>Banner</th>
+                <th>Video</th>
+                <th>IsForIndividuals</th>
+                <th>IsAllowed</th>
+                <th>##</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Election item in elections)
+            {
                 <tr>
-                    <th >Election Id</th>
-                    <th >Name</th>
-                    <th >Start Date</th>
-                    <th >Finish Date</th>
-                    <th >Details</th>
-                    <th >Banner</th>
-                    <th >Video</th>
-                    <th >IsForIndividuals</th>
-                    <th >IsAllowed</th>
-                    <th >##</th>
+                    <th>@item.Id</th>
+                    <th>@item.Name</th>
+                    <th>@item.StartDate</th>
+                    <th>@item.FinishDate</th>
+                    <th>@item.Details</th>
+                    <th>@item.Banner</th>
+                    <th>@item.Video</th>
+                    <th>@item.IsForIndividuals</th>
+                    <th>@item.IsAllowed</th>
+                    <th>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='UpdateElection/@item.Id'">Edit</button>
+                        <button type="button" class="btn btn-danger mt-2" onclick="window.location.href='DeleteElection/@item.Id'">Delete</button>
+                    </th>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (Election item in elections)
-                {
-                    <tr>
-                        <th>@item.Id</th>
-                        <th>@item.Name</th>
-                        <th>@item.StartDate</th>
-                        <th>@item.FinishDate</th>
-                        <th>@item.Details</th>
-                        <th>@item.Banner</th>
-                        <th>@item.Video</th>
-                        <th>@item.IsForIndividuals</th>
-                        <th>@item.IsAllowed</th>
-                        <th>
-                            <button type="button" class="btn btn-primary" onclick="window.location.href='UpdateElection/@item.Id'">Edit</button>
-                            <button type="button" class="btn btn-danger mt-2" onclick="window.location.href='DeleteElection/@item.Id'">Delete</button>
-                        </th>
-                    </tr>
-                 }
-            </tbody>
-        </table>
-    </div>
+             }
+        </tbody>
+    </table>
+</div>
 }
-
-@code 
+<table class="table-bordered col-12 table-striped text-center mt-5">
+    <thead class="">
+        <tr>
+            <th>Id</th>
+            <th>Url</th>
+            <th>Election Id</th>
+        </tr>
+    </thead>
+    @if (listActivityImages != null)
+    {
+        @foreach (ActivityImage item in listActivityImages)
+        {
+            <tbody>
+                <tr>
+                    <th>@item.Id</th>
+                    <th>@item.Url</th>
+                    <th>@item.ElectionId</th>
+                </tr>
+            </tbody>                
+         }
+    }
+</table>
+@code
 { 
     List<Election> elections;
+    List<ActivityImage> listActivityImages;
     protected override async Task OnInitializedAsync()
     {
-        elections =await IElectionService.GetAllElectionsAsync();
+        elections = await IElectionService.GetAllElectionsAsync();
+        listActivityImages = await IElectionService.GetAllActivityImagesAsync();
     }
 }

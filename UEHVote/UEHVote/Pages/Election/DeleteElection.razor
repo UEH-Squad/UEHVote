@@ -1,6 +1,4 @@
 ﻿@page "/DeleteElection/{CurrentId}"
-@using UEHVote.Models
-
 <div class="container justify-content-center">
     @if (election != null)
     {
@@ -28,9 +26,13 @@
                     <img src="@election.Banner" />
                 </div>
                 <div class="form-group">
+                    <label>Hình ảnh nổi bật</label>
+                    <br />
+                </div>
+                <div class="form-group">
                     <label>Videos: </label>
                     <br />
-                    <video controls autoplay loop>
+                    <video controls="controls" autoplay="autoplay" loop="loop">
                         <source src="@election.Video">
                     </video>
                 </div>
@@ -49,7 +51,6 @@
                     </Checkbox>
                 </div>
             </div>
-
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -62,7 +63,3 @@
     }
 </div>
 
-
-@code {
-    Election election = new Election();
-}

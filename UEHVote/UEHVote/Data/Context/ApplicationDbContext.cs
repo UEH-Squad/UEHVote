@@ -13,13 +13,11 @@ namespace UEHVote.Data
             : base(options)
         {
         }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.Entity<VotedCandidate>().HasOne(x => x.Vote).WithMany(x => x.VotedCandidates).OnDelete(DeleteBehavior.Restrict);
         }
-
         public DbSet<ActivityImage> ActivityImages { get; set; }
         public DbSet<Candidate> Candidates { get; set; }
         public DbSet<CandidateImage> CandidateImages { get; set; }
