@@ -1,5 +1,7 @@
-﻿h4 {
-    color: #18A0FB;
+﻿@import "../../Resources/scss/common/_variables.scss";
+
+h4 {
+    color: $blue;
     font-weight: 600;
     font-size: 24px;
     line-height: 30px;
@@ -56,23 +58,7 @@
         line-height: 18px;
     }
 }
-.my-img {
-    margin-top: 40px;
 
-    .item {
-        border-radius: 20px;
-    }
-
-    button {
-        background: #FFFFFF;
-        color: #18A0FB;
-        opacity: 0.6;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 100px;
-        transform: rotate(-180deg);
-        transform: rotate(-180deg);
-    }
-}
 .my-video {
     margin-top: 40px;
 
@@ -80,13 +66,76 @@
         float: right;
         margin: 50px 0 30px;
         padding: 5px 15px;
-        color: #18A0FB;
+        color: $blue;
         background-color: white;
         font-size: 16px;
         line-height: 30px;
         text-align: center;
         letter-spacing: -0.015em;
-        border: 2px solid #18A0FB;
+        border: 2px solid $blue;
         border-radius: 2px;
     }
 }
+.my-img {
+    h4 {
+        font-weight: 600;
+        font-size: 24px;
+        color: $blue;
+    }
+    .owl-carousel {
+        position: relative;
+    }
+    .item{
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    ::deep .owl-nav {
+        .owl-prev {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-65%);
+
+
+            span {
+                font-size: 80px;
+                color: $blue;
+                transition: all 0.3s linear;
+
+                &:hover {
+                    color: $blue-bold;
+                    opacity: 0.73;
+                }
+            }
+
+            &:hover {
+                background: none;
+            }
+        }
+
+        .owl-next {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-65%);
+
+            span {
+                font-size: 80px;
+                color: $blue;
+                transition: all 0.3s linear;
+
+                &:hover {
+                    color: $blue-bold;
+                    opacity: 0.73;
+                }
+            }
+
+            &:hover {
+                background: none;
+            }
+        }
+    }
+}
+
+
