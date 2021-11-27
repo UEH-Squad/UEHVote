@@ -15,6 +15,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using UEHVote.Areas.Identity;
 using UEHVote.Data;
+using UEHVote.Data.Interfaces;
+using UEHVote.Data.Services;
 using UEHVote.Models;
 
 namespace UEHVote
@@ -44,9 +46,8 @@ namespace UEHVote
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
             services.AddAntDesign();
-            services.AddScoped<ElectionService>();
-
-
+            services.AddTransient<IElectionService,ElectionService>();
+            services.AddTransient<IUploadService, UploadService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

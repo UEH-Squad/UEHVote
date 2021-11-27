@@ -1,44 +1,48 @@
 ﻿@page "/AddElection"
-@using UEHVote.Data
 @using UEHVote.Models
-@inject ElectionService objElectionService
-@inject NavigationManager NavigationManager
 
 <div class="modal-header container">
     <h3>AddElection</h3>
 </div>
 <div class="container">
-    <form method="post">
+    <EditForm method="post" Model="election">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
         <div class="modal-body container">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" @bind="@election.Name">
+                <InputText id="name" class="form-control" @bind-Value="election.Name" />
             </div>
             <div class="mb-3 d-flex justify-content-between">
                 <div class="col-5">
                     <label for="dateStart" class="form-label">Start Date</label>
-                    <input type="date" class="form-control" name="dateStart" @bind="@election.StartDate">
+                    <InputDate id="dateStart" class="form-control" @bind-Value="@election.StartDate"></InputDate>
                 </div>
                 <div class="col-5">
                     <label for="dateEnd" class="form-label">Finish Date</label>
-                    <input type="date" class="form-control" name="dateEnd" @bind="@election.FinishDate">
+                    <InputDate id="dateFinish" class="form-control" @bind-Value="@election.FinishDate"></InputDate>
                 </div>
 
             </div>
             <div class="mb-3 d-flex justify-content-between">
                 <div class="col-5">
                     <label for="banner" class="form-label">Banner</label>
-
-                    <input type="file" class="form-control" name="banner" @bind="@election.Banner">
+                    <InputFile OnChange="OnInputFile" type="file" class="form-control" name="banner"></InputFile>
+                    <div class="d-flex align-items-center">
+                        <i class="material-icons my-icon-upload">
+                            cloud_upload
+                        </i>
+                        <span class="@(isChangeFile ? "d-none" : "d-block")">Kéo và thả hình ảnh liên quan tại dây</span>
+                    </div>
                 </div>
                 <div class="col-5">
                     <label for="video" class="form-label">Video</label>
-                    <input type="file" class="form-control" name="Video" @bind="@election.Video">
+                    <InputText name="Video" class="form-control" @bind-Value="@election.Video"></InputText>                    
                 </div>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Details</label>
-                <TextArea Placeholder="Details" @bind-Value="@election.Details" />
+                <TextArea Placeholder="Details" class="form-control" @bind-Value="@election.Details" />
             </div>
             <div class="mb-3 d-flex">
                 <div class="col-2">
@@ -63,36 +67,9 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@Cancel" value="Cancel">Cancel</button>
             <button type="submit" class="btn btn-primary" @onclick="@CreateElection" value="Save">Save change</button>
         </div>
-    </form>
+    </EditForm>
 
 </div>
-@code {
-
-    bool isCheckedIsFor = true;
-    bool disabledIsFor = false;
-    bool isCheckedIsAllowed = true;
-    bool disabledIsAllowed = false;
-
-    void ToggleDisable()
-    {
-        disabledIsFor = !disabledIsFor;
-        disabledIsAllowed = !disabledIsAllowed;
-    }
-
+@code{
     Election election = new Election();
-
-    protected void CreateElection()
-    {
-        objElectionService.InsertElection(election);
-        NavigationManager.NavigateTo("Election");
-
-    }
-
-    void Cancel()
-    {
-        NavigationManager.NavigateTo("Election");
-    }
-
-
-
 }

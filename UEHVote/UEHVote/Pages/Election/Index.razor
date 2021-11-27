@@ -1,7 +1,7 @@
 ﻿@page "/Election"
-@using UEHVote.Data
+@using UEHVote.Data.Interfaces
 @using UEHVote.Models
-@inject ElectionService objElectionService
+@inject IElectionService IElectionService
 
 <NavLink class="nav-link" href="AddElection">
     <span class="oi oi-plus border-success" aria-hidden="true"></span>Add
@@ -58,6 +58,6 @@ else
     List<Election> elections;
     protected override async Task OnInitializedAsync()
     {
-        elections = await Task.Run(() => objElectionService.GetAllElectionsAsync());
+        elections =await IElectionService.GetAllElectionsAsync();
     }
 }

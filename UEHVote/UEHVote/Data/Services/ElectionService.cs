@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UEHVote.Data.Interfaces;
 using UEHVote.Models;
 
 namespace UEHVote.Data
 {
-    public class ElectionService
+    public class ElectionService:IElectionService
     {
         /// <summary>
         /// CRUD Election
@@ -18,22 +19,30 @@ namespace UEHVote.Data
             _db = db;
         }
 
-        //Get All
+        /// <summary>
+        /// GET ELECTION
+        /// </summary>
 
-        public async Task<List<Election>> GetAllElectionsAsync()
+        public Task<List<Election>> GetAllElectionsAsync()
         {
-            return await _db.Elections.ToListAsync();
+            return  _db.Elections.ToListAsync();
         }
 
+        /// <summary>
+        /// INSERT ELECTION
+        /// </summary>
         #region Insert Election
-        public void InsertElection(Election election)
+        public async Task InsertElection(Election election)
         {
-            _db.Elections.Add(election);
-             _db.SaveChanges();
+           await _db.Elections.AddAsync(election);
+           await  _db.SaveChangesAsync();
         }
 
         #endregion
 
+        /// <summary>
+        /// GET ELECTION BY ID
+        /// </summary>
         #region Get Election by Id
         public async Task<Election> GetElectionAsync(int Id)
         {
@@ -42,19 +51,27 @@ namespace UEHVote.Data
         }
         #endregion
 
+        /// <summary>
+        /// CRUD Election
+        /// </summary>
+        
         #region Update Election
-        public void UpdateElection(Election election)
+        public async Task UpdateElection(Election election)
         {
             _db.Elections.Update(election);
-             _db.SaveChanges();
+           await  _db.SaveChangesAsync();
         }
         #endregion
 
+        /// <summary>
+        /// DELETE ELECTION
+        /// </summary>
+        
         #region DeleteElection
-        public void DeleteElection(Election election)
+        public async Task DeleteElection(Election election)
         {
             _db.Remove(election);
-             _db.SaveChanges();
+           await _db.SaveChangesAsync();
         }
         #endregion
     }
