@@ -1,0 +1,79 @@
+﻿@page "/AddElection"
+<div class="modal-header container">
+    <h3>AddElection</h3>
+</div>
+<div class="container">
+    <EditForm method="post" Model="election">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="modal-body container">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <InputText id="name" class="form-control" @bind-Value="election.Name" />
+            </div>
+            <div class="mb-3 d-flex justify-content-between">
+                <div class="col-5">
+                    <label for="dateStart" class="form-label">Start Date</label>
+                    <InputDate id="dateStart" class="form-control" @bind-Value="@election.StartDate"></InputDate>
+                </div>
+                <div class="col-5">
+                    <label for="dateEnd" class="form-label">Finish Date</label>
+                    <InputDate id="dateFinish" class="form-control" @bind-Value="@election.FinishDate"></InputDate>
+                </div>
+            </div>
+            <div class="mb-3 d-flex justify-content-between">
+                <div class="col-5">
+                    <label for="banner" class="form-label">Banner</label>
+                    <InputFile OnChange="OnInputBanner" class="form-control" name="banner"></InputFile>
+                    <div class="d-flex align-items-center">
+                        <i class="material-icons my-icon-upload">
+                            cloud_upload
+                        </i>
+                        <span class="@(isChangeBanner ? "d-none" : "d-block")">Kéo và thả hình ảnh liên quan tại dây</span>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <label for="imagesList" class="form-label">Hình ảnh nổi bật</label>
+                    <InputFile name="imagesList" OnChange="OnInputFile" multiple type="file" class="form-control"></InputFile>
+                    <div class="d-flex align-items-center">
+                        <i class="material-icons my-icon-upload">
+                            cloud_upload
+                        </i>
+                        <span class="@(isChangeFile ? "d-none" : "d-block")">Kéo và thả file hình ảnh liên quan tại dây</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="video" class="form-label">Video</label>
+                <InputText name="video" class="form-control" @bind-Value="@election.Video"></InputText>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Details</label>
+                <TextArea Placeholder="Details" class="form-control" @bind-Value="@election.Details" />
+            </div>
+            <div class="mb-3 d-flex">
+                <div class="col-2">
+                    <label for="dateEnd" class="form-label">IsForIndividuals</label>
+                    <div>
+                        <Checkbox @bind-Checked="isCheckedIsFor" Disabled="@disabledIsFor" @bind-Value="@election.IsForIndividuals">
+                            @($"{(isCheckedIsFor ? "Checked" : "Unchecked")}")
+                        </Checkbox>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <label for="dateEnd" class="form-label">IsAllowed</label>
+                    <div>
+                        <Checkbox @bind-Checked="isCheckedIsAllowed" Disabled="@disabledIsAllowed" @bind-Value="@election.IsAllowed">
+                            @($"{(isCheckedIsAllowed ? "True" : "False")}")
+                        </Checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer container">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@Cancel" value="Cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary" @onclick="@CreateElection" value="Save">Save change</button>
+        </div>
+    </EditForm>
+</div>
+
