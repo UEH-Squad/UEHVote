@@ -2,5 +2,13 @@
   {
     "outputFile": "Pages/HomePage/Component.razor.css",
     "inputFile": "Pages/HomePage/Component.razor.scss"
+  },
+  {
+    "outputFile": "Pages/ListVote/Index.razor.css",
+    "inputFile": "Pages/ListVote/Index.razor.scss"
+  },
+  {
+    "outputFile": "Shared/NavMenu.razor.css",
+    "inputFile": "Shared/NavMenu.razor.scss"
   }
 ]
