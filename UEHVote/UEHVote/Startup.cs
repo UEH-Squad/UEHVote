@@ -46,6 +46,7 @@ namespace UEHVote
             services.AddAntDesign();
             services.AddTransient<IElectionService,ElectionService>();
             services.AddTransient<IUploadService, UploadService>();
+            services.AddTransient<ICandidateService, CandidateService>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
