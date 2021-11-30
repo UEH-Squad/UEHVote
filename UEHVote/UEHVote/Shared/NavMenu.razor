@@ -1,43 +1,33 @@
-﻿
-<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">UEHVote</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav ">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> trang chủ
+﻿<nav class="navbar navbar-expand-xl navbar-light bg-white py-0 shadow-sm my-navbar">
+    <div class="container-lg p-0 my-navbar-container">
+        <div class="d-flex flex-column my-navbar__brand">
+            <NavLink href="@Routes.HomePage" class="my-navbar__brand-item" Match="NavLinkMatch.All">
+                <img src="./img/logo-UEH-vote.png" alt="UEH logo" class="brand__ueh" />
             </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="@Routes.RankPage">
-                <span class="oi oi-plus" aria-hidden="true"></span> cuộc bình chọn
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="@Routes.DetailVote">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Chi tiết đề cử
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="Election">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Các cuộc bầu cử
-            </NavLink>
-        </li>
-    </ul>
-</div>
+        </div>
+        <div class="my-navbar__hamburger-wrapper">
+            <Notification />
+            <button class="my-navbar__hamburger-wrapper__btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="material-icons hamburger-icon">
+                    menu
+                </span>
+            </button>
+        </div>
+        <div id="navbarSupportedContent" class="collapse navbar-collapse style-collapse bg-white my-collapse">
+            <ul class="navbar-nav navbar-list mb-4 mb-xl-0 text-center fw-bold my-collapse__list">
+                <li class="nav-item">
+                    <NavLink href="@Routes.HomePage" Match="NavLinkMatch.All" class=" nav-link  text-decoration-none mx-2 mx-xxl-4  py-2 py-lg-3 position-relative my-collapse__list__link">Trang chủ</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink href="@Routes.RankPage" class="nav-link text-decoration-none mx-2 mx-xxl-4  py-2 py-lg-3 position-relative my-collapse__list__link">Bảng xếp hạng</NavLink>
+                </li>
+            </ul>
+        </div>
 
-@code {
-    private bool collapseNavMenu = true;
+    </div>
+</nav>
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+@code
+{
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
 }

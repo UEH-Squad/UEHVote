@@ -1,4 +1,7 @@
-﻿h4 {
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+h4 {
   color: #18A0FB;
   font-weight: 600;
   font-size: 24px;
@@ -46,9 +49,7 @@
 
 .my-video {
   margin-top: 40px; }
-  .my-video button {
-    float: right;
-    margin: 50px 0 30px;
+  .my-video .btn-rankPage {
     padding: 5px 15px;
     color: #18A0FB;
     background-color: white;

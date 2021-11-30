@@ -1,0 +1,113 @@
+﻿@import '../Resources/scss/common/_variables.scss';
+
+.footer {
+    position: relative;
+    padding-top: 30px;
+    border-top: 1px solid rgba(51, 51, 51, 0.5);
+    ;
+}
+
+.btn-back-top {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0px;
+    transform: translate(-100%, -50%);
+
+}
+
+.btn-float-back-top {
+    position: fixed;
+    cursor: pointer;
+    bottom: 50px;
+    right: 0px;
+    transform: translate(-100%, -50%);
+
+}
+
+.footer__logo {
+   
+
+    p {
+        font-size: 8px;
+        font-weight: 400;
+
+        @include on("sm") {
+            font-size: 12px;
+        }
+
+        @include on("xl") {
+            font-size: 15px;
+        }
+    }
+}
+
+.footer__contact {
+    padding: 0;
+    padding-top: 10px;
+
+    h6 {
+        margin-bottom: 20px;
+        font-size: 8px;
+        font-weight: 300;
+        color: $grey-text;
+
+        @include on("sm") {
+            font-size: 12px;
+        }
+
+        @include on("xl") {
+            font-size: 16px;
+        }
+
+        @include on("xxl") {
+            font-size: 18px;
+        }
+
+        a {
+            color: $grey-text;
+            text-decoration: none;
+        }
+    }
+
+    .contact__name {
+        font-weight: 700;
+    }
+
+    .contact__contribute {
+        font-weight: 400;
+    }
+}
+
+.footer__right {
+    padding: 0;
+    padding-top: 10px;
+    text-align: right;
+
+    h6 {
+        margin-bottom: 20px;
+        font-size: 7px;
+        font-weight: 400;
+        color: $grey-text;
+
+        @include on("sm") {
+            margin-bottom: 25px;
+            font-size: 12px;
+        }
+
+        @include on("xl") {
+            margin-bottom: 33px;
+            font-size: 16px;
+        }
+
+        @include on("xxl") {
+            margin-bottom: 35px;
+            font-size: 18px;
+        }
+
+        a {
+            color: $grey-text;
+            text-decoration: none;
+        }
+    }
+}
