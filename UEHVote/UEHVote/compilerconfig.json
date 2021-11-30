@@ -4,6 +4,22 @@
     "inputFile": "Pages/HomePage/Component.razor.scss"
   },
   {
+    "outputFile": "Pages/HomePage/banner.razor.css",
+    "inputFile": "Pages/HomePage/banner.razor.scss"
+  },
+  {
+    "outputFile": "Pages/HomePage/index.razor.css",
+    "inputFile": "Pages/HomePage/index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/HomePage/vote.razor.css",
+    "inputFile": "Pages/HomePage/vote.razor.scss"
+  },
+  {
+    "outputFile": "Pages/HomePage/contact.razor.css",
+    "inputFile": "Pages/HomePage/contact.razor.scss"
+  },
+  {
     "outputFile": "Pages/RankPage/CandidateList.razor.css",
     "inputFile": "Pages/RankPage/CandidateList.razor.scss"
   },
@@ -18,5 +34,6 @@
   {
     "outputFile": "Pages/RankPage/PopUp.razor.css",
     "inputFile": "Pages/RankPage/PopUp.razor.scss"
+
   }
 ]

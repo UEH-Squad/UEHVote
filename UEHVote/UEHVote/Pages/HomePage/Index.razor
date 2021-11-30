@@ -1,13 +1,22 @@
 ﻿@inject IJSRuntime JSRuntinme;
 
-<h3 class="text-center">Homepage</h3>
-<p>Hello</p>
+<Banner/>
 
+<div>
+    <Vote />
+    <Vote />
+    <Vote />
+    <div class="vote__submit">
+        <a href="#">Xem tất cả</a>
+    </div>
+</div>
+
+<Contact />
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if(firstRender)
+        if (firstRender)
         {
             await JSRuntinme.InvokeVoidAsync("uehvote.ShowMess");
         }

@@ -25,9 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Common\Image\" />
     <Folder Include="Data\Migrations\" />
     <Folder Include="Resources\scss\IdentityCss\" />
+
     <Folder Include="wwwroot\img\election\" />
+
   </ItemGroup>
 
 </Project>
