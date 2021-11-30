@@ -1,0 +1,18 @@
+﻿@import "../../Resources/scss/common/_variables";
+
+.carousel__banner{
+    width: 98.9vw;
+    height: 644px;
+}
+
+.banner__img {
+    background: url(/img/601973.jpg);
+    background:{
+        position: center;
+        repeat: no-repeat;
+        size: cover;
+    }   
+
+    width: 100%;
+    height: 644px;
+}

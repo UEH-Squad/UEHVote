@@ -1,0 +1,24 @@
+﻿@import "../../Resources/scss/common/_variables";
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#main-layout{
+    width: 100vw;
+}
+
+.vote__submit {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vote__submit a {
+    background-color: #18A0FB;
+    padding: 16px 24px;
+    border-radius: 2px;
+    color: #FFFFFF;
+}
+

@@ -1,0 +1,29 @@
+﻿@inject IJSRuntime JSRuntinme;
+    
+    <div class="carousel__banner">
+        <Carousel Autoplay="TimeSpan.FromSeconds(2)">
+            <CarouselSlick>
+                <div class="banner__img"></div>
+            </CarouselSlick>
+            <CarouselSlick>
+                <div class="banner__img"></div>
+            </CarouselSlick>
+            <CarouselSlick>
+                <div class="banner__img"></div>
+            </CarouselSlick>
+            <CarouselSlick>
+                <div class="banner__img"></div>
+            </CarouselSlick>
+        </Carousel>
+    </div>
+
+    @code {
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await JSRuntinme.InvokeVoidAsync("uehvote.ShowMess");
+            }
+
+        }
+    }
