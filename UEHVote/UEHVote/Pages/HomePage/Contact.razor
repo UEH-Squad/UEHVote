@@ -1,0 +1,41 @@
+﻿@inject IJSRuntime JSRuntinme;
+
+<div class="contact">
+    <div class="contact__vector">
+        <img src="./img/contact_left.png" alt="Alternate Text" />
+        <img src="./img/contact_right.png" alt="Alternate Text" />
+    </div>
+   
+    <div class="container contact__content">
+        <Row>
+            <Col Span="8">
+            <div class="contact__img">
+                <img src="./img/logoTDC.png" alt="Alternate Text" />
+            </div>
+            </Col>
+            <Col Span="16">
+            <div class="contact__text" >
+                <div>
+                    <p>Phát triển và quản lí bởi</p>
+                    <h2>Ban Công nghệ và Truyền thông số </h2>
+                </div>
+                <div class="contact__submit">
+                    <a href="#">Tham gia</a>
+                    <a href="#">Liên hệ</a>
+                </div>
+            </div>
+            </Col>
+        </Row>
+    </div>
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            await JSRuntinme.InvokeVoidAsync("uehvote.ShowMess");
+        }
+
+    }
+}
