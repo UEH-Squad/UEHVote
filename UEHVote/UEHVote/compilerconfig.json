@@ -18,5 +18,22 @@
   {
     "outputFile": "Pages/HomePage/contact.razor.css",
     "inputFile": "Pages/HomePage/contact.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/CandidateList.razor.css",
+    "inputFile": "Pages/RankPage/CandidateList.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/RatingDetail.razor.css",
+    "inputFile": "Pages/RankPage/RatingDetail.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/Index.razor.css",
+    "inputFile": "Pages/RankPage/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/PopUp.razor.css",
+    "inputFile": "Pages/RankPage/PopUp.razor.scss"
+
   }
 ]

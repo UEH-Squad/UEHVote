@@ -20,7 +20,6 @@ namespace UEHVote.Migrations
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 });
-
             migrationBuilder.CreateTable(
                 name: "Organizations",
                 columns: table => new
@@ -34,7 +33,6 @@ namespace UEHVote.Migrations
                 {
                     table.PrimaryKey("PK_Organizations", x => x.Id);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
@@ -55,7 +53,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
@@ -91,7 +88,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
@@ -112,7 +108,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
                 columns: table => new
@@ -132,7 +127,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
                 columns: table => new
@@ -156,7 +150,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
                 columns: table => new
@@ -176,7 +169,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "Elections",
                 columns: table => new
@@ -203,7 +195,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
             migrationBuilder.CreateTable(
                 name: "ActivityImages",
                 columns: table => new
@@ -223,7 +214,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "Candidates",
                 columns: table => new
@@ -252,7 +242,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "Votes",
                 columns: table => new
@@ -279,7 +268,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "CandidateImages",
                 columns: table => new
@@ -299,7 +287,6 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateTable(
                 name: "VotedCandidates",
                 columns: table => new
@@ -325,138 +312,107 @@ namespace UEHVote.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
             migrationBuilder.CreateIndex(
                 name: "IX_ActivityImages_ElectionId",
                 table: "ActivityImages",
                 column: "ElectionId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
-
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true,
                 filter: "[NormalizedName] IS NOT NULL");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
                 table: "AspNetUserRoles",
                 column: "RoleId");
-
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_OrganizationId",
                 table: "AspNetUsers",
                 column: "OrganizationId");
-
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
             migrationBuilder.CreateIndex(
                 name: "IX_CandidateImages_CandidateId",
                 table: "CandidateImages",
                 column: "CandidateId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Candidates_ElectionId",
                 table: "Candidates",
                 column: "ElectionId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Candidates_OrganizationId",
                 table: "Candidates",
                 column: "OrganizationId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Elections_UserId",
                 table: "Elections",
                 column: "UserId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_VotedCandidates_CandidateId",
                 table: "VotedCandidates",
                 column: "CandidateId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_VotedCandidates_VoteId",
                 table: "VotedCandidates",
                 column: "VoteId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Votes_ElectionId",
                 table: "Votes",
                 column: "ElectionId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Votes_UserId",
                 table: "Votes",
                 column: "UserId");
         }
-
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "ActivityImages");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
-
             migrationBuilder.DropTable(
                 name: "AspNetUserClaims");
-
             migrationBuilder.DropTable(
                 name: "AspNetUserLogins");
-
             migrationBuilder.DropTable(
                 name: "AspNetUserRoles");
-
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
             migrationBuilder.DropTable(
                 name: "CandidateImages");
-
             migrationBuilder.DropTable(
                 name: "VotedCandidates");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
             migrationBuilder.DropTable(
                 name: "Candidates");
-
             migrationBuilder.DropTable(
                 name: "Votes");
-
             migrationBuilder.DropTable(
                 name: "Elections");
-
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
             migrationBuilder.DropTable(
                 name: "Organizations");
         }
