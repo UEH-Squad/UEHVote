@@ -25,7 +25,7 @@ h4 {
     }
 
     p {
-        margin:0;
+        margin: 0;
         color: #FACC14;
         font-weight: 600;
         line-height: 38px;
@@ -40,13 +40,14 @@ h4 {
     }
 
     button {
-        display:block;
+        display: block;
         padding: 15px 20px;
         border: none;
         background-color: #FFFFFF;
         border-radius: 10px;
         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     }
+
 }
 .my-description {
     margin-top: 40px;
@@ -62,9 +63,7 @@ h4 {
 .my-video {
     margin-top: 40px;
 
-    button {
-        float: right;
-        margin: 50px 0 30px;
+    .btn-rankPage {
         padding: 5px 15px;
         color: $blue;
         background-color: white;

@@ -34,14 +34,13 @@
   {
     "outputFile": "Pages/RankPage/PopUp.razor.css",
     "inputFile": "Pages/RankPage/PopUp.razor.scss"
-
-  },
-  {
-    "outputFile": "Pages/ListVote/Index.razor.css",
-    "inputFile": "Pages/ListVote/Index.razor.scss"
   },
   {
     "outputFile": "Shared/NavMenu.razor.css",
     "inputFile": "Shared/NavMenu.razor.scss"
+  },
+  {
+    "outputFile": "Pages/DetailVote/Index.razor.css",
+    "inputFile": "Pages/DetailVote/Index.razor.scss"
   }
 ]
