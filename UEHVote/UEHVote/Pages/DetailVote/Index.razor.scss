@@ -1,0 +1,162 @@
+﻿@import "../../Resources/scss/common/_variables.scss";
+
+h4 {
+    color: $blue;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.015em;
+}
+.my-title {
+    margin: 50px 0 30px;
+
+    h4 {
+        line-height: 38px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #3F3F3F;
+        font-weight: 600;
+        line-height: 38px;
+        text-align: center;
+        font-size: 40px;
+        letter-spacing: -0.015em;
+    }
+
+    p {
+        margin:0;
+        color: #FACC14;
+        font-weight: 600;
+        line-height: 38px;
+        text-align: center;
+        font-size: 36px;
+        line-height: 30px;
+        letter-spacing: -0.015em;
+
+        span {
+            color: #3F3F3F;
+        }
+    }
+
+    button {
+        display:block;
+        padding: 15px 20px;
+        border: none;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    }
+}
+.my-description {
+    margin-top: 40px;
+
+    p {
+        color: #000000;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
+.my-video {
+    margin-top: 40px;
+
+    button {
+        float: right;
+        margin: 50px 0 30px;
+        padding: 5px 15px;
+        color: $blue;
+        background-color: white;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: center;
+        letter-spacing: -0.015em;
+        border: 2px solid $blue;
+        border-radius: 2px;
+    }
+}
+.my-img {
+    h4 {
+        font-weight: 600;
+        font-size: 24px;
+        color: $blue;
+    }
+
+    .owl-carousel {
+        position: relative;
+    }
+
+    .item {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    img{
+        height:416px;
+    }
+
+    ::deep .owl-nav {
+        .owl-prev {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-65%);
+
+            span {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 35px;
+                border-radius: 50%;
+                opacity: 0.6;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                background: #FFFFFF;
+                font-size: 80px;
+                color: $blue;
+                transition: all 0.3s linear;
+
+                &:hover {
+                    color: $blue-bold;
+                    opacity: 0.73;
+                }
+            }
+
+            &:hover {
+                background: none;
+            }
+        }
+
+        .owl-next {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-65%);
+
+            span {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 35px;
+                border-radius: 50%;
+                opacity: 0.6;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                background: #FFFFFF;
+                font-size: 80px;
+                color: $blue;
+                transition: all 0.3s linear;
+
+                &:hover {
+                    color: $blue-bold;
+                    opacity: 0.73;
+                }
+            }
+
+            &:hover {
+                background: none;
+            }
+        }
+    }
+}
+
+
