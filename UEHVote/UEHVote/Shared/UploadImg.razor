@@ -110,16 +110,4 @@
         previewImgAltText = fileName = null;
         ImageDiscarded?.Invoke();
     }
-
-    private IBrowserFile uploadFile;
-
-    private void HandleFileChanged(InputFileChangeEventArgs args)
-    {
-        uploadFile = args.File;
-    }
-
-    private async Task HandleImageDiscarded()
-    {
-        uploadFile = null;
-    }
     }

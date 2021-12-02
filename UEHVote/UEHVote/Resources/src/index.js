@@ -1,4 +1,5 @@
-﻿import homepage from './homepage';
+﻿import { hookFileUploadEvent } from './common';
+import homepage from './homepage';
 import rankpage from './rankpage';
 import detailVote from './detailvotepage'
 

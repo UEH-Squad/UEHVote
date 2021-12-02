@@ -54,5 +54,13 @@
   {
     "outputFile": "Pages/NominationEdit/Index.razor.css",
     "inputFile": "Pages/NominationEdit/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/ConfirmPopUp.razor.css",
+    "inputFile": "Pages/NominationEdit/ConfirmPopUp.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/ResultPopUp.razor.css",
+    "inputFile": "Pages/NominationEdit/ResultPopUp.razor.scss"
   }
 ]

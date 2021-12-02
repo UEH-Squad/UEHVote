@@ -1,4 +1,4 @@
-﻿const hookFileUploadEvent = async (previewImg, fileUploadRefId, discardBtn, imgContainerId, originalSrc) => {
+﻿export const hookFileUploadEvent = async (previewImg, fileUploadRefId, discardBtn, imgContainerId, originalSrc) => {
     const discardContainer = document.getElementById(imgContainerId);
     if (discardContainer && discardBtn && previewImg) {
         discardBtn.removeEventListener("click", onDiscardBtnClicked(previewImg, originalSrc));
@@ -25,5 +25,3 @@ const onImageChanged = (previewImg) => (event) => {
 const onDiscardBtnClicked = (previewImg, originalSrc) => () => {
     previewImg.src = originalSrc;
 };
-
-export default { hookFileUploadEvent };
