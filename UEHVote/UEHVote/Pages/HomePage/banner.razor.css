@@ -1,4 +1,7 @@
-﻿.carousel__banner {
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.carousel__banner {
   width: 98.9vw;
   height: 644px; }
 

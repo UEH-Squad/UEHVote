@@ -1,0 +1,196 @@
+﻿@inject MessageService _message
+
+<div class="container-fluid">
+    <div class="row">
+
+        <EditForm Model="@nomination">
+            <DataAnnotationsValidator />
+
+            @if (IsNomination)
+            {
+                <div class="form-group mb-4">
+                    <div class="mb-3">
+                        Đơn vị <span class="required-asterick">(*)</span>
+                    </div>
+                    <InputText @bind-Value="nomination.Organization" class="form-control" placeholder="Nhập đơn vị" />
+                    <ValidationMessage For=@(() => nomination.Organization) />
+                </div>
+
+                <div class="form-group mb-4">
+                    <div class="mb-3">
+                        Tên đề cử <span class="required-asterick">(*)</span>
+                    </div>
+                    <InputText @bind-Value="nomination.NominationName" class="form-control" placeholder="Nhập tên đề cử" />
+                    <ValidationMessage For=@(() => nomination.NominationName) />
+                </div>
+
+                <div class="form-group mb-4">
+                    <div class="mb-3">Thêm ảnh cover</div>
+                    <UploadImg InputFileChanged="HandleFileChanged"
+                               ImageDiscarded="HandleImageDiscarded"
+                               PreviewImgSrc="@nomination.Banner"
+                               ShowPreview="false" />
+                </div>
+
+                <div class="form-group mb-4">
+                    <div class="mb-3">
+                        Nội dung <span class="required-asterick">(*)</span>
+                    </div>
+                    <TinyMCEEditor @bind-Value="nomination.Content" />
+                    <ValidationMessage For=@(() => nomination.Content) />
+                </div>
+            }
+            else
+            {
+                <div class="form-group mb-4">
+                    <div class="mb-3">
+                        Tên cuộc bình chọn <span class="required-asterick">(*)</span>
+                    </div>
+                    <InputText @bind-Value="nomination.ElectionName" class="form-control" placeholder="Nhập tên cuộc bình chọn" />
+                    <ValidationMessage For=@(() => nomination.ElectionName) />
+                </div>
+
+                <div class="form-group mb-4">
+                    <div class="mb-3">
+                        Tổ chức tạo cuộc bình chọn <span class="required-asterick">(*)</span>
+                    </div>
+                    <InputText @bind-Value="nomination.OrgCreatesElection" class="form-control" placeholder="Nhập tổ chức tạo cuộc bình chọn" />
+                    <ValidationMessage For=@(() => nomination.OrgCreatesElection) />
+                </div>
+            }
+
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    Hình ảnh đề cử
+                </div>
+
+                <Upload Action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                        Name="avatar"
+                        @bind-FileList="fileList"
+                        ShowButton="fileList?.Count < 8"
+                        ListType="picture-card"
+                        OnPreview="(file)=> {
+                           Console.WriteLine(file.FileName);
+                           Console.WriteLine(file.Url);
+                           previewVisible = true;
+                           previewTitle = file.FileName;
+                           imgUrl = file.Url;
+                       }"
+                        OnChange="HandleChange">
+                    <div>
+                        <Icon Type="plus"></Icon>
+                        <div className="ant-upload-text">Upload</div>
+                    </div>
+
+                </Upload>
+                <Modal Visible="previewVisible"
+                       Title="previewTitle"
+                       OnCancel="()=> previewVisible=false">
+                    <img style="width: 100%" src="@imgUrl" />
+                </Modal>
+            </div>
+
+            <div class="form-group mb-5">
+                <div class="mb-3">
+                    Video đề cử
+                </div>
+                <InputText @bind-Value="nomination.VideoLink" class="form-control" placeholder="Chèn link video" />
+            </div>
+
+            @if (IsNomination)
+            {
+                <div class="d-flex justify-content-center mb-5">
+                    <button class="btn btn-cancel me-3">Hủy</button>
+                    <button class="btn btn-save py-2 px-3">Lưu</button>
+                </div>
+            }
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private Nomination nomination = new() { };
+    private IBrowserFile uploadFile;
+
+    [Parameter]
+    public bool IsNomination { get; set; } = false;
+
+    private void HandleFileChanged(InputFileChangeEventArgs args)
+    {
+        uploadFile = args.File;
+    }
+
+    private async Task HandleImageDiscarded()
+    {
+        uploadFile = null;
+    }
+
+    bool previewVisible = false;
+    string previewTitle = string.Empty;
+    string imgUrl = string.Empty;
+
+    List<UploadFileItem> fileList = new List<UploadFileItem>
+{
+        new UploadFileItem
+        {
+            Id = "1",
+            FileName = "image.png",
+            State = UploadState.Success,
+            Url = "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        },
+        new UploadFileItem
+        {
+            Id = "2",
+            FileName = "image.png",
+            State = UploadState.Success,
+            Url = "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        },
+        new UploadFileItem
+        {
+            Id = "3",
+            FileName = "image.png",
+            State = UploadState.Success,
+            Url = "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        },
+        new UploadFileItem
+        {
+            Id = "4",
+            FileName = "image.png",
+            State = UploadState.Success,
+            Url = "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        },
+        new UploadFileItem
+        {
+            Id = "xxx",
+            FileName = "image.png",
+            State = UploadState.Uploading,
+            Percent = 50,
+            Url = "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        },
+         new UploadFileItem
+        {
+            Id = "5",
+            FileName = "image.png",
+            State = UploadState.Fail
+        },
+    };
+
+    void HandleChange(UploadInfo fileinfo)
+    {
+        if (fileinfo.File.State == UploadState.Success)
+        {
+            fileinfo.File.Url = fileinfo.File.ObjectURL;
+        }
+    }
+
+    public class ResponseModel
+    {
+        public string name { get; set; }
+
+        public string status { get; set; }
+
+        public string url { get; set; }
+
+        public string thumbUrl { get; set; }
+    }
+}

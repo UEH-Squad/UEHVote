@@ -1,0 +1,125 @@
+﻿@inject IJSRuntime JS
+
+<div class="position-relative my-uploadImg">
+    <InputFile id="@fileUploadId"
+               OnChange="OnInputFileChange"
+               class="w-100 uploadImg__input"
+               accept="@AcceptPattern" />
+    <div class="d-flex align-items-center justify-content-center flex-column">
+        <div class="d-flex w-100 justify-content-center align-items-center">
+            <i class="material-icons">
+                cloud_upload
+            </i>
+            <span class="d-block">@prompt</span>
+        </div>
+        @if (ShowPreview)
+        {
+            <div id="@imgContainerId" class="position-relative flex-column align-items-center @(!string.IsNullOrEmpty(PreviewImgSrc) || !string.IsNullOrEmpty(fileName) ? "d-flex" : "d-none")">
+                <img @ref="previewImg" class="preview-img my-2" src="@PreviewImgSrc" alt="@previewImgAltText" />
+                <i @ref="@discardBtn" class="material-icons-outlined position-absolute mx-0 close-btn" @onclick="OnDiscardImage">close</i>
+            </div>
+            <span class="">@fileName</span>
+        }
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// UploadImg component
+    /// </summary>
+
+    #region Parameters
+
+    /// <summary>
+    /// Initial prompt text when the whole component shown up
+    /// </summary>
+    [Parameter]
+    public string DefaultPrompt { get; set; } = "Chọn hoặc kéo và thả hình ảnh liên quan tại đây!";
+
+    /// <summary>
+    /// Toggle the preview img panel
+    /// </summary>
+    [Parameter]
+    public bool ShowPreview { get; set; }
+
+    /// <summary>
+    /// The src attribute value of the &lt;img&gt; used in preview
+    /// </summary>
+    [Parameter]
+    public string PreviewImgSrc { get; set; }
+
+    /// <summary>
+    /// file filter when choosing file via open file dialog of operating system, default is "image/*"
+    /// </summary>
+    [Parameter]
+    public string AcceptPattern { get; set; } = "image/*";
+
+    /// <summary>
+    /// Upload File selection change event
+    /// </summary>
+    [Parameter]
+    public EventCallback<InputFileChangeEventArgs> InputFileChanged { get; set; }
+
+    [Parameter]
+    public Func<Task> ImageDiscarded { get; set; }
+
+    #endregion Parameters
+
+    private string prompt;
+    private string fileName;
+    private string previewImgAltText;
+
+    private readonly string fileUploadId = Guid.NewGuid().ToString();
+    private readonly string imgContainerId = Guid.NewGuid().ToString();
+    private ElementReference previewImg;
+    private ElementReference discardBtn;
+
+    protected override void OnInitialized()
+    {
+        if (string.IsNullOrEmpty(prompt) && !string.IsNullOrEmpty(DefaultPrompt))
+        {
+            prompt = DefaultPrompt;
+        }
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (ShowPreview)
+        {
+            await JS.InvokeVoidAsync("uehvote.HookFileUploadEvent", previewImg, fileUploadId, discardBtn, imgContainerId, PreviewImgSrc);
+        }
+    }
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        previewImgAltText = e.File.Name;
+        if (ShowPreview)
+        {
+            fileName = previewImgAltText;
+        }
+        else
+        {
+            prompt = previewImgAltText;
+        }
+
+        await InputFileChanged.InvokeAsync(e);
+    }
+
+    private void OnDiscardImage()
+    {
+        previewImgAltText = fileName = null;
+        ImageDiscarded?.Invoke();
+    }
+
+    private IBrowserFile uploadFile;
+
+    private void HandleFileChanged(InputFileChangeEventArgs args)
+    {
+        uploadFile = args.File;
+    }
+
+    private async Task HandleImageDiscarded()
+    {
+        uploadFile = null;
+    }
+    }

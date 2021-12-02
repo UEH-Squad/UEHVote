@@ -1,4 +1,7 @@
-﻿h2 {
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+h2 {
   font-size: 36px;
   font-weight: 600;
   color: #18A0FB; }

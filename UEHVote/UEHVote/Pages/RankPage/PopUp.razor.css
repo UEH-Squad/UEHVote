@@ -1,4 +1,7 @@
-﻿.pop-up {
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.pop-up {
   position: fixed;
   top: 0;
   right: 0;

@@ -42,5 +42,17 @@
   {
     "outputFile": "Pages/DetailVote/Index.razor.css",
     "inputFile": "Pages/DetailVote/Index.razor.scss"
+  },
+  {
+    "outputFile": "Shared/UploadImg.razor.css",
+    "inputFile": "Shared/UploadImg.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/NominationForm.razor.css",
+    "inputFile": "Pages/NominationEdit/NominationForm.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/Index.razor.css",
+    "inputFile": "Pages/NominationEdit/Index.razor.scss"
   }
 ]

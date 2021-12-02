@@ -1,4 +1,7 @@
-﻿.vote {
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.vote {
   margin-top: 30px;
   margin-bottom: 60px; }
 
