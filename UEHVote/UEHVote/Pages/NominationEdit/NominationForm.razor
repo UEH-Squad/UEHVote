@@ -6,86 +6,43 @@
         <EditForm Model="@nomination">
             <DataAnnotationsValidator />
 
-            @if (IsNomination)
-            {
-                <div class="form-group mb-4">
-                    <div class="mb-3">
-                        Đơn vị <span class="required-asterick">(*)</span>
-                    </div>
-                    <InputText @bind-Value="nomination.Organization" class="form-control" placeholder="Nhập đơn vị" />
-                    <ValidationMessage For=@(() => nomination.Organization) />
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    Đơn vị <span class="required-asterick">(*)</span>
                 </div>
+                <InputText @bind-Value="nomination.Organization" class="form-control" placeholder="Nhập đơn vị" />
+                <ValidationMessage For=@(() => nomination.Organization) />
+            </div>
 
-                <div class="form-group mb-4">
-                    <div class="mb-3">
-                        Tên đề cử <span class="required-asterick">(*)</span>
-                    </div>
-                    <InputText @bind-Value="nomination.NominationName" class="form-control" placeholder="Nhập tên đề cử" />
-                    <ValidationMessage For=@(() => nomination.NominationName) />
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    Tên đề cử <span class="required-asterick">(*)</span>
                 </div>
+                <InputText @bind-Value="nomination.NominationName" class="form-control" placeholder="Nhập tên đề cử" />
+                <ValidationMessage For=@(() => nomination.NominationName) />
+            </div>
 
-                <div class="form-group mb-4">
-                    <div class="mb-3">Thêm ảnh cover</div>
-                    <UploadImg InputFileChanged="HandleFileChanged"
-                               ImageDiscarded="HandleImageDiscarded"
-                               PreviewImgSrc="@nomination.Banner"
-                               ShowPreview="true" />
-                </div>
+            <div class="form-group mb-4">
+                <div class="mb-3">Thêm ảnh cover</div>
+                <UploadImg InputFileChanged="HandleFileChanged"
+                           ImageDiscarded="HandleImageDiscarded"
+                           PreviewImgSrc="@nomination.Banner"
+                           ShowPreview="true" />
+            </div>
 
-                <div class="form-group mb-4">
-                    <div class="mb-3">
-                        Nội dung <span class="required-asterick">(*)</span>
-                    </div>
-                    <TinyMCEEditor @bind-Value="nomination.Content" />
-                    <ValidationMessage For=@(() => nomination.Content) />
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    Nội dung <span class="required-asterick">(*)</span>
                 </div>
-            }
-            else
-            {
-                <div class="form-group mb-4">
-                    <div class="mb-3">
-                        Tên cuộc bình chọn <span class="required-asterick">(*)</span>
-                    </div>
-                    <InputText @bind-Value="nomination.ElectionName" class="form-control" placeholder="Nhập tên cuộc bình chọn" />
-                    <ValidationMessage For=@(() => nomination.ElectionName) />
-                </div>
-
-                <div class="form-group mb-4">
-                    <div class="mb-3">
-                        Tổ chức tạo cuộc bình chọn <span class="required-asterick">(*)</span>
-                    </div>
-                    <InputText @bind-Value="nomination.OrgCreatesElection" class="form-control" placeholder="Nhập tổ chức tạo cuộc bình chọn" />
-                    <ValidationMessage For=@(() => nomination.OrgCreatesElection) />
-                </div>
-            }
+                <TinyMCEEditor @bind-Value="nomination.Content" />
+                <ValidationMessage For=@(() => nomination.Content) />
+            </div>
 
             <div class="form-group mb-4">
                 <div class="mb-3">
                     Hình ảnh đề cử
                 </div>
-
-                <Upload Name="avatar"
-                        @bind-FileList="fileList"
-                        ListType="picture-card"
-                        OnPreview="(file)=> {
-                           Console.WriteLine(file.FileName);
-                           Console.WriteLine(file.Url);
-                           previewVisible = true;
-                           previewTitle = file.FileName;
-                           imgUrl = file.Url;
-                       }"
-                        OnChange="HandleChange">
-                    <div>
-                        <Icon Type="plus"></Icon>
-                        <div className="ant-upload-text">Upload</div>
-                    </div>
-
-                </Upload>
-                <Modal Visible="previewVisible"
-                       Title="previewTitle"
-                       OnCancel="()=> previewVisible=false">
-                    <img style="width: 100%" src="@imgUrl" />
-                </Modal>
+                <PicturesWall />
             </div>
 
             <div class="form-group mb-5">
@@ -134,30 +91,5 @@
     private async Task HandleImageDiscarded()
     {
         uploadFile = null;
-    }
-
-    bool previewVisible = false;
-    string previewTitle = string.Empty;
-    string imgUrl = string.Empty;
-
-    List<UploadFileItem> fileList = new List<UploadFileItem>{};
-
-    void HandleChange(UploadInfo fileinfo)
-    {
-        if (fileinfo.File.State == UploadState.Success)
-        {
-            fileinfo.File.Url = fileinfo.File.ObjectURL;
-        }
-    }
-
-    public class ResponseModel
-    {
-        public string name { get; set; }
-
-        public string status { get; set; }
-
-        public string url { get; set; }
-
-        public string thumbUrl { get; set; }
     }
 }
