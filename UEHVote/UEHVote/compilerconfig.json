@@ -34,6 +34,9 @@
   {
     "outputFile": "Pages/RankPage/PopUp.razor.css",
     "inputFile": "Pages/RankPage/PopUp.razor.scss"
-
+  },
+  {
+    "outputFile": "Pages/DetailVote/Index.razor.css",
+    "inputFile": "Pages/DetailVote/Index.razor.scss"
   }
 ]

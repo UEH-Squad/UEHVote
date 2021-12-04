@@ -34,7 +34,7 @@
     @foreach (var item in fakeDatas.Skip(1))
     {
         <div class="col-4 d-flex flex-column align-items-center">
-            <div class="d-flex mb-3 align-items-center">               
+            <div class="d-flex mb-3 align-items-center" style="@(IsOrganizer ? "margin-left: -150px;":"")">               
                 @if (IsLogin)
                 {
                     <button @onclick="() => Rating(item.Id)" class="me-3 @(IsOrganizer ? "d-none" : "d-block")" style="@(item.isRated ? "background: rgba(250, 204, 20, 0.2);":"") @(voteCount == maxVote && !item.isRated ? "background: #E5E5E5; cursor: default;":"")">
