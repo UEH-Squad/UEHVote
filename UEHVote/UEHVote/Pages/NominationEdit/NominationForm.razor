@@ -64,8 +64,7 @@
                     Hình ảnh đề cử
                 </div>
 
-                <Upload Action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                        Name="avatar"
+                <Upload Name="avatar"
                         @bind-FileList="fileList"
                         ListType="picture-card"
                         OnPreview="(file)=> {
@@ -141,16 +140,7 @@
     string previewTitle = string.Empty;
     string imgUrl = string.Empty;
 
-    List<UploadFileItem> fileList = new List<UploadFileItem>
-{
-        new UploadFileItem
-        {
-            Id = "1",
-            FileName = "image.png",
-            State = UploadState.Success,
-            Url = "https://ueh.edu.vn/images/ueh-logo.jpg"
-        }
-    };
+    List<UploadFileItem> fileList = new List<UploadFileItem>{};
 
     void HandleChange(UploadInfo fileinfo)
     {
