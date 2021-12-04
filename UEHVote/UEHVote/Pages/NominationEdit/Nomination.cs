@@ -21,7 +21,7 @@ namespace UEHVote.Pages.NominationEdit
 
         [Required(ErrorMessage = "Trường thông tin bắt buộc")]
         public string OrgCreatesElection { get; set; }
-
         public string Banner { get; set; }
+
     }
 }
