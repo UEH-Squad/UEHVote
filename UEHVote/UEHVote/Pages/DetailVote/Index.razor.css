@@ -38,6 +38,20 @@ h4 {
     background-color: #FFFFFF;
     border-radius: 10px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); }
+  .my-title .btn-editPage {
+    position: absolute;
+    top: 110px;
+    right: 100px;
+    padding: 8px 16px;
+    color: #18A0FB;
+    background: #FFFFFF;
+    border: 1px solid #18A0FB;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    font-size: 16px; }
 
 .my-description {
   margin-top: 40px; }
