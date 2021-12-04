@@ -1,0 +1,49 @@
+﻿@page "/AddCandidate"
+@using UEHVote.Data.Interfaces
+@using UEHVote.Models
+@inject NavigationManager NavigationManager
+@inject ICandidateService ICandidateService 
+
+<h3>AddCandidate</h3>
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="Name" class="control-label">Name</label>
+                <input form="Name" class="form-control" @bind="@candidate.Name" />
+            </div>
+            <div class="form-group">
+                <label for="Designation" class="control-label">Details</label>
+                <input form="Designation" class="form-control" @bind="@candidate.Details" />
+            </div>
+            <div class="form-group">
+                <label for="City" class="control-label">Video</label>
+                <input form="City" class="form-control" @bind="@candidate.Video" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" @onclick="@CreateCandidate" value="Save" />
+                <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@code {
+    Candidate candidate = new Candidate();
+    protected async void CreateCandidate()
+    {
+        await ICandidateService.InsertCandidate(candidate);
+        NavigationManager.NavigateTo("Candidates");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Candidates");
+    }
+
+}

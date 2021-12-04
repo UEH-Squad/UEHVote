@@ -1,0 +1,73 @@
+﻿@page "/Candidate"
+@using UEHVote.Data.Interfaces
+@using UEHVote.Models
+@inject ICandidateService ICandidateService
+
+<h1>Trang Ứng Cử Viên</h1>
+<NavLink href="/AddCandidate">Thêm ứng cử viên</NavLink>
+@if (candidates != null && candidates.Any())
+{
+<div class="container-fluid">
+    <table class="table-bordered col-12 table-striped text-center">
+        <thead class="">
+            <tr>
+                <th>ID</th>
+                <th>TÊN ỨNG CỬ VIÊN</th>
+                <th>THÔNG TIN CHI TIẾT</th>
+                <th>VIDEO</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in candidates)
+            {
+<tr>
+    <th>@item.Id</th>
+    <th>@item.Name</th>
+    <th>@item.Details</th>
+    <th>@item.Video</th>
+    <td>
+        <a class="nav-link" href="EditEmployee/@item.Id">
+            <span class="oi oi-pencil" aria-hidden="true">Edit</span>
+        </a>
+        <a class="nav-link" href="Delete/@item.Id">
+            <span class="oi oi-trash" aria-hidden="true">Delete</span>
+        </a>
+    </td>
+</tr>                }
+        </tbody>
+    </table>
+    <table class="table-bordered col-12 table-striped text-center mt-5">
+        <thead class="">
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Candidate Id</th>
+            </tr>
+        </thead>
+        @if (listCandidateImages != null)
+        {
+@foreach (CandidateImage item in listCandidateImages)
+{
+<tbody>
+    <tr>
+        <th>@item.Id</th>
+        <th>@item.Url</th>
+        <th>@item.CandidateId</th>
+    </tr>
+</tbody>}}
+    </table>
+</div> }
+            else
+            {
+<h2>Chưa có ứng cử viên nào.</h2>}
+
+@code 
+{  
+    List<Candidate> candidates;
+    List<CandidateImage> listCandidateImages;
+    protected async override Task OnInitializedAsync()
+    {
+        candidates = await ICandidateService.GetAllCandidatesAsync();
+        listCandidateImages = await ICandidateService.GetAllCandidateImagesAsync();
+    }
+}

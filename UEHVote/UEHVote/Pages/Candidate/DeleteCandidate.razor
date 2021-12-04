@@ -1,0 +1,58 @@
+﻿@page "/DeleteCandidate/{Id}"
+@using UEHVote.Data.Services
+@using UEHVote.Models
+@inject CandidateService ICandidateService
+@inject NavigationManager NavigationManager
+
+<h3>DeleteCandidate</h3>
+<form>
+    <div class="row">
+        <div class=" col-md-8">
+            <div class="form-group">
+                <label> Id:</label>
+                <label>@candidate.Id</label>
+            </div>
+            <div class="form-group">
+                <label>Name:</label>
+                <label>@candidate.Name</label>
+            </div>
+            <div class="form-group">
+                <label>Details:</label>
+                <label>@candidate.Details</label>
+            </div>
+
+            <div class="form-group">
+                <label>Video:</label>
+                <label>@candidate.Video</label>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-danger" @onclick="@Delete" value="Delete" />
+                <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    Candidate candidate = new Candidate();
+    protected override async Task OnInitializedAsync()
+    {
+        candidate = await Task.Run(() => ICandidateService.GetCandidateAsync(Convert.ToInt32(Id)));
+    }
+    protected async void Delete()
+    {
+        await ICandidateService.DeleteCandidate(candidate);
+        NavigationManager.NavigateTo("Candidates");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Candidates");
+    }
+}
