@@ -3,6 +3,7 @@
 <section class="my-title">
     <div class="container">
         <h4>Ban phong trào</h4>
+        <a href="" class="btn btn-editPage @(IsOrganizer ? "d-none" : "d-block")">Chỉnh sửa</a>
         <h2>Nối vòng tay lớn 2021 - Light up</h2>
         <button class="m-auto">
             <p>14440 <span>lượt bình chọn</span></p>
@@ -49,6 +50,7 @@
             await JSRuntinme.InvokeVoidAsync("uehvote.DetailVoteCarousel");
         }
     }
+    private bool IsOrganizer = false;
     private bool IsAct = true;
     class FakeData
     {
