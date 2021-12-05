@@ -42,5 +42,33 @@
   {
     "outputFile": "Pages/DetailVote/Index.razor.css",
     "inputFile": "Pages/DetailVote/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/ListElection/Index.razor.css",
+    "inputFile": "Pages/ListElection/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/ListElection/PopupDelete.razor.css",
+    "inputFile": "Pages/ListElection/PopupDelete.razor.scss"
+  },
+  {
+    "outputFile": "Pages/CreateElection/ListElection.razor.css",
+    "inputFile": "Pages/CreateElection/ListElection.razor.scss"
+  },
+  {
+    "outputFile": "Pages/CreateElection/Index.razor.css",
+    "inputFile": "Pages/CreateElection/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/CreateElection/CreateElectionForm.razor.css",
+    "inputFile": "Pages/CreateElection/CreateElectionForm.razor.scss"
+  },
+  {
+    "outputFile": "Pages/CreateElection/CreateSuccess.razor.css",
+    "inputFile": "Pages/CreateElection/CreateSuccess.razor.scss"
+  },
+  {
+    "outputFile": "Pages/CreateElection/CreateConfirm.razor.css",
+    "inputFile": "Pages/CreateElection/CreateConfirm.razor.scss"
   }
 ]

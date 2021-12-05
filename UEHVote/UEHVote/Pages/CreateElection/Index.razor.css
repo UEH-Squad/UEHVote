@@ -1,0 +1,34 @@
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+h3 {
+  font-weight: 600;
+  font-size: 36px;
+  color: #18A0FB;
+  text-align: center;
+  margin: 65px 0; }
+
+h4 {
+  font-weight: 600;
+  font-size: 24px;
+  color: #18A0FB; }
+
+.btn-addElection {
+  width: 55px;
+  height: 40px;
+  background: #18A0FB;
+  color: white;
+  border-radius: 2px; }
+
+.btn {
+  font-size: 16px;
+  margin: 65px 0; }
+  .btn-cancel {
+    color: #B4B4B4; }
+  .btn-save {
+    width: 180px;
+    height: 40px;
+    background: #18A0FB;
+    border: 1px solid #18A0FB;
+    border-radius: 2px;
+    color: white; }

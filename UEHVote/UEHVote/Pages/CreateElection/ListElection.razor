@@ -1,7 +1,12 @@
-﻿@attribute [Route(Routes.ListVote)];
+﻿
 @using System.Text.Json
 <div class="my-election container">
-    <h3 >Các cuộc bình chọn</h3>
+    <hr/>
+    <div class="text-end @(IsOrg ? "d-block" : "d-none")">
+        <h4 class="text-start">Danh sách đề cử</h4>
+        <button class="btn-addElection btn mb-3">Thêm đề cử</button>
+    </div>
+
     <div class="election">
         <div class="election__table--header">
             <table class="election__table">
@@ -9,24 +14,6 @@
                     <th class="election__tilte election__tilte--name ">
                         <i class="material-icons me-1">perm_identity</i>
                         <span>TÊN CUỘC BÌNH CHỌN</span>
-                    </th>
-                    <th class="election__tilte election__tilte--quantity ">
-                        <i class="material-icons-outlined me-1">auto_awesome </i>
-                        <span>ĐỀ CỬ</span>
-                    </th>
-                    <th class="election__tilte election__tilte--status ">
-                        <div class="dropdown">
-                            <p class="dropdown-toggle mb-0" href="#" role="button" id="dropdown-status" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="material-icons-outlined me-1">local_offer</i>
-                                <span class="me-2 ms-1">TÌNH TRẠNG</span>
-                            </p>
-
-                            <ul class="dropdown-menu" aria-labelledby="dropdown-status">
-                                <li><Checkbox Label="">ĐANG DIỄN RA</Checkbox></li>
-                                <li><Checkbox Label="A">GẦN KẾT THÚC</Checkbox></li>
-                                <li><Checkbox Label="">KẾT THÚC</Checkbox></li>
-                            </ul>
-                        </div>
                     </th>
                     <th class="election__tilte election__tilte--org ">
                         <div class="dropdown">
@@ -50,22 +37,13 @@
             </table>
         </div>
         <div class="election__table--body">
-            <table class="election__table">
+            <table class="election__table w-100">
                 @foreach (var item in listVote)
                 {
-
-                    switch (item.Status)
-                    {
-                        case "ĐANG DIỄN RA": bg = "#06D295"; break;
-                        case "GẦN KẾT THÚC": bg = "#ECAA00"; break;
-                        case "KẾT THÚC": bg = "#FF4444"; break;
-                    }
                     <tr>
                         <td class="election__text election__text--name">@item.Name</td>
-                        <td class="election__text election__text--quantity ">@item.Quantity</td>
-                        <td class="election__text election__text--status "><span style="background-color: @bg">@item.Status</span></td>
                         <td class="election__text election__text--org">@item.Org</td>
-                        <td class="d-flex align-items-center flex-end election__text election__text--function @(IsOrg ? "d-block" : "d-none")">
+                        <td class="d-flex align-items-center flex-end election__text election__text--function">
                             <a class="me-3"><span class="material-icons-outlined icon-edit">edit</span></a>
                             <span @onclick="ShowPopupDelete" class="material-icons-outlined icon-delete">delete</span>
                         </td>
@@ -73,13 +51,13 @@
                 }
             </table>
         </div>
-        
+
 
     </div>
 </div>
 @code {
     private string bg;
-    public bool IsOrg = true;
+    [Parameter] public bool IsOrg { get; set; } = true;
 
     class FakeData
     {
@@ -122,7 +100,7 @@
             UseCustomLayout = true,
         };
 
-        Modal.Show<PopupDelete>("", options);
+        Modal.Show<UEHVote.Pages.ListElection.PopupDelete>("", options);
     }
 
 }

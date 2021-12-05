@@ -9,6 +9,19 @@
     color: #18A0FB;
     text-align: center;
     margin: 65px 0; }
+  .my-election h4 {
+    font-weight: 600;
+    font-size: 24px;
+    color: #18A0FB; }
+  .my-election .btn-addElection {
+    width: 205px;
+    height: 50px;
+    border: 1px solid #18A0FB;
+    border-radius: 2px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #18A0FB;
+    transform: translateY(-100%); }
 
 .election__table--body {
   height: 370px;
@@ -19,6 +32,9 @@
   .election__table--body::-webkit-scrollbar-thumb {
     background: #707070;
     border-radius: 10px; }
+
+.election__table--header {
+  background: rgba(24, 160, 251, 0.2); }
 
 .election__table .election__tilte, .election__table .election__text {
   padding: 15px 10px; }
@@ -31,9 +47,6 @@
   .election__table .election__tilte span {
     font-weight: 600;
     font-size: 12px; }
-
-.election__table .election__table--header {
-  background: rgba(24, 160, 251, 0.2); }
 
 .election__table .election__tilte--name, .election__table .election__text--name {
   width: 355px; }
@@ -99,3 +112,21 @@
   font-weight: 400;
   font-size: 14px;
   color: black; }
+
+.election__table .election__text--function span {
+  width: 27px;
+  height: 27px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 27px;
+  cursor: pointer; }
+
+.election__table .election__text--function .icon-edit {
+  background: rgba(24, 160, 251, 0.2);
+  color: #18A0FB; }
+
+.election__table .election__text--function .icon-delete {
+  background: rgba(255, 0, 0, 0.2);
+  color: #FC0C0C;
+  transform: translateY(-2px); }

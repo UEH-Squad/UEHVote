@@ -1,13 +1,22 @@
 ﻿@import '../../Resources/scss/common/_variables.scss';
+
 .my-election {
-    margin-bottom: 200px;
+    hr {
+        width: 50%;
+        height: 1px;
+        margin-left: auto;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: rgba(24, 160, 251, 0.2);
+    }
 
     h3 {
         font-weight: 600;
         font-size: 36px;
         color: $blue;
         text-align: center;
-        margin: 65px 0;
+        margin-top: 65px;
+        margin-bottom: 0px;
     }
 
     h4 {
@@ -17,16 +26,16 @@
     }
 
     .btn-addElection {
-        width: 205px;
-        height: 50px;
+        width: 195px;
+        height: 35px;
         border: 1px solid #18A0FB;
         border-radius: 2px;
         font-weight: normal;
         font-size: 16px;
         color: $blue;
-        transform: translateY(-100%);
     }
 }
+
 .election__table--body {
     height: 370px;
     overflow-y: scroll;
@@ -75,53 +84,9 @@
         color: #001112;
     }
 
-    .election__tilte--quantity, .election__text--quantity {
-        width: 100px;
-    }
 
-    .election__text--quantity {
-        font-weight: 400;
-        font-size: 12px;
-        color: black;
-        text-align: center;
-    }
-
-    .election__tilte--status, .election__text--status {
-        width: 380px;
-    }
-
-    .election__tilte--status {
-        .dropdown-menu {
-            padding: 22px 35px;
-            border-radius: 10px;
-        }
-
-        li {
-            margin-bottom: 16px;
-
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-        }
-    }
-
-    .election__text--status {
-        font-weight: 600;
-        font-size: 14px;
-        color: #FFFFFF;
-
-        span {
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-    }
-
-    .election__tilte--org {
-        width: 462px;
-    }
-
-    .election__text--org {
-        width: 460px;
+    .election__tilte--org, .election__text--org {
+        width: 750px;
     }
 
     .election__tilte--org {
@@ -158,6 +123,8 @@
     }
 
     .election__text--function {
+        justify-content: center;
+        width: 150px;
 
         span {
             width: 27px;
@@ -177,7 +144,7 @@
         .icon-delete {
             background: rgba(255, 0, 0, 0.2);
             color: #FC0C0C;
-            transform:translateY(-2px)
+            transform: translateY(-2px)
         }
     }
 }

@@ -1,0 +1,109 @@
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.my-election hr {
+  width: 50%;
+  height: 1px;
+  margin-left: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: rgba(24, 160, 251, 0.2); }
+
+.my-election h3 {
+  font-weight: 600;
+  font-size: 36px;
+  color: #18A0FB;
+  text-align: center;
+  margin-top: 65px;
+  margin-bottom: 0px; }
+
+.my-election h4 {
+  font-weight: 600;
+  font-size: 24px;
+  color: #18A0FB; }
+
+.my-election .btn-addElection {
+  width: 195px;
+  height: 35px;
+  border: 1px solid #18A0FB;
+  border-radius: 2px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #18A0FB; }
+
+.election__table--body {
+  height: 370px;
+  overflow-y: scroll; }
+  .election__table--body::-webkit-scrollbar {
+    width: 3px;
+    height: 5px; }
+  .election__table--body::-webkit-scrollbar-thumb {
+    background: #707070;
+    border-radius: 10px; }
+
+.election__table--header {
+  background: rgba(24, 160, 251, 0.2); }
+
+.election__table .election__tilte, .election__table .election__text {
+  padding: 15px 10px; }
+
+.election__table .election__tilte {
+  color: black; }
+  .election__table .election__tilte i {
+    font-size: 20px;
+    transform: translateY(4px); }
+  .election__table .election__tilte span {
+    font-weight: 600;
+    font-size: 12px; }
+
+.election__table .election__tilte--name, .election__table .election__text--name {
+  width: 355px; }
+
+.election__table .election__text--name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #001112; }
+
+.election__table .election__tilte--org, .election__table .election__text--org {
+  width: 750px; }
+
+.election__table .election__tilte--org .dropdown-menu {
+  padding: 22px 35px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  height: 205px; }
+  .election__table .election__tilte--org .dropdown-menu::-webkit-scrollbar {
+    width: 3px;
+    height: 5px; }
+  .election__table .election__tilte--org .dropdown-menu::-webkit-scrollbar-thumb {
+    background: #707070;
+    border-radius: 10px; }
+
+.election__table .election__tilte--org li {
+  margin-bottom: 8px; }
+  .election__table .election__tilte--org li:last-of-type {
+    margin-bottom: 0; }
+
+.election__table .election__text--org {
+  font-weight: 400;
+  font-size: 14px;
+  color: black; }
+
+.election__table .election__text--function {
+  justify-content: center;
+  width: 150px; }
+  .election__table .election__text--function span {
+    width: 27px;
+    height: 27px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 27px;
+    cursor: pointer; }
+  .election__table .election__text--function .icon-edit {
+    background: rgba(24, 160, 251, 0.2);
+    color: #18A0FB; }
+  .election__table .election__text--function .icon-delete {
+    background: rgba(255, 0, 0, 0.2);
+    color: #FC0C0C;
+    transform: translateY(-2px); }
