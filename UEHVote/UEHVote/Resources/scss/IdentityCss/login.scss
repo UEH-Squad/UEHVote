@@ -1,0 +1,45 @@
+﻿@import '../../../Resources/scss/common/_variables.scss';
+body {
+    max-width: 100% !important;
+    background-color: #E5E5E5;
+}
+.form {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 8px;
+
+    .form__text {
+        border-bottom: 3px solid #0058C0;
+        padding-bottom: 3px;
+        width: 40px;
+    }
+}
+
+.form__input__text {
+    position: relative;
+    .input__text__icon{
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        color: $blue;
+        padding-right: 20px;
+    }
+}
+
+.form__input__password {
+    position: relative;
+
+    .input__password__icon {
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        color: $blue;
+        padding-right: 20px;
+    }
+}
+
+.form-group button{
+    width: 100%;
+}
+
+
+
