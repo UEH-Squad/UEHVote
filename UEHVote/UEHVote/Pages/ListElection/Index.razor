@@ -1,5 +1,7 @@
-﻿@attribute [Route(Routes.ListVote)];
-@using System.Text.Json
+﻿@using UEHVote.Models;
+@using System.Linq
+@attribute [Route(Routes.ListElection)];
+
 <div class="my-election container">
     <h3>Các cuộc bình chọn</h3>
     <div class="election">
@@ -19,11 +21,10 @@
                             <i class="material-icons-outlined me-1">local_offer</i>
                             <span class="me-2 ms-1">TÌNH TRẠNG</span>
                         </p>
-
                         <ul class="dropdown-menu" aria-labelledby="dropdown-status">
-                            <li><Checkbox Label="">ĐANG DIỄN RA</Checkbox></li>
-                            <li><Checkbox Label="A">GẦN KẾT THÚC</Checkbox></li>
-                            <li><Checkbox Label="">KẾT THÚC</Checkbox></li>
+                            <li><Checkbox Checked="CheckHappening" CheckedChanged="ClickHappening" Label="">ĐANG DIỄN RA</Checkbox></li>
+                            <li><Checkbox Checked="CheckNearEnd" CheckedChanged="ClickNearEnd" Label="">GẦN KẾT THÚC</Checkbox></li>
+                            <li><Checkbox Checked="CheckEnded" CheckedChanged="ClickEnded" Label="">KẾT THÚC</Checkbox></li>
                         </ul>
                     </div>
                 </th>
@@ -33,74 +34,55 @@
                             <i class="material-icons ">perm_identity</i>
                             <span class="me-2 ms-1">TỔ CHỨC</span>
                         </p>
-
                         <ul class="dropdown-menu" aria-labelledby="dropdown-org">
-                            <li><Checkbox Label="">Khoa Công nghệ thông tin kinh doanh</Checkbox></li>
-                            <li><Checkbox Label="">Viện Du lịch</Checkbox></li>
-                            <li><Checkbox Label="">Khoa Kế toán</Checkbox></li>
-                            <li><Checkbox Label="">Khoa Kinh tế</Checkbox></li>
-                            <li><Checkbox Label="">Khoa Quản trị</Checkbox></li>
+                                @if (listOrganizations != null)
+                                {
+                                    @foreach (var item in listOrganizations)
+                                    {
+                                        bool Checked = false;
+                                        foreach (var t in result)
+                                        {
+                                            if (t.Org.Contains(item.Name))
+                                            {
+                                                Checked =true;
+                                            }  
+                                        }
+                                        <li><Checkbox Checked="Checked" CheckedChanged="eventArgs => { FilterOrg(item.Name,eventArgs.ToString()); }">@item.Name</Checkbox></li>
+                                    }
+                                }
                         </ul>
                     </div>
-
                 </th>
-
-            </tr>          
+            </tr>
         </table>
         <div class="election__table--body">
             <table class="election__table">
-                @foreach (var item in listVote)
+                @if (result != null)
                 {
-
-                    switch (item.Status)
+                    @foreach (var item in result)
                     {
-                        case "ĐANG DIỄN RA": bg = "#06D295"; break;
-                        case "GẦN KẾT THÚC": bg = "#ECAA00"; break;
-                        case "KẾT THÚC": bg = "#FF4444"; break;
+                        switch (item.Status)
+                        {
+                            case "ĐANG DIỄN RA":
+                                bg = "#06D295";
+                                break;
+                            case "GẦN KẾT THÚC":
+                                bg = "#ECAA00";
+                                break;
+                            case "KẾT THÚC":
+                                bg = "#FF4444";
+                                break;
+                        }
+                        <tr>
+                            <td class="election__text election__text--name" onclick="window.location.href='/chi-tiet-de-cu/@item.Id'">@item.Name</td>
+                            <td class="election__text election__text--quantity">@item.Quantity</td>
+                            <td class="election__text election__text--status"><span style="background-color: @bg">@item.Status</span></td>
+                            <td class="election__text election__text--org">@item.Org</td>
+                        </tr>
                     }
-                    <tr>
-                        <td class="election__text election__text--name">@item.Name</td>
-                        <td class="election__text election__text--quantity">@item.Quantity</td>
-                        <td class="election__text election__text--status"><span style="background-color: @bg">@item.Status</span></td>
-                        <td class="election__text election__text--org">@item.Org</td>
-                    </tr>
                 }
             </table>
         </div>
-        
-
     </div>
 </div>
-@code {
-    private string bg;
-    class FakeData
-    {
-        public int Id { get; set; }
-        public int Quantity { get; set; }
-        public string Name { get; set; }
-        public string Status { get; set; }
-        public string Org { get; set; }
 
-    }
-    private List<FakeData> listVote = new();
-    protected override void OnInitialized()
-    {
-
-        for (int i = 1; i < 14; i++)
-        {
-            listVote.Add(new FakeData()
-            {
-                Id = i,
-                Name = "Hoạt động xuất sắc năm 2022 ",
-                Quantity = 10,
-                Status = "ĐANG DIỄN RA",
-                Org = "Khoa Công nghệ Thông tin Kinh doanh",
-            });
-        }
-    }
-
-    void OnChange(string[] checkedValues)
-    {
-        Console.WriteLine($"checked = {JsonSerializer.Serialize(checkedValues)}");
-    }
-}

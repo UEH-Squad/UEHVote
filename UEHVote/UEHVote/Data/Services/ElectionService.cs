@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UEHVote.Data.Context;
 using UEHVote.Data.Interfaces;
 using UEHVote.Models;
 
-namespace UEHVote.Data
+namespace UEHVote.Data.Services
 {
     public class ElectionService:IElectionService
     {
@@ -45,6 +46,25 @@ namespace UEHVote.Data
         {
             _db.Elections.Remove(election);
             await _db.SaveChangesAsync();
+        }
+
+        public string StatusElection(Election election)
+        {
+            string status= "KẾT THÚC";
+            DateTime today=DateTime.Today;
+            TimeSpan lastthreeday = election.FinishDate.Date- DateTime.Today.Date;
+            if (election.StartDate <= today && today <= election.FinishDate)
+            {
+                if (lastthreeday.Days > 3)
+                {
+                    status = "ĐANG DIỄN RA";
+                }
+                else
+                {
+                    status = "GẦN KẾT THÚC";
+                }
+            }
+            return status;
         }
         #endregion
         /// <summary>

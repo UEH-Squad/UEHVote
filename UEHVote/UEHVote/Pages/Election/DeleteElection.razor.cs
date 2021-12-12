@@ -26,18 +26,23 @@ namespace UEHVote.Pages.Election
         protected override async Task OnInitializedAsync()
         {
             election = await IElectionService.GetElectionAsync(Convert.ToInt32(CurrentId));
+            listActivityImage = await IElectionService.GetAllActivityImagesAsync();
         }
         protected async Task Delete()
         {
-            IUploadService.RemoveImage(election.Banner);
-            await IElectionService.DeleteElection(election);
-            foreach(ActivityImage item in listActivityImage)
+            if (election.Banner != null)
             {
-                if(CurrentId.Equals(Convert.ToString(item.ElectionId)))
+                IUploadService.RemoveImage(election.Banner);
+            }
+            await IElectionService.DeleteElection(election);
+            foreach (ActivityImage item in listActivityImage)
+            {
+                if (CurrentId.Equals(Convert.ToString(item.ElectionId)))
                 {
-                    await IElectionService.DeleteActivityImage(item);
-                }    
-            }    
+                    IUploadService.RemoveImage(item.Url);
+                    IElectionService.DeleteActivityImage(item);
+                }
+            }
             NavigationManager.NavigateTo("Election");
         }
         void Cancel()

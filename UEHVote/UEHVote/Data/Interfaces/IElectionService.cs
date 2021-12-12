@@ -20,5 +20,6 @@ namespace UEHVote.Data.Interfaces
         Task UpdateElection(Election election);
         Task DeleteElection(Election election);
         Task DeleteActivityImage(ActivityImage activityImage);
+        string StatusElection(Election election);
     }
 }
