@@ -7,7 +7,11 @@
 
 <h1>Trang Ứng Cử Viên</h1>
 <NavLink href="/AddCandidate">Thêm ứng cử viên</NavLink>
-@if (candidates != null && candidates.Any())
+
+@if (candidates == null)
+{
+    <p><em>Loading...</em></p> }
+else
 {
     <div class="container-fluid">
         <table class="table-bordered col-12 table-striped text-center">
@@ -17,6 +21,7 @@
                     <th>TÊN ỨNG CỬ VIÊN</th>
                     <th>THÔNG TIN CHI TIẾT</th>
                     <th>VIDEO</th>
+                    <th>##</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,34 +41,33 @@
                             </a>
                         </td>
                     </tr>
-           }
+                }
             </tbody>
         </table>
-        <table class="table-bordered col-12 table-striped text-center mt-5">
-            <thead class="">
+    </div>
+}
+<table class="table-bordered col-12 table-striped text-center mt-5">
+    <thead class="">
+        <tr>
+            <th>Id</th>
+            <th>Url</th>
+            <th>Candidate Id</th>
+        </tr>
+    </thead>
+    @if (listCandidateImages != null)
+    {
+        @foreach (CandidateImage item in listCandidateImages)
+        {
+            <tbody>
                 <tr>
-                    <th>Id</th>
-                    <th>Url</th>
-                    <th>Candidate Id</th>
+                    <th>@item.Id</th>
+                    <th>@item.Url</th>
+                    <th>@item.CandidateId</th>
                 </tr>
-            </thead>
-            @if (listCandidateImages != null)
-            {
-                @foreach (CandidateImage item in listCandidateImages)
-                {
-                    <tbody>
-                        <tr>
-                            <th>@item.Id</th>
-                            <th>@item.Url</th>
-                            <th>@item.CandidateId</th>
-                        </tr>
-                    </tbody>
-}}
-        </table>
-    </div> }
-else
-{
-    <h2>Chưa có ứng cử viên nào.</h2>}
+            </tbody>
+        }
+    }
+</table>
 
 @code
 {

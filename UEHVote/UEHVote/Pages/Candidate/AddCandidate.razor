@@ -6,28 +6,29 @@
     <EditForm method="post" Model="candidate">
         <DataAnnotationsValidator />
         <ValidationSummary />
-        <div class="modal-body container"
-            <div class="col-md-8">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <InputText id="name" class="form-control" @bind-Value="@candidate.Name" />
-                </div>
-                <div class="mb-3">
-                    <label for="details" class="control-label">Details</label>
-                    <TextArea Placeholder="details" class="form-control" @bind-Value="@candidate.Details" />
-                </div>
-                <div class="mb-3">
-                    <label form="video" class="control-label">Video</label>
-                    <InputText id="video" class="form-control" @bind-Value="@candidate.Video" />
+        <div class="modal-body container">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <InputText id="name" class="form-control" @bind-Value="@candidate.Name" />
+            </div>
+            <div class="mb-3">
+                <label for="details" class="control-label">Details</label>
+                <TextArea Placeholder="details" class="form-control" @bind-Value="@candidate.Details" />
+            </div>
+            <div class="mb-3">
+                <label form="video" class="control-label">Video</label>
+                <InputText id="video" class="form-control" @bind-Value="@candidate.Video" />
+            </div>
+            <div class="mb-3">
+                <label for="imagesList" class="form-label">Hình ảnh nổi bật</label>
+                <InputFile name="imagesList" OnChange="OnInputFile" multiple type="file" class="form-control"></InputFile>
+                <div class="d-flex align-items-center">
+                    <span class="@(isChangeFile ? "d-none" : "d-block")">Hình ảnh</span>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" @onclick="@CreateCandidate" value="Save" />
-                        <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
-                    </div>
-                </div>
+            <div class="modal-footer container">
+                <button type="submit" class="btn btn-primary" @onclick="@CreateCandidate" value="Save">Save change</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@Cancel" value="Cancel">Cancel</button>
             </div>
         </div>
     </EditForm>

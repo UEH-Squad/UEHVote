@@ -19,7 +19,7 @@ namespace UEHVote.Pages.Candidate
     {
         Models.Candidate candidate = new Models.Candidate();
         List<CandidateImage> listCandidateImages = new List<CandidateImage>();
-        List<string> image { get; set; } = new List<string>();
+        List<string> imagecandidate { get; set; } = new List<string>();
         private IReadOnlyList<IBrowserFile> selectedImages;
         private bool isChangeFile;
 
@@ -45,7 +45,7 @@ namespace UEHVote.Pages.Candidate
                     await ICandidateService.DeleteCandidateImage(item);
                 }
             }
-            foreach (string item in image)
+            foreach (string item in imagecandidate)
             {
                 CandidateImage candidateImage = new CandidateImage();
                 candidateImage.CandidateId = Convert.ToInt32(CurrentId);
@@ -62,7 +62,7 @@ namespace UEHVote.Pages.Candidate
         {
             var imageFiles = e.GetMultipleFiles();
             selectedImages = imageFiles;
-            image.Clear();
+            imagecandidate.Clear();
             isChangeFile = true;
             foreach (var file in imageFiles)
             {
@@ -73,7 +73,7 @@ namespace UEHVote.Pages.Candidate
                 else
                 {
                     string x = await IUploadService.SaveImageAsync(file, Convert.ToString(candidate.Id));
-                    image.Add(x);
+                    imagecandidate.Add(x);
                 }
             }
         }

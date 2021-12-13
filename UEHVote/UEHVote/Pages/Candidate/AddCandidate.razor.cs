@@ -15,10 +15,10 @@ namespace UEHVote.Pages.Candidate
     /// <summary>
     /// CREATE CANDIDATE
     /// </summary>
-    public partial class AddCandidate:ComponentBase
+    public partial class AddCandidate : ComponentBase
     {
         Models.Candidate candidate = new Models.Candidate();
-        List<string> image { get; set; } = new List<string>();
+        List<string> imagecandidate { get; set; } = new List<string>();
         private bool isChangeFile = true;
         private IReadOnlyList<IBrowserFile> selectedImages;
         [Inject]
@@ -30,9 +30,9 @@ namespace UEHVote.Pages.Candidate
         protected async Task CreateCandidate()
         {
             await ICandidateService.InsertCandidate(candidate);
-            if (image.Count != 0)
+            if (imagecandidate.Count != 0)
             {
-                foreach (string item in image)
+                foreach (string item in imagecandidate)
                 {
                     CandidateImage candidateImage = new CandidateImage();
                     candidateImage.CandidateId = candidate.Id;
@@ -50,7 +50,7 @@ namespace UEHVote.Pages.Candidate
         {
             var imageFiles = e.GetMultipleFiles();
             selectedImages = imageFiles;
-            image.Clear();
+            imagecandidate.Clear();
             isChangeFile = true;
             foreach (var file in imageFiles)
             {
@@ -61,7 +61,7 @@ namespace UEHVote.Pages.Candidate
                 else
                 {
                     string x = await IUploadService.SaveImageAsync(file, Convert.ToString(candidate.Id));
-                    image.Add(x);
+                    imagecandidate.Add(x);
                 }
             }
         }

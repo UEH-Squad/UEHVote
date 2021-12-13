@@ -6,7 +6,7 @@
 <EditForm method="post" Model="candidate">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <form>
+    <div class="modal-body container">
         <div class="row">
             <div class="col-md-8">
                 <div class="form-group">
@@ -21,17 +21,19 @@
                     <label for="video" class="control-label">Video</label>
                     <InputText name="video" class="form-control" @bind-value="@candidate.Video" />
                 </div>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" @onclick="@Update" value="Update" />
-                    <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+                <div class="col-5">
+                    <label for="imagesList" class="form-label">Hình ảnh</label>
+                    <InputFile name="imagesList" OnChange="OnUpdateFile" multiple type="file" class="form-control"></InputFile>
+                    <div class="d-flex align-items-center">
+                        <span class="@(isChangeFile ? "d-none" : "d-block")">Hình ảnh</span>
+                    </div>
                 </div>
+
             </div>
         </div>
-    </form>
+        <div class="modal-footer container">
+            <input type="submit" class="btn btn-primary" @onclick="@Update" value="Update" />
+            <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+        </div>
+    </div>
 </EditForm>

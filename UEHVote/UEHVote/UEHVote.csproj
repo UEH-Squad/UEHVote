@@ -28,6 +28,10 @@
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <None Include="compilerconfig.json" />
+    <None Include="Pages\Candidate\AddCandidate.razor" />
+    <None Include="Pages\Candidate\DeleteCandidate.razor" />
+    <None Include="Pages\Candidate\Index.razor" />
+    <None Include="Pages\Candidate\UpdateCandidate.razor" />
   </ItemGroup>
 
   <ItemGroup>
