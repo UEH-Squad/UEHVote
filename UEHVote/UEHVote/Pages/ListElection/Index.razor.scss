@@ -73,10 +73,11 @@
         font-weight: 600;
         font-size: 14px;
         color: #001112;
+        cursor: pointer;
     }
 
     .election__tilte--quantity, .election__text--quantity {
-        width: 100px;
+        min-width: 130px;
     }
 
     .election__text--quantity {
@@ -117,11 +118,11 @@
     }
 
     .election__tilte--org {
-        width: 462px;
+        width: 502px;
     }
 
     .election__text--org {
-        width: 460px;
+        width: 500px;
     }
 
     .election__tilte--org {
@@ -157,7 +158,16 @@
         color: black;
     }
 
+    .election__tilte--function, .election__text--function {
+        width: 200px;
+    }
+
     .election__text--function {
+        .election__statusBrowse {
+            font-weight: 400;
+            font-size: 14px;
+            cursor: pointer;
+        }
 
         span {
             width: 27px;
@@ -177,7 +187,7 @@
         .icon-delete {
             background: rgba(255, 0, 0, 0.2);
             color: #FC0C0C;
-            transform:translateY(-2px)
+            transform: translateY(-2px)
         }
     }
 }

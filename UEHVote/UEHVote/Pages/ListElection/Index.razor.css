@@ -54,10 +54,11 @@
 .election__table .election__text--name {
   font-weight: 600;
   font-size: 14px;
-  color: #001112; }
+  color: #001112;
+  cursor: pointer; }
 
 .election__table .election__tilte--quantity, .election__table .election__text--quantity {
-  width: 100px; }
+  min-width: 130px; }
 
 .election__table .election__text--quantity {
   font-weight: 400;
@@ -86,10 +87,10 @@
     border-radius: 4px; }
 
 .election__table .election__tilte--org {
-  width: 462px; }
+  width: 502px; }
 
 .election__table .election__text--org {
-  width: 460px; }
+  width: 500px; }
 
 .election__table .election__tilte--org .dropdown-menu {
   padding: 22px 35px;
@@ -112,6 +113,14 @@
   font-weight: 400;
   font-size: 14px;
   color: black; }
+
+.election__table .election__tilte--function, .election__table .election__text--function {
+  width: 200px; }
+
+.election__table .election__text--function .election__statusBrowse {
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer; }
 
 .election__table .election__text--function span {
   width: 27px;
