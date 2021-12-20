@@ -38,5 +38,17 @@
   {
     "outputFile": "Pages/DetailVote/Index.razor.css",
     "inputFile": "Pages/DetailVote/Index.razor.scss"
+  },
+  {
+    "outputFile": "Shared/AdminLayout.razor.css",
+    "inputFile": "Shared/AdminLayout.razor.scss"
+  },
+  {
+    "outputFile": "Shared/AdminSidebar.razor.css",
+    "inputFile": "Shared/AdminSidebar.razor.scss"
+  },
+  {
+    "outputFile": "Shared/Components/SearchBox.razor.css",
+    "inputFile": "Shared/Components/SearchBox.razor.scss"
   }
 ]
