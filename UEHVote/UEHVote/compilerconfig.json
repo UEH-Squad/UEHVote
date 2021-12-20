@@ -66,5 +66,9 @@
   {
     "outputFile": "Pages/CreateElection/CreateConfirm.razor.css",
     "inputFile": "Pages/CreateElection/CreateConfirm.razor.scss"
+  },
+  {
+    "outputFile": "Pages/CreateElection/DeleteElection.razor.css",
+    "inputFile": "Pages/CreateElection/DeleteElection.razor.scss"
   }
 ]
