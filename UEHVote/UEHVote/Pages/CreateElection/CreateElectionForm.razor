@@ -2,40 +2,26 @@
 
 <div class="container">
     <div class="row">
-
         <EditForm Model="@election">
             <DataAnnotationsValidator />
-
             <div class="form-group mb-4">
                 <div class="mb-3">
                     Đơn vị <span class="required-asterick">(*)</span>
                 </div>
-                <InputText @bind-Value="election.Organization" class="form-control" placeholder="Nhập đơn vị" />
-                <ValidationMessage For=@(() => election.Organization) />
+                <InputText class="form-control" @bind-Value="election.Name" placeholder="Nhập đơn vị" />
             </div>
-
             <div class="form-group mb-4">
                 <div class="mb-3">
                     Tên đề cử <span class="required-asterick">(*)</span>
                 </div>
-                <InputText @bind-Value="election.NominationName" class="form-control" placeholder="Nhập tên đề cử" />
-                <ValidationMessage For=@(() => election.NominationName) />
+                <InputText @bind-Value="election.Name" class="form-control" placeholder="Nhập tên đề cử" />
             </div>
- 
             <div class="form-group mb-5">
                 <div class="mb-3">
                     Video đề cử
                 </div>
-                <InputText @bind-Value="election.VideoLink" class="form-control text-center" placeholder="Chèn link video" />
+                <InputText @bind-Value="election.Video" class="form-control text-center" placeholder="Chèn link video" />
             </div>
-
         </EditForm>
     </div>
 </div>
-
-@code {
-
-    private ElectionModel election = new() { };
-    private IBrowserFile uploadFile;
-
-}
