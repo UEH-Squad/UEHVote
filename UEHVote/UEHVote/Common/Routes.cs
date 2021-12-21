@@ -9,6 +9,12 @@
         public const string DetailVote = "/chi-tiet-de-cu";
         public const string ListVote = "/danh-sach-cac-cuoc-bau-cu";
 
+        #endregion Main
+
+        #region Admin
+
+        public const string AdminApproveElection = "/admin/duyet-binh-chon";
+
         #endregion Admin
     }
 }

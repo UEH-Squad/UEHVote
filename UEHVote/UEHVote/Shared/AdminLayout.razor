@@ -1,0 +1,28 @@
+﻿@inherits LayoutComponentBase
+
+<div>
+    <div class="row">
+        <div class="col-3 pe-0">
+            <AdminSidebar />
+        </div>
+        <div class="col-9 py-4">
+            <div class="d-flex position-absolute">
+                <UEHVote.Shared.Components.SearchBox />
+                <div class="d-flex align-items-center ms-5">
+                    <div class="profile-info me-3">Admin</div>
+                    <div class="rounded-avatar">
+                        <img src="/img/avatar.jpg" class="w-100" alt="admin avatar" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @Body
+            </div>
+        </div>
+    </div>
+</div>
+
+<FooterLayout />
+
+@code {
+}

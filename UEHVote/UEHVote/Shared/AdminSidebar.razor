@@ -1,0 +1,22 @@
+﻿@inject NavigationManager NavigationManager
+    
+<nav class="sidebar d-flex flex-column align-items-center py-4">
+    <div class="logo-container">
+        <h1>UEHVote</h1>
+    </div>
+
+    <div class="menu-container w-100 d-flex flex-column align-items-center">
+        <div class="menu-item w-100">
+            <NavLink href="@Routes.AdminApproveElection" class="d-flex align-items-center py-3">
+                <span class="material-icons me-4 ms-5">
+                    confirmation_number
+                </span>
+                <div>Duyệt bình chọn</div>
+            </NavLink>
+        </div>
+    </div>
+</nav>
+
+@code {
+
+}
