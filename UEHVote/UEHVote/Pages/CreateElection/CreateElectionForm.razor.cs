@@ -11,31 +11,24 @@ namespace UEHVote.Pages.CreateElection
 {
     public partial class CreateElectionForm
     {
-        Models.Election election = new Models.Election();
-        List<string> image { get; set; } = new List<string>();
-        bool isCheckedIsFor = true;
-        bool disabledIsFor = false;
-        bool isCheckedIsAllowed = true;
-        bool disabledIsAllowed = false;
-        private bool isChangeFile = false;
-        private bool isChangeBanner = false;
-        private IReadOnlyList<IBrowserFile> selectedImages;
-        private IReadOnlyList<IBrowserFile> selectedBanner;
+        [Parameter] 
+        public Models.Election election { get; set; } = new Models.Election();
+        [Parameter]
+        public List<Organization> organizations { get; set; } 
+        private string org;
         [Inject]
         IElectionService IElectionService { get; set; }
         [Inject]
         NavigationManager NavigationManager { get; set; }
         [Inject]
         IUploadService IUploadService { get; set; }
-        void ToggleDisable()
-        {
-            disabledIsFor = !disabledIsFor;
-            disabledIsAllowed = !disabledIsAllowed;
-        }
-        void Cancel()
-        {
-            NavigationManager.NavigateTo("Election");
-        }
+        [Inject] 
+        IOrganizationService IOrganizationService { get; set; }
+        List<string> image { get; set; } = new List<string>();
+        private bool isChangeFile = false;
+        private bool isChangeBanner = false;
+        private IReadOnlyList<IBrowserFile> selectedImages;
+        private IReadOnlyList<IBrowserFile> selectedBanner;
         private async Task OnInputFile(InputFileChangeEventArgs e)
         {
             var imageFiles = e.GetMultipleFiles();

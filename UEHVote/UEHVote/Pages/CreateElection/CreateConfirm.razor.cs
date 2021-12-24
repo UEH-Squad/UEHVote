@@ -13,8 +13,8 @@ namespace UEHVote.Pages.CreateElection
 {
     public partial class CreateConfirm
     {
-        Models.Election election = new Models.Election();
-        List<string> image { get; set; } = new List<string>();
+        [Parameter] 
+        public Models.Election election { get; set; }
         [CascadingParameter]
         public BlazoredModalInstance Modal { get; set; }
         [CascadingParameter]
@@ -23,6 +23,7 @@ namespace UEHVote.Pages.CreateElection
         IElectionService IElectionService { get; set; }
         [Inject]
         NavigationManager NavigationManager { get; set; }
+        List<string> image { get; set; } = new List<string>();
         private async Task CloseModal()
         {
             await Modal.CloseAsync();
@@ -34,9 +35,9 @@ namespace UEHVote.Pages.CreateElection
                 HideCloseButton = true,
                 DisableBackgroundCancel = true,
                 UseCustomLayout = true,
-            };
+            }; 
             await Modal.CloseAsync();
-            ResultModal.Show<CreateSuccess>("", options);
+            await ResultModal.Show<CreateSuccess>("", options).Result;
         }
         protected async Task CreateElection()
         {
@@ -51,7 +52,7 @@ namespace UEHVote.Pages.CreateElection
                     await IElectionService.InsertActivityImage(activityImage);
                 }
             }
-            NavigationManager.NavigateTo("tao-va-chinh-sua-cuoc-bau-cu");
+            ShowResultModal();
         }
     }
 }

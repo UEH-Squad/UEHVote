@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using AntDesign;
+using Blazored.Modal;
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Internal;
 using UEHVote.Data.Interfaces;
 using UEHVote.Models;
 
@@ -14,50 +21,34 @@ namespace UEHVote.Pages.CreateElection
     public partial class ListElection
     {
         private string bg;
-        [Parameter] public bool IsOrg { get; set; } = true;
-        [Parameter] public string CurrentId { get; set; }
-        private List<Candidate> candidates = new List<Candidate>();
-        List<CandidateImage> listCandidateImages = new List<CandidateImage>();
-        private Candidate candidate { get; set; }
-        private List<Organization> organizations { get; set; }
-        private List<Candidate> result = new List<Candidate>();
-        [Inject]
-        private ICandidateService ICandidateService { get; set; }
+        private bool isChecking;
+        [Parameter] 
+        public bool IsOrg { get; set; } = true;
+        [Parameter]
+        public List<Candidate> candidates { get; set; }
+        [Parameter]
+        public List<Organization> organizations { get; set; }
+        [Parameter]
+        public List<Candidate> result { get; set; } = new List<Candidate>();
+        [CascadingParameter] 
+        public IModalService Modal { get; set; }
         [Inject]
         private IOrganizationService IOrganizationService { get; set; }
-        [CascadingParameter] public IModalService Modal { get; set; }
         void OnChange(string[] checkedValues)
         {
             Console.WriteLine($"checked = {JsonSerializer.Serialize(checkedValues)}");
         }
-        private async Task ShowPopupDelete()
+        private async Task ShowPopupDelete(int candidateId)
         {
+            var parameters = new ModalParameters();
+            parameters.Add(nameof(DeleteElection.candidateId), candidateId);
             var options = new Blazored.Modal.ModalOptions()
             {
                 HideCloseButton = true,
                 DisableBackgroundCancel = true,
                 UseCustomLayout = true,
             };
-            Modal.Show<UEHVote.Pages.ListElection.PopupDelete>("", options);
-            Delete();
-        }
-        protected async override Task OnInitializedAsync()
-        {
-            candidates = await ICandidateService.GetAllCandidatesAsync();
-            organizations = await IOrganizationService.GetAllOrganizationsAsync();
-            candidate = await ICandidateService.GetCandidateAsync(Convert.ToInt32(CurrentId));
-            result = candidates.ToList();
-        }
-        protected async Task Delete()
-        {
-            await ICandidateService.DeleteCandidate(candidate);
-            foreach (CandidateImage item in listCandidateImages)
-            {
-                if (CurrentId.Equals(Convert.ToString(item.CandidateId)))
-                {
-                    await ICandidateService.DeleteCandidateImage(item);
-                }
-            }
+            Modal.Show<UEHVote.Pages.CreateElection.DeleteElection>("",parameters,options);
         }
         void FilterOrg(string key, object checkedValue)
         {

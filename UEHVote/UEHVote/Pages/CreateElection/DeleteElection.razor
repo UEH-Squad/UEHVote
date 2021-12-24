@@ -1,4 +1,5 @@
-﻿<div class="pop-up">
+﻿@using Microsoft.Extensions.Configuration
+<div class="pop-up">
     <div class="w-100 h-100 d-flex justify-content-center align-items-center">
         <div class="pop-up__container position-relative">
             <div class="pop-up__content">
@@ -6,18 +7,9 @@
             </div>
             <div class="pop-up__btn d-flex justify-content-center pb-3">
                 <div @onclick="CloseModalAsync" class="btn px-0 pop-up__btn--deny d-flex justify-content-center align-items-center px-3 me-3">Hủy</div>
-                <btn @onclick="CloseModalAsync" class="btn px-0 pop-up__btn--accept d-flex justify-content-center align-items-center px-3">Xóa</btn>
+                <btn class="btn px-0 pop-up__btn--accept d-flex justify-content-center align-items-center px-3" @onclick="Delete">Xóa</btn>
             </div>
         </div>
     </div>
 </div>
 
-@code {
-    [CascadingParameter]
-    public BlazoredModalInstance Modal { get; set; }
-
-    private async Task CloseModalAsync()
-    {
-        await Modal.CloseAsync();
-    }
-}

@@ -1,7 +1,7 @@
-﻿
-@using System.Text.Json
+﻿@using System.Text.Json
+
 <div class="my-election container">
-    <hr/>
+    <hr />
     <div class="text-end @(IsOrg ? "d-block" : "d-none")">
         <h4 class="text-start">Danh sách đề cử</h4>
         <button class="btn-addElection btn mb-3" onclick="window.location.href='them-de-cu'">Thêm đề cử</button>
@@ -30,15 +30,13 @@
                                         {
                                             if (t.Organization.Name.Contains(item.Name))
                                             {
-                                                Checked =true;
-                                            }  
+                                                Checked = true;
+                                            }
                                         }
-                                        <li><Checkbox Checked="Checked" CheckedChanged="eventArgs => { FilterOrg(item.Name,eventArgs.ToString()); }">@item.Name</Checkbox></li>
-                                    }
+                                    <li><Checkbox Checked="Checked" CheckedChanged="eventArgs => { FilterOrg(item.Name, eventArgs.ToString()); }">@item.Name</Checkbox></li>}
                                 }
-                            </ul>
+                            </ul>    
                         </div>
-
                     </th>
                 </tr>
             </table>
@@ -54,7 +52,7 @@
                             <td class="election__text election__text--org">@item.Organization.Name</td>
                             <td class="d-flex align-items-center flex-end election__text election__text--function">
                                 <a class="me-3"><span class="material-icons-outlined icon-edit">edit</span></a>
-                                <span @onclick="ShowPopupDelete" class="material-icons-outlined icon-delete">delete</span>
+                                <span @onclick="() => ShowPopupDelete(item.Id)" class="material-icons-outlined icon-delete">delete</span>
                             </td>
                         </tr>
                     }

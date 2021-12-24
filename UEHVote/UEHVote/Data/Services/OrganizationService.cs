@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -8,12 +9,13 @@ using UEHVote.Models;
 
 namespace UEHVote.Data.Services
 {
-    public class OrganizationService:IOrganizationService
+    public class OrganizationService : IOrganizationService
     {
         /// <summary>
         /// Handle Organization
         /// </summary>
         private readonly ApplicationDbContext _db;
+
         public OrganizationService(ApplicationDbContext db)
         {
             _db = db;
@@ -21,7 +23,6 @@ namespace UEHVote.Data.Services
         public Task<List<Organization>> GetAllOrganizationsAsync()
         {
             return _db.Organizations.ToListAsync();
-
         }
         public string GetOrganization(Election election, List<Organization> listOrganizations, List<Candidate> listCandidates)
         {
@@ -44,6 +45,7 @@ namespace UEHVote.Data.Services
                             }
                         }
                     }
+
                     break;
                 }
                 case true:
@@ -51,6 +53,7 @@ namespace UEHVote.Data.Services
                     break;
                 }
             }
+
             return org;
         }
     }
