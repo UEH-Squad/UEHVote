@@ -2,7 +2,9 @@
 /*#endregion */
 /*#region mixins */
 .sidebar .logo-container h1 {
-  color: #fff; }
+  color: #fff;
+  font-size: 24px;
+  opacity: 0.7; }
 
 .sidebar .menu-item .material-icons {
   font-size: 16px; }

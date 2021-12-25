@@ -50,5 +50,17 @@
   {
     "outputFile": "Shared/Components/SearchBox.razor.css",
     "inputFile": "Shared/Components/SearchBox.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/AdminDetailNomination.razor.css",
+    "inputFile": "Pages/Admin/AdminDetailNomination.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/AdminDetailElection.razor.css",
+    "inputFile": "Pages/Admin/AdminDetailElection.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/ApproveElection.razor.css",
+    "inputFile": "Pages/Admin/ApproveElection.razor.scss"
   }
 ]
