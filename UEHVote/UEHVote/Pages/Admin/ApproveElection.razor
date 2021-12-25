@@ -10,15 +10,15 @@
 
     <div class="mx-4 content">
         <div class="d-flex justify-content-between align-items-center">
-            <p class="md-0">Danh sách các yêu cầu </p>
-            <div class="d-flex align-items-center">
-                <i class="material-icons-outlined icon-sort">sort</i>
+            <h4 class="md-0 ">Danh sách các yêu cầu </h4>
+            <div class="d-flex align-items-center me-5">
+                <i class="material-icons-outlined icon-sort me-2">sort</i>
                 <span>Soft</span>
             </div>
         </div>
         <Table  DataSource="data">
 
-            <Column @bind-Field="@context.Name">
+            <Column @bind-Field="@context.Name" Style="width: 460px;">
                 <a>@context.Name</a>
             </Column>
             <Column @bind-Field="@context.Org"></Column>

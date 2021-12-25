@@ -27,14 +27,22 @@
     }
 
     .pop-up-confirm {
+        .tilte {
+            margin-bottom: 48px;
+        }
+
         i {
             color: #FAAD14;
         }
     }
 
     .pop-up-success {
+        .tilte {
+            margin-bottom: 24px;
+        }
+
         i {
-            color: 52C41A;
+            color: #52C41A;
         }
     }
 

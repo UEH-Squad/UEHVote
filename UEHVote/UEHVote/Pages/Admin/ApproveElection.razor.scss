@@ -19,4 +19,41 @@
     border-radius: 8px;
     padding-top: 30px;
     padding-bottom: 70px;
+
+    h4 {
+        padding-left: 32px;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        color: #252733;
+    }
+
+    i {
+        color: #C5C7CD;
+    }
+
+    span {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.2px;
+        color: #4B506D;
+    }
+}
+
+::deep .ant-table-cell {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    color: #252733;
+    padding: 26px 32px;
+}
+
+::deep .ant-table-thead > tr > th {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    color: #9FA2B4;
 }

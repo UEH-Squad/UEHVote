@@ -20,10 +20,14 @@
       font-weight: 500;
       font-size: 16px;
       color: rgba(0, 0, 0, 0.85); }
+  .pop-up .pop-up-confirm .tilte {
+    margin-bottom: 48px; }
   .pop-up .pop-up-confirm i {
     color: #FAAD14; }
+  .pop-up .pop-up-success .tilte {
+    margin-bottom: 24px; }
   .pop-up .pop-up-success i {
-    color: 52C41A; }
+    color: #52C41A; }
   .pop-up__btn--deny {
     width: 73px;
     height: 32px;
