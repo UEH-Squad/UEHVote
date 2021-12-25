@@ -50,5 +50,13 @@
   {
     "outputFile": "Shared/Components/SearchBox.razor.css",
     "inputFile": "Shared/Components/SearchBox.razor.scss"
+  },
+  {
+    "outputFile": "Pages/ListElection/Index.razor.css",
+    "inputFile": "Pages/ListElection/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/HomePage/OwlCarousel.razor.css",
+    "inputFile": "Pages/HomePage/OwlCarousel.razor.scss"
   }
 ]

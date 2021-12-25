@@ -1,8 +1,7 @@
 ﻿@import "../../Resources/scss/common/_variables";
 
 .vote {
-    margin-top: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 75px;
 }
 
 .vote__content{
@@ -51,15 +50,14 @@
 }
 
 .vote__img__vector {
-    z-index:-1;
+    z-index: -1;
     position: absolute;
     left: 32.72%;
     right: 0%;
     top: 0%;
     bottom: 7.09%;
-    background: #FACC14;
+    background: #18A0FB;
     border-radius: 100px 0px 100px 100px;
-
     width: 66%;
     height: 400px;
 }

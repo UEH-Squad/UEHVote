@@ -59,7 +59,7 @@
                         case "KẾT THÚC": bg = "#FF4444"; break;
                     }
                     <tr>
-                        <td class="election__text election__text--name">@item.Name</td>
+                        <td class="election__text election__text--name"><a href="@Routes.DetailVote">@item.Name</a></td>
                         <td class="election__text election__text--quantity">@item.Quantity</td>
                         <td class="election__text election__text--status"><span style="background-color: @bg">@item.Status</span></td>
                         <td class="election__text election__text--org">@item.Org</td>

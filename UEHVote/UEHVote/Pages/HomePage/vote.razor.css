@@ -1,6 +1,8 @@
-﻿.vote {
-  margin-top: 30px;
-  margin-bottom: 60px; }
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.vote {
+  margin-bottom: 75px; }
 
 .vote__content {
   margin: 30px 0 80px; }
@@ -43,7 +45,7 @@
   right: 0%;
   top: 0%;
   bottom: 7.09%;
-  background: #FACC14;
+  background: #18A0FB;
   border-radius: 100px 0px 100px 100px;
   width: 66%;
   height: 400px; }
