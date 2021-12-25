@@ -26,10 +26,10 @@
             <ActionColumn Title="Action">
                 <Space Size=@("middle")>
                     <SpaceItem>
-                        <Button Danger Type="@ButtonType.Text">Từ chối</Button>
+                        <Button @onclick="ShowPopupDeny" Danger Type="@ButtonType.Text">Từ chối</Button>
                     </SpaceItem>
                     <SpaceItem>
-                        <Button Type="@ButtonType.Primary">Từ chối</Button>
+                        <Button @onclick="ShowApproveConfirm" Type="@ButtonType.Primary">Duyệt</Button>
                     </SpaceItem>
                 </Space>
             </ActionColumn>
@@ -60,4 +60,28 @@
         DateSend = new DateTime(2021, 12, 1).ToString("dd / MM / yyy"),
     }).ToArray();
 
+
+    [CascadingParameter] public IModalService Modal { get; set; }
+    private async Task ShowPopupDeny()
+    {
+        var options = new Blazored.Modal.ModalOptions()
+        {
+            HideCloseButton = true,
+            DisableBackgroundCancel = true,
+            UseCustomLayout = true,
+        };
+
+        Modal.Show<PopupDeny>("", options);
+    }
+    private async Task ShowApproveConfirm()
+    {
+        var options = new Blazored.Modal.ModalOptions()
+        {
+            HideCloseButton = true,
+            DisableBackgroundCancel = true,
+            UseCustomLayout = true,
+        };
+
+        Modal.Show<ApproveConfirm>("", options);
+    }
 }

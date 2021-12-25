@@ -62,5 +62,17 @@
   {
     "outputFile": "Pages/Admin/ApproveElection.razor.css",
     "inputFile": "Pages/Admin/ApproveElection.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/ApproveSuccess.razor.css",
+    "inputFile": "Pages/Admin/ApproveSuccess.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/PopupDeny.razor.css",
+    "inputFile": "Pages/Admin/PopupDeny.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/ApproveConfirm.razor.css",
+    "inputFile": "Pages/Admin/ApproveConfirm.razor.scss"
   }
 ]

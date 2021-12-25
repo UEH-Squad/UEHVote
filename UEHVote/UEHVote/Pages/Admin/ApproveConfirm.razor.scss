@@ -1,0 +1,62 @@
+﻿@import "../../Resources/scss/common/_variables";
+
+.pop-up {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(196, 196, 196, 0.38);
+    z-index: 100;
+
+    &__container {
+        background-color: $white;
+        box-shadow: 0px 4px 100px rgba(0, 0, 0,.25);
+        padding: 32px 30px 24px;
+    }
+
+    &__content {
+        width: 416px;
+
+        h3 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.85);
+        }
+    }
+
+    .pop-up-confirm {
+        i {
+            color: #FAAD14;
+        }
+    }
+
+    .pop-up-success {
+        i {
+            color: 52C41A;
+        }
+    }
+
+    &__btn {
+
+        &--deny {
+            width: 73px;
+            height: 32px;
+            background: #FFFFFF;
+            border: 1px solid #D9D9D9;
+            box-sizing: border-box;
+            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+            border-radius: 2px;
+        }
+
+        &--accept {
+            background-color: $blue;
+            color: $white;
+            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+            border-radius: 2px;
+            width: 50px;
+            height: 32px;
+        }
+    }
+}
