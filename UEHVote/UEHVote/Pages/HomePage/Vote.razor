@@ -43,7 +43,7 @@
 
         <Col Span="12">
         <div class="vote__img">
-            <div class="vote__img__vector">
+            <div class="vote__img__vector" style="background-color:@ColorBg">
                 <img src="./img/Vector.png" alt="Alternate Text" />
             </div>
             <div class="vote__img__avt">
@@ -56,6 +56,7 @@
 </div>
 
 @code {
+    [Parameter] public string ColorBg { get; set; }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

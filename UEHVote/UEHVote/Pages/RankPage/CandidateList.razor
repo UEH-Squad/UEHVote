@@ -68,7 +68,7 @@
 
 <div class="voting-btn d-flex justify-content-center mb-5 @(IsOrganizer ? "d-none" : "d-block")">
     <button class="btn me-2">Hủy</button>
-    <button class="btn">Xác nhận</button>
+    <button @onclick="ShowVoteSuccess" class="btn">Xác nhận</button>
 </div>
 
 @code {
@@ -90,6 +90,17 @@
         };
 
         Modal.Show<PopUp>("", options);
+    }
+    private async Task ShowVoteSuccess()
+    {
+        var options = new Blazored.Modal.ModalOptions()
+        {
+            HideCloseButton = true,
+            DisableBackgroundCancel = true,
+            UseCustomLayout = true,
+        };
+
+        Modal.Show<VoteSuccess>("", options);
     }
 
     private void Rating(int id)

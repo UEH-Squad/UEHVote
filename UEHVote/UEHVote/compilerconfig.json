@@ -58,5 +58,9 @@
   {
     "outputFile": "Pages/HomePage/OwlCarousel.razor.css",
     "inputFile": "Pages/HomePage/OwlCarousel.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/VoteSuccess.razor.css",
+    "inputFile": "Pages/RankPage/VoteSuccess.razor.scss"
   }
 ]
