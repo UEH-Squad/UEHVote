@@ -18,7 +18,6 @@
     border: 1px solid #DFE0EB;
     border-radius: 8px;
     padding-top: 30px;
-    padding-bottom: 70px;
 
     h4 {
         padding-left: 32px;
@@ -40,6 +39,29 @@
         letter-spacing: 0.2px;
         color: #4B506D;
     }
+
+    .btn-deny {
+        width: 85px;
+        height: 40px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+        border-radius: 2px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #FC0C0C;
+    }
+
+    .btn-approve {
+        width: 73px;
+        height: 40px;
+        background: #FFFFFF;
+        border: 1px solid #40A9FF;
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+        border-radius: 2px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #40A9FF;
+    }
 }
 
 ::deep .ant-table-cell {
@@ -56,4 +78,7 @@
     line-height: 18px;
     letter-spacing: 0.2px;
     color: #9FA2B4;
+}
+::deep .ant-table-pagination{
+    padding:27px 32px;
 }

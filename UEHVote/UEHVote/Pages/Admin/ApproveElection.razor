@@ -9,7 +9,7 @@
     </div>
 
     <div class="mx-4 content">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center mb-5">
             <h4 class="md-0 ">Danh sách các yêu cầu </h4>
             <div class="d-flex align-items-center me-5">
                 <i class="material-icons-outlined icon-sort me-2">sort</i>
@@ -18,18 +18,18 @@
         </div>
         <Table  DataSource="data">
 
-            <Column @bind-Field="@context.Name" Style="width: 460px;">
+            <Column @bind-Field="@context.Name" Style="width: 450px; padding:26px 60px 26px 36px;">
                 <a>@context.Name</a>
             </Column>
             <Column @bind-Field="@context.Org"></Column>
             <Column @bind-Field="@context.DateSend"></Column>
-            <ActionColumn Title="Action">
-                <Space Size=@("middle")>
+            <ActionColumn Class="text-center">
+                <Space Size=@("middle") >
                     <SpaceItem>
-                        <Button @onclick="ShowPopupDeny" Danger Type="@ButtonType.Text">Từ chối</Button>
+                        <button @onclick="ShowPopupDeny" class=" btn btn-deny">Từ chối</button>
                     </SpaceItem>
                     <SpaceItem>
-                        <Button @onclick="ShowApproveConfirm" Type="@ButtonType.Primary">Duyệt</Button>
+                        <button @onclick="ShowApproveConfirm" class="btn btn-approve">Duyệt</button>
                     </SpaceItem>
                 </Space>
             </ActionColumn>
