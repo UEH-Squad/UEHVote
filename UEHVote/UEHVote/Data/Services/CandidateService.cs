@@ -1,15 +1,18 @@
-﻿using System;
+﻿using Abp.Specifications;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UEHVote.Data.Interfaces;
+using UEHVote.Data.ViewModels;
 using UEHVote.Models;
 
 namespace UEHVote.Data.Services
 {
-    public class CandidateService:ICandidateService
-    { 
+    public class CandidateService : ICandidateService
+    {
         /// <summary>
         ///  HANDLE CANDIDATE
         /// </summary>
@@ -23,7 +26,7 @@ namespace UEHVote.Data.Services
             return _db.Candidates.ToListAsync();
         }
         public async Task<Candidate> GetCandidateAsync(int Id)
-        {
+            {
             Candidate candidate = await _db.Candidates.FirstOrDefaultAsync(c => c.Id.Equals(Id));
             return candidate;
         }
@@ -47,16 +50,16 @@ namespace UEHVote.Data.Services
         /// </summary>
         /// <returns></returns>
         public Task<List<CandidateImage>> GetAllCandidateImagesAsync()
-        {
+            {
             return _db.CandidateImages.ToListAsync();
         }
         public async Task InsertCandidateImage(CandidateImage candidateImage)
-        {
+            {
             await _db.CandidateImages.AddAsync(candidateImage);
             await _db.SaveChangesAsync();
         }
         public async Task DeleteCandidateImage(CandidateImage candidateImage)
-        {
+            {
             _db.CandidateImages.Remove(candidateImage);
             await _db.SaveChangesAsync();
         }
