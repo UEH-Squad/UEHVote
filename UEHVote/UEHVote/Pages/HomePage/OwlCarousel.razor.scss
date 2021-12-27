@@ -1,0 +1,123 @@
+﻿@import "../../Resources/scss/common/_variables";
+
+.text {
+    margin: 100px 0 50px 0;
+    color: $blue;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 24px;
+    text-align: center;
+
+    span {
+        color: #FACC14;
+    }
+}
+
+.owl-carousel {
+    position: relative;
+
+    .item {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    img {
+        height: 253px;
+    }
+
+    .item_content {
+        padding: 20px 50px 0px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 20px 20px;
+
+        h3 {
+            color: #3F3F3F;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        .content--left, .content--right {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 30px;
+        }
+            
+        .blue {
+            color: $blue;
+        }
+
+        .yellow {
+            color: #FACC14;
+        }
+    }
+}
+
+::deep .owl-nav {
+    margin: 0;
+    .owl-prev {
+        position: absolute;
+        top: 34%;
+        left: 5px;
+        transform: translateY(-65%);
+
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 35px;
+            border-radius: 50%;
+            opacity: 0.6;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background: #FFFFFF;
+            font-size: 80px;
+            color: $blue;
+            transition: all 0.3s linear;
+
+            &:hover {
+                color: $blue-bold;
+                opacity: 0.73;
+            }
+        }
+
+        &:hover {
+            background: none;
+        }
+    }
+
+    .owl-next {
+        position: absolute;
+        top: 34%;
+        right: 5px;
+        transform: translateY(-65%);
+
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 35px;
+            border-radius: 50%;
+            opacity: 0.6;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background: #FFFFFF;
+            font-size: 80px;
+            color: $blue;
+            transition: all 0.3s linear;
+
+            &:hover {
+                color: $blue-bold;
+                opacity: 0.73;
+            }
+        }
+
+        &:hover {
+            background: none;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 ﻿@import '../../Resources/scss/common/_variables.scss';
 .my-election {
-    margin-bottom: 200px;
+    margin-bottom: 70px;
 
     h3 {
         font-weight: 600;
@@ -22,6 +22,13 @@
     &::-webkit-scrollbar-thumb {
         background: #707070;
         border-radius: 10px;
+    }
+
+    a {
+        color: #001112;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
     }
 }
 .election__table {

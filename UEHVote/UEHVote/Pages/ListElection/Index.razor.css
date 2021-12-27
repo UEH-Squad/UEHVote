@@ -2,7 +2,7 @@
 /*#endregion */
 /*#region mixins */
 .my-election {
-  margin-bottom: 200px; }
+  margin-bottom: 70px; }
   .my-election h3 {
     font-weight: 600;
     font-size: 36px;
@@ -19,6 +19,11 @@
   .election__table--body::-webkit-scrollbar-thumb {
     background: #707070;
     border-radius: 10px; }
+  .election__table--body a {
+    color: #001112;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px; }
 
 .election__table .election__tilte, .election__table .election__text {
   padding: 15px 10px; }

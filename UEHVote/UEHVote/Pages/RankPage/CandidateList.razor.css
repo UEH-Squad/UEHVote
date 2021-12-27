@@ -1,4 +1,7 @@
-﻿.row h4 {
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.row h4 {
   font-weight: 600;
   color: #FACC14; }
 
@@ -6,6 +9,11 @@
   font-weight: 800;
   color: #18A0FB;
   font-size: 16px; }
+  .row h6:hover {
+    text-decoration: underline #18A0FB;
+    cursor: pointer; }
+  .row h6 a {
+    color: #18A0FB; }
 
 .row p {
   margin-bottom: 0;
@@ -58,3 +66,6 @@
   width: 150px;
   height: 56px;
   font-size: 24px; }
+
+.voting-btn .btn:focus {
+  box-shadow: none; }

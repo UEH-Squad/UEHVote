@@ -1,0 +1,49 @@
+﻿@inject IJSRuntime JSRuntinme;
+
+<div class="container">
+    <h3 class="text">CÁC CUỘC BÌNH CHỌN <span class="yellow">ĐANG</span> DIỄN RA</h3>
+    <div class="owl-carousel owl-theme">
+            @foreach (var item in imgDetail)
+            {
+                <div class="item px-2 py-3">
+                    <img class="w-100" src="@item.Img" />
+                    <div class="item_content">
+                        <h3>Chương trình xuất sắc trong năm 2021</h3>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+                        <div class="d-flex justify-content-between">
+                            <p class="content--left">Còn <span class="blue">18</span> ngày</p>
+                            <p class="content--right"><span class="yellow">14440</span> lượt bình chọn</p>
+                        </div>                        
+                    </div>
+                </div>
+            }
+    </div>
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntinme.InvokeVoidAsync("uehvote.DetailVoteCarousel");
+        }
+    }
+    private bool IsAct = true;
+    class FakeData
+    {
+        public int Id { get; set; }
+        public string Img { get; set; }
+    }
+    private List<FakeData> imgDetail = new();
+    protected override void OnInitialized()
+    {
+        for (int i = 1; i < 7; i++)
+        {
+            imgDetail.Add(new FakeData()
+            {
+                Id = i,
+                Img ="./img/chương-trình"+ i + ".png",
+            });
+        }
+    }
+}
