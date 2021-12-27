@@ -22,6 +22,8 @@ namespace UEHVote.Pages.CreateElection
         [Inject]
         IElectionService IElectionService { get; set; }
         [Inject]
+        ICandidateService ICandidateService { get; set; }
+        [Inject]
         NavigationManager NavigationManager { get; set; }
         List<string> image { get; set; } = new List<string>();
         private async Task CloseModal()

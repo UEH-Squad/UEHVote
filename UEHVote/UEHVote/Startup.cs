@@ -20,6 +20,7 @@ using UEHVote.Data.Services;
 using UEHVote.Models;
 using Blazored.Modal;
 using UEHVote.Pages.CreateElection;
+using UEHVote.Data.Context;
 
 namespace UEHVote
 {
@@ -48,8 +49,10 @@ namespace UEHVote
             services.AddAntDesign();
             services.AddTransient<IElectionService,ElectionService>();
             services.AddTransient<IUploadService, UploadService>();
+            services.AddTransient<IOrganizationService,OrganizationService>();
             services.AddTransient<ICandidateService, CandidateService>();
-            services.AddTransient<IOrganizationService, OrganizationService>();
+            services.AddTransient<IActivityVoteService, ActivityVoteService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddBlazoredModal();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

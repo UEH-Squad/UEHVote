@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="@(IsShowForm ? "d-block" : "d-none")">
-    <CreateElectionForm election="@election" organizations="@organizations"/>
+    <CreateElectionForm election="@election" organizations="@organizations" candidates="@candidates"/>
 </div>
 <ListElection organizations="@organizations" candidates="@candidates" result="@result"/>
 <div class="d-flex justify-content-center">

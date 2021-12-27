@@ -20,8 +20,6 @@ namespace UEHVote.Pages.CreateElection
 {
     public partial class ListElection
     {
-        private string bg;
-        private bool isChecking;
         [Parameter] 
         public bool IsOrg { get; set; } = true;
         [Parameter]

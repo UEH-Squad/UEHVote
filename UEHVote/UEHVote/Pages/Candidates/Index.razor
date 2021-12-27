@@ -2,6 +2,7 @@
 
 @using UEHVote.Data.ViewModels;
 @using UEHVote.Data.Interfaces;
+@using UEHVote.Models
 
 @inject ICandidateService CandidateService;
 <h1>Trang Ứng Cử Viên</h1>
@@ -26,12 +27,9 @@
                 @foreach (var item in candidates)
                  {
                     <tr>
-                        <th>@item.ID</th>
+                        <th>@item.Id</th>
                         <th>@item.Name</th>
-                        <th>@item.FacultyName</th>
                         <th>@item.Details</th>
-                        <th>@item.ElectionName</th>
-                        <th>@item.Votes</th>
                         <th>@item.Video</th>
                     </tr>
                  }
@@ -45,7 +43,7 @@ else
 }
 
 @code {
-    private List<CandidateViewModel> candidates;
+    private List<Candidate> candidates;
     protected async override Task OnInitializedAsync()
     {
         candidates = await CandidateService.GetAllCandidatesAsync();

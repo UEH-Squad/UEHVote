@@ -7,6 +7,7 @@ using AntDesign;
 using Blazored.Modal;
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity;
 using UEHVote.Data.Interfaces;
 using UEHVote.Models;
 
@@ -14,7 +15,6 @@ namespace UEHVote.Pages.CreateElection
 {
     public partial class Index
     {
-        private bool isLoading { get; set; }
         private bool IsShowForm = true;
         private Models.Election election = new Models.Election();
         [Parameter]

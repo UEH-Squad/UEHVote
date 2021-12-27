@@ -14,14 +14,19 @@ namespace UEHVote.Pages.CreateElection
         [Parameter] 
         public Models.Election election { get; set; } = new Models.Election();
         [Parameter]
-        public List<Organization> organizations { get; set; } 
-        private string org;
+        public List<Organization> organizations { get; set; }
+        [Parameter]
+        public List<Candidate> candidates { get; set; }
+        [Parameter]
+        public string org { get; set; }
         [Inject]
         IElectionService IElectionService { get; set; }
         [Inject]
         NavigationManager NavigationManager { get; set; }
         [Inject]
         IUploadService IUploadService { get; set; }
+        [Inject]
+        IUserService IUserService { get; set; }
         [Inject] 
         IOrganizationService IOrganizationService { get; set; }
         List<string> image { get; set; } = new List<string>();
