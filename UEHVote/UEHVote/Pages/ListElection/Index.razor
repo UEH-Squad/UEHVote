@@ -15,7 +15,7 @@
                 </th>
                 <th class="election__tilte election__tilte--status ">
                     <div class="dropdown">
-                        <p class="dropdown-toggle mb-0 d-inline-block" href="#" role="button" id="dropdown-status" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <p class="dropdown-toggle mb-0 d-inline-block" href="#" role="button" id="dropdown-status" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="material-icons-outlined me-1">local_offer</i>
                             <span class="me-2 ms-1">TÌNH TRẠNG</span>
                         </p>
@@ -34,19 +34,21 @@
                             <span class="me-2 ms-1">TỔ CHỨC</span>
                         </p>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdown-org">
-                            <li><Checkbox Label="">Khoa Công nghệ thông tin kinh doanh</Checkbox></li>
-                            <li><Checkbox Label="">Viện Du lịch</Checkbox></li>
-                            <li><Checkbox Label="">Khoa Kế toán</Checkbox></li>
-                            <li><Checkbox Label="">Khoa Kinh tế</Checkbox></li>
-                            <li><Checkbox Label="">Khoa Quản trị</Checkbox></li>
-                        </ul>
-                    </div>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown-org">
+                                <li><Checkbox Label="">Khoa Công nghệ thông tin kinh doanh</Checkbox></li>
+                                <li><Checkbox Label="">Viện Du lịch</Checkbox></li>
+                                <li><Checkbox Label="">Khoa Kế toán</Checkbox></li>
+                                <li><Checkbox Label="">Khoa Kinh tế</Checkbox></li>
+                                <li><Checkbox Label="">Khoa Quản trị</Checkbox></li>
+                            </ul>
+                        </div>
 
-                </th>
+                    </th>
+                    <th class="election__tilte election__tilte--function @(IsOrg ? "d-block" : "d-none")"></th>
 
-            </tr>          
-        </table>
+                </tr>
+            </table>
+        </div>
         <div class="election__table--body">
             <table class="election__table">
                 @foreach (var item in listVote)
@@ -58,11 +60,22 @@
                         case "GẦN KẾT THÚC": bg = "#ECAA00"; break;
                         case "KẾT THÚC": bg = "#FF4444"; break;
                     }
+                    switch (item.StatusBrowse)
+                    {
+                        case "Đã duyệt": bgBrowse = "#18A0FB"; break;
+                        case "Chờ duyệt": bgBrowse = "#FACC14"; break;
+                        case "Từ chối": bgBrowse = "#FC0C0C"; break;
+                    }
                     <tr>
                         <td class="election__text election__text--name"><a href="@Routes.DetailVote">@item.Name</a></td>
                         <td class="election__text election__text--quantity">@item.Quantity</td>
                         <td class="election__text election__text--status"><span style="background-color: @bg">@item.Status</span></td>
                         <td class="election__text election__text--org">@item.Org</td>
+                        <td class="d-flex align-items-center flex-end election__text election__text--function @(IsOrg ? "d-block" : "d-none")">
+                            <p class="election__statusBrowse mb-0 me-5" style="color: @bgBrowse">Đã duyệt</p>
+                            <a class="me-3"><span class="material-icons-outlined icon-edit">edit</span></a>
+                            <span @onclick="ShowPopupDelete" class="material-icons-outlined icon-delete">delete</span>
+                        </td>
                     </tr>
                 }
             </table>
@@ -70,9 +83,11 @@
         
 
     </div>
-</div>
 @code {
     private string bg;
+    private string bgBrowse;
+    public bool IsOrg = true;
+
     class FakeData
     {
         public int Id { get; set; }
@@ -80,7 +95,7 @@
         public string Name { get; set; }
         public string Status { get; set; }
         public string Org { get; set; }
-
+        public string StatusBrowse { get; set; }
     }
     private List<FakeData> listVote = new();
     protected override void OnInitialized()
@@ -95,6 +110,7 @@
                 Quantity = 10,
                 Status = "ĐANG DIỄN RA",
                 Org = "Khoa Công nghệ Thông tin Kinh doanh",
+                StatusBrowse = "Chờ duyệt"
             });
         }
     }
@@ -103,4 +119,18 @@
     {
         Console.WriteLine($"checked = {JsonSerializer.Serialize(checkedValues)}");
     }
+
+    [CascadingParameter] public IModalService Modal { get; set; }
+    private async Task ShowPopupDelete()
+    {
+        var options = new Blazored.Modal.ModalOptions()
+        {
+            HideCloseButton = true,
+            DisableBackgroundCancel = true,
+            UseCustomLayout = true,
+        };
+
+        Modal.Show<PopupDelete>("", options);
+    }
+
 }

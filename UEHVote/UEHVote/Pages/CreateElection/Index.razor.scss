@@ -1,0 +1,40 @@
+﻿@import '../../Resources/scss/common/_variables.scss';
+h3 {
+    font-weight: 600;
+    font-size: 36px;
+    color: $blue;
+    text-align: center;
+    margin: 65px 0;
+}
+h4 {
+    font-weight: 600;
+    font-size: 24px;
+    color: $blue;
+}
+
+.btn-addElection {
+    width: 55px;
+    height: 40px;
+    background: $blue;
+    color: white;
+    border-radius: 2px;
+
+}
+
+.btn {
+    font-size: 16px;
+    margin: 65px 0;
+
+    &-cancel {
+        color: $grey-icon;
+    }
+
+    &-save {
+        width: 180px;
+        height: 40px;
+        background: #18A0FB;
+        border: 1px solid #18A0FB;
+        border-radius: 2px;
+        color: white;
+    }
+}

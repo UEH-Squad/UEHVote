@@ -10,6 +10,7 @@
         public const string Login = "/dang-nhap";
         public const string ListElection = "/danh-sach-cac-cuoc-bau-cu";
         public const string NominationEdit = "/chinh-sua-de-cu";
+        public const string CreateAndEditElection = "/tao-va-chinh-sua-cuoc-bau-cu";
 
         #endregion Main
 
