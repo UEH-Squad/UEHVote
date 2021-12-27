@@ -4,13 +4,22 @@
 
     h4 {
         font-weight: 600;
-        color: $yellow;
+        color: #FACC14;
     }
 
     h6 {
         font-weight: 800;
         color: $blue;
         font-size: 16px;
+
+        &:hover {
+            text-decoration: underline $blue;
+            cursor: pointer;
+        }
+
+        a {
+            color: $blue;
+        }
     }
 
     p {
@@ -18,7 +27,7 @@
         font-weight: 400;
 
         span {
-            color: $yellow;
+            color: #FACC14;
         }
     }
 
@@ -65,17 +74,22 @@
     .btn:first-of-type {
         border: none;
         background-color: $white;
-        color: $yellow;
+        color: #FACC14;
         width: 150px;
         height: 56px;
         font-size: 24px;
     }
+
     .btn:last-of-type {
         border: none;
-        background-color: $yellow;
+        background-color: #FACC14;
         color: $white;
         width: 150px;
         height: 56px;
         font-size: 24px;
+    }
+
+    .btn:focus {
+        box-shadow: none;
     }
 }

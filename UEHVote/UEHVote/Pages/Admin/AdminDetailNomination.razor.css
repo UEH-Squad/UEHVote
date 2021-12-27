@@ -1,0 +1,19 @@
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.3px;
+  color: #252733; }
+
+.linkBack {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  color: #18A0FB; }
+
+.content {
+  border: 1px solid #DFE0EB;
+  border-radius: 8px;
+  padding-bottom: 170px; }

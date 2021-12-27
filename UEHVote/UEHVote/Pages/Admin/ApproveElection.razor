@@ -1,0 +1,87 @@
+﻿@layout AdminLayout
+@attribute [Route(Routes.AdminApproveElection)]
+@using System.ComponentModel
+@using AntDesign.TableModels
+
+<div class="px-0 ">
+    <div class="mx-4">
+        <h3 class="title mb-5">Duyệt bình chọn</h3>
+    </div>
+
+    <div class="mx-4 content">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h4 class="md-0 ">Danh sách các yêu cầu </h4>
+            <div class="d-flex align-items-center me-5">
+                <i class="material-icons-outlined icon-sort me-2">sort</i>
+                <span>Soft</span>
+            </div>
+        </div>
+        <Table  DataSource="data">
+
+            <Column @bind-Field="@context.Name" Style="width: 450px; padding:26px 60px 26px 36px;">
+                <a>@context.Name</a>
+            </Column>
+            <Column @bind-Field="@context.Org"></Column>
+            <Column @bind-Field="@context.DateSend"></Column>
+            <ActionColumn Class="text-center">
+                <Space Size=@("middle") >
+                    <SpaceItem>
+                        <button @onclick="ShowPopupDeny" class=" btn btn-deny">Từ chối</button>
+                    </SpaceItem>
+                    <SpaceItem>
+                        <button @onclick="ShowApproveConfirm" class="btn btn-approve">Duyệt</button>
+                    </SpaceItem>
+                </Space>
+            </ActionColumn>
+        </Table>
+    </div>
+</div>
+@code{
+    class Column
+    {
+        [DisplayName("Key")]
+        public string Key { get; set; }
+
+        [DisplayName("Tên")]
+        public string Name { get; set; }
+
+        [DisplayName("Tổ chức")]
+        public string Org { get; set; }
+
+        [DisplayName("Ngày")]
+        public string DateSend { get; set; }
+    }
+
+    Column[] data = Enumerable.Range(0, 100).Select(i => new Column()
+    {
+        Key = "1",
+        Name = "Tên gì mà chã được nó phải dài dài như vậy cả lỡ nó dài thật thì quá mệt huhuhuuhu",
+        Org = "Khoa Công nghệ thông tin kinh doanh",
+        DateSend = new DateTime(2021, 12, 1).ToString("dd / MM / yyy"),
+    }).ToArray();
+
+
+    [CascadingParameter] public IModalService Modal { get; set; }
+    private async Task ShowPopupDeny()
+    {
+        var options = new Blazored.Modal.ModalOptions()
+        {
+            HideCloseButton = true,
+            DisableBackgroundCancel = true,
+            UseCustomLayout = true,
+        };
+
+        Modal.Show<PopupDeny>("", options);
+    }
+    private async Task ShowApproveConfirm()
+    {
+        var options = new Blazored.Modal.ModalOptions()
+        {
+            HideCloseButton = true,
+            DisableBackgroundCancel = true,
+            UseCustomLayout = true,
+        };
+
+        Modal.Show<ApproveConfirm>("", options);
+    }
+}

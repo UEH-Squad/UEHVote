@@ -1,0 +1,44 @@
+﻿<div class="my-search-box d-flex justify-content-between">
+    <input type="text" value=@SearchValue @onchange="UpdateSearchValue" @onkeyup="OnKeyUpAsync" class="my-search-box__input" placeholder="Tìm kiếm bằng từ khóa" />
+    <div class="my-search-box__icon-wrapper d-flex align-items-center">
+        <span @onclick="ClearSearchBoxAsync" class="material-icons-outlined clear-search-btn">
+            close
+        </span>
+        <button @onclick="async () => await SearchAsync()" class="search-btn d-flex align-items-center">
+            <span class="material-icons-outlined">
+                search
+            </span>
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string SearchValue { get; set; }
+    [Parameter]
+    public EventCallback<string> SearchValueChanged { get; set; }
+
+    private void UpdateSearchValue(ChangeEventArgs e)
+    {
+        SearchValue = (string)e.Value;
+    }
+
+    private async Task OnKeyUpAsync(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            await SearchAsync();
+        }
+    }
+
+    private async Task SearchAsync()
+    {
+        await SearchValueChanged.InvokeAsync(SearchValue);
+    }
+
+    private async Task ClearSearchBoxAsync()
+    {
+        SearchValue = string.Empty;
+        await SearchValueChanged.InvokeAsync(SearchValue);
+    }
+}

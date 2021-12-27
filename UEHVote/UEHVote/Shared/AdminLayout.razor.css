@@ -1,0 +1,16 @@
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.adminbody div:first-child {
+  right: 24px;
+  z-index: 2; }
+
+.adminbody .rounded-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 1px #DFE0EB;
+  overflow: hidden; }
+  .adminbody .rounded-avatar img {
+    object-fit: cover;
+    object-position: center; }

@@ -1,0 +1,84 @@
+﻿@import "../../Resources/scss/common/_variables.scss";
+
+.title {
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.3px;
+    color: #252733;
+}
+
+.linkBack {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    color: #18A0FB;
+}
+
+.content {
+    border: 1px solid #DFE0EB;
+    border-radius: 8px;
+    padding-top: 30px;
+
+    h4 {
+        padding-left: 32px;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        color: #252733;
+    }
+
+    i {
+        color: #C5C7CD;
+    }
+
+    span {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.2px;
+        color: #4B506D;
+    }
+
+    .btn-deny {
+        width: 85px;
+        height: 40px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+        border-radius: 2px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #FC0C0C;
+    }
+
+    .btn-approve {
+        width: 73px;
+        height: 40px;
+        background: #FFFFFF;
+        border: 1px solid #40A9FF;
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+        border-radius: 2px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #40A9FF;
+    }
+}
+
+::deep .ant-table-cell {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    color: #252733;
+    padding: 26px 32px;
+}
+
+::deep .ant-table-thead > tr > th {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    color: #9FA2B4;
+}
+::deep .ant-table-pagination{
+    padding:27px 32px;
+}

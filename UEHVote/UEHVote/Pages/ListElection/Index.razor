@@ -1,39 +1,38 @@
-﻿@attribute [Route(Routes.ListVote)];
+﻿@attribute [Route(Routes.ListElection)];
 @using System.Text.Json
 <div class="my-election container">
-    <h3 >Các cuộc bình chọn</h3>
+    <h3>Các cuộc bình chọn</h3>
     <div class="election">
-        <div class="election__table--header">
-            <table class="election__table">
-                <tr class="">
-                    <th class="election__tilte election__tilte--name ">
-                        <i class="material-icons me-1">perm_identity</i>
-                        <span>TÊN CUỘC BÌNH CHỌN</span>
-                    </th>
-                    <th class="election__tilte election__tilte--quantity text-center">
-                        <i class="material-icons-outlined me-1">auto_awesome </i>   
-                        <span>ĐỀ CỬ</span>
-                    </th>
-                    <th class="election__tilte election__tilte--status ">
-                        <div class="dropdown">
-                            <p class="dropdown-toggle mb-0" href="#" role="button" id="dropdown-status" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="material-icons-outlined me-1">local_offer</i>
-                                <span class="me-2 ms-1">TÌNH TRẠNG</span>
-                            </p>
+        <table class="election__table">
+            <tr class="election__table--header">
+                <th class="election__tilte election__tilte--name ">
+                    <i class="material-icons me-1">perm_identity</i>
+                    <span>TÊN CUỘC BÌNH CHỌN</span>
+                </th>
+                <th class="election__tilte election__tilte--quantity ">
+                    <i class="material-icons-outlined me-1">auto_awesome </i>
+                    <span>ĐỀ CỬ</span>
+                </th>
+                <th class="election__tilte election__tilte--status ">
+                    <div class="dropdown">
+                        <p class="dropdown-toggle mb-0 d-inline-block" href="#" role="button" id="dropdown-status" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="material-icons-outlined me-1">local_offer</i>
+                            <span class="me-2 ms-1">TÌNH TRẠNG</span>
+                        </p>
 
-                            <ul class="dropdown-menu" aria-labelledby="dropdown-status">
-                                <li><Checkbox Label="">ĐANG DIỄN RA</Checkbox></li>
-                                <li><Checkbox Label="A">GẦN KẾT THÚC</Checkbox></li>
-                                <li><Checkbox Label="">KẾT THÚC</Checkbox></li>
-                            </ul>
-                        </div>
-                    </th>
-                    <th class="election__tilte election__tilte--org ">
-                        <div class="dropdown">
-                            <p class="dropdown-toggle mb-0" href="#" role="button" id="dropdown-org" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="material-icons ">perm_identity</i>
-                                <span class="me-2 ms-1">TỔ CHỨC</span>
-                            </p>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown-status">                            
+                            <li><Checkbox Label="">ĐANG DIỄN RA</Checkbox></li>
+                            <li><Checkbox Label="A">GẦN KẾT THÚC</Checkbox></li>
+                            <li><Checkbox Label="">KẾT THÚC</Checkbox></li>
+                        </ul>
+                    </div>
+                </th>
+                <th class="election__tilte election__tilte--org ">
+                    <div class="dropdown">
+                        <p class="dropdown-toggle mb-0 d-inline-block" href="#" role="button" id="dropdown-org" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <i class="material-icons ">perm_identity</i>
+                            <span class="me-2 ms-1">TỔ CHỨC</span>
+                        </p>
 
                             <ul class="dropdown-menu" aria-labelledby="dropdown-org">
                                 <li><Checkbox Label="">Khoa Công nghệ thông tin kinh doanh</Checkbox></li>
@@ -68,9 +67,9 @@
                         case "Từ chối": bgBrowse = "#FC0C0C"; break;
                     }
                     <tr>
-                        <td class="election__text election__text--name">@item.Name</td>
-                        <td class="election__text election__text--quantity ">@item.Quantity</td>
-                        <td class="election__text election__text--status "><span style="background-color: @bg">@item.Status</span></td>
+                        <td class="election__text election__text--name"><a href="@Routes.DetailVote">@item.Name</a></td>
+                        <td class="election__text election__text--quantity">@item.Quantity</td>
+                        <td class="election__text election__text--status"><span style="background-color: @bg">@item.Status</span></td>
                         <td class="election__text election__text--org">@item.Org</td>
                         <td class="d-flex align-items-center flex-end election__text election__text--function @(IsOrg ? "d-block" : "d-none")">
                             <p class="election__statusBrowse mb-0 me-5" style="color: @bgBrowse">Đã duyệt</p>

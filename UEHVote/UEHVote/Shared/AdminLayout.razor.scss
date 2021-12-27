@@ -1,0 +1,22 @@
+﻿@import '../Resources/scss/common/_variables.scss';
+
+
+.adminbody {
+    div:first-child {
+        right: 24px;
+        z-index: 2;
+    }
+
+    .rounded-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: solid 1px #DFE0EB;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}

@@ -17,6 +17,8 @@
         </Carousel>
     </div>
 
+
+
     @code {
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -24,6 +26,5 @@
             {
                 await JSRuntinme.InvokeVoidAsync("uehvote.ShowMess");
             }
-
         }
     }

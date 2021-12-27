@@ -1,0 +1,53 @@
+﻿@inject MessageService _message
+
+<Upload Name="avatar"
+        @bind-FileList="fileList"
+        ListType="picture-card"
+        OnPreview="(file)=> {
+                           Console.WriteLine(file.FileName);
+                           Console.WriteLine(file.Url);
+                           previewVisible = true;
+                           previewTitle = file.FileName;
+                           imgUrl = file.Url;
+                       }"
+        OnChange="HandleChange">
+    <div>
+        <Icon Type="plus"></Icon>
+        <div className="ant-upload-text">Upload</div>
+    </div>
+
+</Upload>
+<Modal Visible="previewVisible"
+       Title="previewTitle"
+       OnCancel="()=> previewVisible=false">
+    <img style="width: 100%" src="@imgUrl" />
+</Modal>
+
+@code {
+    bool previewVisible = false;
+    string previewTitle = string.Empty;
+    string imgUrl = string.Empty;
+
+    List<UploadFileItem> fileList = new List<UploadFileItem>
+    {
+    };
+
+    void HandleChange(UploadInfo fileinfo)
+    {
+        if (fileinfo.File.State == UploadState.Success)
+        {
+            fileinfo.File.Url = fileinfo.File.ObjectURL;
+        }
+    }
+
+    public class ResponseModel
+    {
+        public string name { get; set; }
+
+        public string status { get; set; }
+
+        public string url { get; set; }
+
+        public string thumbUrl { get; set; }
+    }
+}

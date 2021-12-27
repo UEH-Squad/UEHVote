@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNetCore.Hosting
+@using Microsoft.AspNetCore.Mvc.ViewEngines
+@inject IWebHostEnvironment Environment
+@inject ICompositeViewEngine Engine
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UEHVote</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" />
+    <link rel="stylesheet" href="~/Identity/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/Identity/css/layout.css" />*@
+    <link href="~/css/IdentityCss/Layout.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav class="navbar-expand-sm navbar-light navbar-toggleable-sm bg-white border-bottom box-shadow mb-3">
+            <div class="d-flex justify-content-between navbar__content">
+                @*/*style: class="navbar-brand" */*@
+                <div class="navbar-brand-text">
+                    <h1>
+                        <span class="text-yellow">UEH</span><span class="text-blue">Vote</span>
+                    </h1>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @*<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    @{
+                        var result = Engine.FindView(ViewContext, "_LoginPartial", isMainPage: false);
+                    }
+                    @if (result.Success)
+                    {
+                        await Html.RenderPartialAsync("_LoginPartial");
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("The default Identity UI layout requires a partial view '_LoginPartial' " +
+                            "usually located at '/Pages/_LoginPartial' or at '/Views/Shared/_LoginPartial' to work. Based on your configuration " +
+                            $"we have looked at it in the following locations: {System.Environment.NewLine}{string.Join(System.Environment.NewLine, result.SearchedLocations)}.");
+                    }
+                </div>*@
+                <button href="#" class="navbar__button">Trang chủ</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="row">
+                <div class="footer__logo col-4">
+                    <img src="img/logo-UEH-vote.png" alt="" class="logo-UEH-vote">
+                    <div class="footer__logo-ueh-hsv">
+                        <img src="img/logo-UEH.png" alt="" class="logo-UEH me-3">
+                        <img src="img/logo-dtn.png" alt="" class="logo-dtn me-3">
+                        <img src="img/logo-hsv.png" alt="" class="logo-hsv me-3">
+                        <img src="img/logo-TDC.png" alt="" class="logo-TDC ">
+                    </div>
+                    <p>
+                        Trang web được phát triển bởi Ban Công nghệ và  <br /> Truyền thông số - TDC
+                    </p>
+                </div>
+                <div class="col-5">
+                        <div class="footer__contact">
+                            <h6 class="contact__name">Văn phòng Hội sinh viên Trường Đại học Kinh tế TP.HCM</h6>
+                            <h6>279 Nguyễn Tri Phương, Quận 10, TP. Hồ Chí Minh</h6>
+                            <h6>Điện thoại: 19001001</h6>
+                            <h6>Email: hihi@gmail.com</h6>
+                            <h6><a href="" class="contact-items contact__contribute">Liên hệ/Đóng góp</a></h6>
+                        </div>                  
+                </div>
+                <div class="footer__right col-3">
+                    <h6><a href="">Chính sách bảo mật</a></h6>
+                    <h6><a href="">Nội quy sử dụng</a></h6>
+                    <h6><a href="">Trung tâm trợ giúp</a></h6>
+                    <h6><a href="">Hướng dẫn sử dụng</a></h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Identity/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/Identity/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Identity/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+    @RenderSection("Styles", required: false)
+</body>
+</html>
