@@ -7,6 +7,7 @@
         public const string HomePage = "/";
         public const string RankPage = "/bang-xep-hang";
         public const string DetailVote = "/chi-tiet-de-cu";
+        public const string Login = "/dang-nhap";
         public const string ListElection = "/danh-sach-cac-cuoc-bau-cu";
 
         #endregion Main

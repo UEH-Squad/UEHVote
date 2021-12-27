@@ -52,6 +52,18 @@
     "inputFile": "Shared/Components/SearchBox.razor.scss"
   },
   {
+    "outputFile": "Pages/ListElection/Index.razor.css",
+    "inputFile": "Pages/ListElection/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/HomePage/OwlCarousel.razor.css",
+    "inputFile": "Pages/HomePage/OwlCarousel.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/VoteSuccess.razor.css",
+    "inputFile": "Pages/RankPage/VoteSuccess.razor.scss"
+  },
+  {
     "outputFile": "Pages/Admin/AdminDetailNomination.razor.css",
     "inputFile": "Pages/Admin/AdminDetailNomination.razor.scss"
   },

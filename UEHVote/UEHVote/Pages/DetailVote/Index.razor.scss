@@ -68,6 +68,7 @@ h4 {
     margin-top: 40px;
 
     p {
+        margin-top: 20px;
         color: #000000;
         font-weight: 300;
         font-size: 16px;
@@ -75,23 +76,11 @@ h4 {
     }
 }
 
-.my-video {
+.my-img {
     margin-top: 40px;
 
-    .btn-rankPage {
-        padding: 5px 15px;
-        color: $blue;
-        background-color: white;
-        font-size: 16px;
-        line-height: 30px;
-        text-align: center;
-        letter-spacing: -0.015em;
-        border: 2px solid $blue;
-        border-radius: 2px;
-    }
-}
-.my-img {
     h4 {
+        margin-bottom: 20px;
         font-weight: 600;
         font-size: 24px;
         color: $blue;
@@ -106,8 +95,8 @@ h4 {
         overflow: hidden;
     }
 
-    img{
-        height:416px;
+    img {
+        height: 416px;
     }
 
     ::deep .owl-nav {
@@ -173,4 +162,23 @@ h4 {
     }
 }
 
+.my-video {
+    margin-top: 40px;
+
+    h4{
+        margin-bottom: 20px;
+    }
+
+    .btn-rankPage {
+        padding: 5px 15px;
+        color: $blue;
+        background-color: white;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: center;
+        letter-spacing: -0.015em;
+        border: 2px solid $blue;
+        border-radius: 2px;
+    }
+}
 
