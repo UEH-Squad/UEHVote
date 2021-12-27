@@ -1,0 +1,42 @@
+﻿@import '../../Resources/scss/common/_variables.scss';
+
+.my-search-box {
+
+    &__input {
+        flex: 1;
+        outline: none;
+        border: none;
+        font-size: 18px;
+        color: $blue;
+
+        &::placeholder {
+            color: #C5C7CD;
+        }
+    }
+
+    &__icon-wrapper {
+
+        span {
+            color: #C5C7CD;
+            font-size: 30px;
+            line-height: 24px;
+        }
+
+        .search-btn {
+            background-color: #f3f3f5;
+            border-radius: 3px;
+            border: none;
+            padding: 4px;
+        }
+
+        .clear-search-btn {
+            margin-top: -4px;
+            visibility: hidden;
+            cursor: pointer;
+        }
+    }
+
+    &__input:not(:placeholder-shown) ~ &__icon-wrapper .clear-search-btn {
+        visibility: visible;
+    }
+}

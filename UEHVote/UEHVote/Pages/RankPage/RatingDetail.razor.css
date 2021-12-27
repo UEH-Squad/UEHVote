@@ -6,6 +6,21 @@ h2 {
   font-weight: 600;
   color: #18A0FB; }
 
+.btn-editPage {
+  position: absolute;
+  top: 110px;
+  right: 100px;
+  padding: 8px 16px;
+  color: #18A0FB;
+  background: #FFFFFF;
+  border: 1px solid #18A0FB;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 16px; }
+
 button {
   background-color: #fff;
   border: none;

@@ -36,8 +36,52 @@
     "inputFile": "Pages/RankPage/PopUp.razor.scss"
   },
   {
-    "outputFile": "Shared/NavMenu.razor.css",
-    "inputFile": "Shared/NavMenu.razor.scss"
+    "outputFile": "Pages/DetailVote/Index.razor.css",
+    "inputFile": "Pages/DetailVote/Index.razor.scss"
+  },
+  {
+    "outputFile": "Shared/AdminLayout.razor.css",
+    "inputFile": "Shared/AdminLayout.razor.scss"
+  },
+  {
+    "outputFile": "Shared/AdminSidebar.razor.css",
+    "inputFile": "Shared/AdminSidebar.razor.scss"
+  },
+  {
+    "outputFile": "Shared/Components/SearchBox.razor.css",
+    "inputFile": "Shared/Components/SearchBox.razor.scss"
+  },
+  {
+    "outputFile": "Pages/ListElection/Index.razor.css",
+    "inputFile": "Pages/ListElection/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/HomePage/OwlCarousel.razor.css",
+    "inputFile": "Pages/HomePage/OwlCarousel.razor.scss"
+  },
+  {
+    "outputFile": "Pages/RankPage/VoteSuccess.razor.css",
+    "inputFile": "Pages/RankPage/VoteSuccess.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/AdminDetailNomination.razor.css",
+    "inputFile": "Pages/Admin/AdminDetailNomination.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/AdminDetailElection.razor.css",
+    "inputFile": "Pages/Admin/AdminDetailElection.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/ApproveElection.razor.css",
+    "inputFile": "Pages/Admin/ApproveElection.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/ApproveSuccess.razor.css",
+    "inputFile": "Pages/Admin/ApproveSuccess.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/PopupDeny.razor.css",
+    "inputFile": "Pages/Admin/PopupDeny.razor.scss"
   },
   {
     "outputFile": "Pages/DetailVote/Index.razor.css",
@@ -62,5 +106,7 @@
   {
     "outputFile": "Pages/NominationEdit/ResultPopUp.razor.css",
     "inputFile": "Pages/NominationEdit/ResultPopUp.razor.scss"
+    "outputFile": "Pages/Admin/ApproveConfirm.razor.css",
+    "inputFile": "Pages/Admin/ApproveConfirm.razor.scss"
   }
 ]
