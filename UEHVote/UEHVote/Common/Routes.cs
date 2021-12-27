@@ -9,6 +9,7 @@
         public const string DetailVote = "/chi-tiet-de-cu";
         public const string Login = "/dang-nhap";
         public const string ListElection = "/danh-sach-cac-cuoc-bau-cu";
+        public const string NominationEdit = "/chinh-sua-de-cu";
 
         #endregion Main
 

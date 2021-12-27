@@ -84,6 +84,28 @@
     "inputFile": "Pages/Admin/PopupDeny.razor.scss"
   },
   {
+    "outputFile": "Pages/DetailVote/Index.razor.css",
+    "inputFile": "Pages/DetailVote/Index.razor.scss"
+  },
+  {
+    "outputFile": "Shared/UploadImg.razor.css",
+    "inputFile": "Shared/UploadImg.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/NominationForm.razor.css",
+    "inputFile": "Pages/NominationEdit/NominationForm.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/Index.razor.css",
+    "inputFile": "Pages/NominationEdit/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/ConfirmPopUp.razor.css",
+    "inputFile": "Pages/NominationEdit/ConfirmPopUp.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/ResultPopUp.razor.css",
+    "inputFile": "Pages/NominationEdit/ResultPopUp.razor.scss"
     "outputFile": "Pages/Admin/ApproveConfirm.razor.css",
     "inputFile": "Pages/Admin/ApproveConfirm.razor.scss"
   }

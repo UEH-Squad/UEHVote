@@ -23,16 +23,21 @@
       font-weight: 500;
       margin-bottom: 0;
       color: #3D3D3D; }
-  .pop-up__btn--deny {
+  .pop-up .btn-deny {
     background-color: #fff;
     color: #BFBFBF;
     cursor: pointer;
     font-size: 18px;
     font-weight: 400; }
-  .pop-up__btn--accept {
+  .pop-up .btn-accept {
     background-color: #18A0FB;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
     font-weight: 400; }
+  .pop-up .btn-close {
+    top: 5px;
+    right: 5px;
+    font-size: 10px;
+    cursor: pointer; }
