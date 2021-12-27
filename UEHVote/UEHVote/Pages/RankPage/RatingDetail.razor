@@ -1,7 +1,7 @@
 ﻿@inject IJSRuntime JS;
 
 <div class="mb-5">
-    <h2 class="text-center mt-5 mb-4">Bảng xếp hạng</h2>
+    <h2 class="text-center mt-5 mb-4 @(isAdmin ? "d-none" : "d-block")">Bảng xếp hạng</h2>
     <a href="" class="btn btn-editPage @(isOrganizer ? "d-block" : "d-none")">Chỉnh sửa</a>
     <button @onclick="DisplayDetail" data-bs-toggle="collapse" data-bs-target="#detail" aria-expanded="false" class="d-flex align-items-center mx-auto px-4 py-4 mb-5" style="@(isDisplayDetail?"background-color: #18A0FB":"")">
         <div class="triangle-right" style="@(isDisplayDetail?"transform: rotate(90deg);":"")"></div>
@@ -31,6 +31,7 @@
 
 @code {
     public bool isOrganizer = false;
+    public bool isAdmin = true;
     public bool isDisplayDetail = false;
 
     private void DisplayDetail()

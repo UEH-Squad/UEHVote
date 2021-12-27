@@ -3,9 +3,9 @@
 <section class="my-title">
     <div class="container">
         <h4>Ban phong trào</h4>
-        <a href="" class="btn btn-editPage @(IsOrganizer ? "d-none" : "d-block")">Chỉnh sửa</a>
+        <a href="" class="btn btn-editPage @(IsOrganizer ? "d-block" : "d-none")">Chỉnh sửa</a>
         <h2>Nối vòng tay lớn 2021 - Light up</h2>
-        <button class="m-auto">
+        <button class="m-auto @(IsAdmin ?"d-none" : "d-block" )">
             <p>14440 <span>lượt bình chọn</span></p>
         </button>
     </div>
@@ -36,7 +36,7 @@
     <div class="container">
         <h4>Video về đề cử</h4>
         <iframe class="w-100" height="730" src="https://www.youtube.com/embed/etJIXYiIbJM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="text-end my-5">
+        <div class="text-end my-5 @(IsAdmin ?"d-none" : "d-block" )">
             <a href="@Routes.RankPage" class="btn-rankPage btn">Xem bảng xếp hạng</a>
         </div>
     </div>
@@ -52,6 +52,7 @@
     }
     private bool IsOrganizer = false;
     private bool IsAct = true;
+    private bool IsAdmin = true;
     class FakeData
     {
         public int Id { get; set; }

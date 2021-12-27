@@ -1,6 +1,6 @@
 ﻿@using Blazored.Modal;
 
-<div class="row mb-5 d-flex flex-wrap justify-content-around">
+<div class="row mb-5 d-flex flex-wrap justify-content-around @(IsAdmin ? "d-none" : "d-block")">
     <div class="col-4 d-flex flex-column align-items-center">
         <h4>Top 1</h4>
         <div class="position-relative">
@@ -30,11 +30,11 @@
     </div>
 </div>
 
-<div class="row d-flex flex-wrap justify-content-around">
+<div class="row d-flex flex-wrap justify-content-around @(IsAdmin ? "mt-5" :"")">
     @foreach (var item in fakeDatas.Skip(1))
     {
-        <div class="col-4 d-flex flex-column align-items-center">
-            <div class="d-flex mb-3 align-items-center" style="@(IsOrganizer ? "margin-left: -150px;":"")">               
+        <div class="col-4 d-flex flex-column align-items-center @(IsAdmin ? "my-3" :"")">
+            <div class="d-flex mb-3 align-items-center @(IsAdmin ? "d-none" : "d-block")" style="@(IsOrganizer ? "margin-left: -150px;":"")">               
                 @if (IsLogin)
                 {
                     <button @onclick="() => Rating(item.Id)" class="me-3 @(IsOrganizer ? "d-none" : "d-block")" style="@(item.isRated ? "background: rgba(250, 204, 20, 0.2);":"") @(voteCount == maxVote && !item.isRated ? "background: #E5E5E5; cursor: default;":"")">
@@ -66,7 +66,7 @@
 
 </div>
 
-<div class="voting-btn d-flex justify-content-center mb-5 @(IsOrganizer ? "d-none" : "d-block")">
+<div class="voting-btn d-flex justify-content-center mb-5 @(IsOrganizer||IsAdmin ? "d-none" : "d-block")">
     <button class="btn me-2">Hủy</button>
     <button @onclick="ShowVoteSuccess" class="btn">Xác nhận</button>
 </div>
@@ -75,6 +75,7 @@
     [CascadingParameter] public IModalService Modal { get; set; }
     [Parameter] public bool IsLogin { get; set; }
     [Parameter] public bool IsOrganizer { get; set; }
+    [Parameter] public bool IsAdmin { get; set; }
 
     private int maxVote = 3;
     private int voteCount = 0;

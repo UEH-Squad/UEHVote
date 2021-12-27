@@ -1,9 +1,18 @@
 ﻿@import '../Resources/scss/common/_variables.scss';
 
 .sidebar {
+    background-color: #363740;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% / 6);
+
     .logo-container {
         h1 {
             color: $white;
+            font-size: 24px;
+            opacity: 0.7;
         }
     }
 
