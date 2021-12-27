@@ -29,18 +29,3 @@
     </div>
 </div>
 
-@code {
-    public bool isOrganizer = false;
-    public bool isAdmin = true;
-    public bool isDisplayDetail = false;
-
-    private void DisplayDetail()
-    {
-        isDisplayDetail = !isDisplayDetail;
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await JS.InvokeVoidAsync("uehvote.DescriptionCarousel");
-    }
-}

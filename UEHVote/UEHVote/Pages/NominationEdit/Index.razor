@@ -8,17 +8,3 @@
     </div>
 </div>
 
-@code {
-    [CascadingParameter] public IModalService Modal { get; set; }
-    private async Task ShowConfirmPopUp()
-    {
-        var options = new Blazored.Modal.ModalOptions()
-        {
-            HideCloseButton = true,
-            DisableBackgroundCancel = true,
-            UseCustomLayout = true,
-        };
-
-        Modal.Show<ConfirmPopUp>("", options);
-    }
-}
