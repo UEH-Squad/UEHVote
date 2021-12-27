@@ -66,7 +66,7 @@
 
 </div>
 
-<div class="voting-btn d-flex justify-content-center mb-5 @(IsOrganizer ? "d-none" : "d-block")">
+<div class="voting-btn d-flex justify-content-center mb-5 @(IsOrganizer||IsAdmin ? "d-none" : "d-block")">
     <button class="btn me-2">Hủy</button>
     <button @onclick="ShowVoteSuccess" class="btn">Xác nhận</button>
 </div>

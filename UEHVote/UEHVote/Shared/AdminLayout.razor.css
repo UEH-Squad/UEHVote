@@ -1,10 +1,6 @@
 ﻿/*#region breakpoints */
 /*#endregion */
 /*#region mixins */
-.sidebar {
-  background-color: #363740;
-  height: 100vh; }
-
 .adminbody div:first-child {
   right: 24px;
   z-index: 2; }
