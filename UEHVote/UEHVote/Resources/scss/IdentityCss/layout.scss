@@ -1,0 +1,113 @@
+﻿@import '../../../Resources/scss/common/_variables.scss';
+
+.navbar__content{
+    padding: 10px 0;
+    margin: 0 100px;
+}
+.navbar__button {
+    color: $blue;
+    padding: 10px 25px;
+    border: 2px solid #18A0FB;
+}
+
+.footer {
+    background-color: #FFFFFF;
+    border-top: 1px solid #C4C4C4;
+    overflow: hidden;
+    padding: 20px 20px 0;
+    margin-top: 90px;
+}
+
+.footer__content{
+    margin: 10px 30px;
+}
+
+.footer__logo {
+    p {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 20px;
+
+        @include on("sm") {
+            font-size: 12px;
+        }
+
+        @include on("xl") {
+            font-size: 15px;
+        }
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+        margin: 0 15px;
+    }
+}
+
+.footer__contact {
+    padding: 10px 0 0 100px;   
+
+    h6 {
+        margin-bottom: 20px;
+        font-size: 8px;
+        font-weight: 300;
+        color: $grey-text;
+
+        @include on("sm") {
+            font-size: 12px;
+        }
+
+        @include on("xl") {
+            font-size: 16px;
+        }
+
+        @include on("xxl") {
+            font-size: 18px;
+        }
+
+        a {
+            color: $grey-text;
+            text-decoration: none;
+        }
+    }
+
+    .contact__name {
+        font-weight: 700;
+    }
+
+    .contact__contribute {
+        font-weight: 400;
+    }
+}
+
+.footer__right {
+    padding-top: 10px;
+    text-align: right;
+
+    h6 {
+        margin-bottom: 20px;
+        font-size: 7px;
+        font-weight: 400;
+        color: $grey-text;
+
+        @include on("sm") {
+            margin-bottom: 25px;
+            font-size: 12px;
+        }
+
+        @include on("xl") {
+            margin-bottom: 33px;
+            font-size: 16px;
+        }
+
+        @include on("xxl") {
+            margin-bottom: 35px;
+            font-size: 18px;
+        }
+
+        a {
+            color: $grey-text;
+            text-decoration: none;
+        }
+    }
+}
