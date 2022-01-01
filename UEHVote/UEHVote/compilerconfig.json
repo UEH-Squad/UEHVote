@@ -106,8 +106,8 @@
   {
     "outputFile": "Pages/NominationEdit/ResultPopUp.razor.css",
     "inputFile": "Pages/NominationEdit/ResultPopUp.razor.scss"
-    "outputFile": "Pages/Admin/ApproveConfirm.razor.css",
-    "inputFile": "Pages/Admin/ApproveConfirm.razor.scss"
+    //"outputFile": "Pages/Admin/ApproveConfirm.razor.css",
+    //"inputFile": "Pages/Admin/ApproveConfirm.razor.scss"
   },
   {
     "outputFile": "Pages/ListElection/Index.razor.css",
