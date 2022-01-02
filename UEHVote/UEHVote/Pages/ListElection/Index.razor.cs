@@ -20,13 +20,13 @@ namespace UEHVote.Pages.ListElection
         /// </summary>
         private string bg;
         private List<string> status = new List<string>();
-        [Parameter]
-        public string org { get; set; }
         private List<Models.Election> listElections { get; set; }
         private List<Organization> listOrganizations { get; set; }
+        private List<User> users { get; set; }
         private List<Vote> listVotes { get; set; }
         private List<Candidate> candidates { get; set; }
         [Inject] private IElectionService IElectionService { get; set; }
+        [Inject] private IUserService IUserService { get; set; }
         [Inject] private IActivityVoteService IActivityVoteService { get; set; }
         [Inject] private IOrganizationService IOrganizationService { get; set; }
         [Inject] private ICandidateService ICandidateService { get; set; }
@@ -45,25 +45,26 @@ namespace UEHVote.Pages.ListElection
             listElections = await IElectionService.GetAllElectionsAsync();
             listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
             listVotes = await IActivityVoteService.GetAllVotesAsync();
+            users = await IUserService.GetAllUser();
             candidates = await ICandidateService.GetAllCandidatesAsync();
-            if (listElections != null)
+            if (listElections == null) return;
+            foreach (var election in listElections)
             {
-                foreach (var election in listElections)
+                if (election.IsForIndividuals) return;
+                listInfoElections.Add(new FakeData()
                 {
-                    if (election.IsForIndividuals == false)
-                    {
-                        listInfoElections.Add(new FakeData()
-                        {
-                            Id = election.Id,
-                            Quantity = IActivityVoteService.GetQuantityVoted(election, listVotes),
-                            Name = election.Name,
-                            Status = IElectionService.StatusElection(election),
-                            Org = "Công nghệ thông tin kinh doanh"
-                        });
-                    }
-                }
+                    Id = election.Id,
+                    Quantity = IActivityVoteService.GetQuantityVoted(election, listVotes),
+                    Name = election.Name,
+                    Status = IElectionService.StatusElection(election),
+                    Org = IUserService.GetOrganizationByUser(await IUserService.GetUserById(election.UserId), listOrganizations)
+                });
             }
             result = listInfoElections.ToList();
+            GetAllStatus();
+        }
+        void GetAllStatus()
+        {
             status.Add("ĐANG DIỄN RA");
             status.Add("GẦN KẾT THÚC");
             status.Add("KẾT THÚC");

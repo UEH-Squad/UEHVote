@@ -10,5 +10,8 @@ namespace UEHVote.Data.Interfaces
 {
     public interface IUserService
     {
+        Task<List<User>> GetAllUser();
+        Task<User> GetUserById(string userId);
+        string GetOrganizationByUser(User user, List<Organization> organizations);
     }
 }

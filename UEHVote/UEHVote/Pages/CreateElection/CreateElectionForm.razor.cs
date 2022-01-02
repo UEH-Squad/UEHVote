@@ -9,7 +9,7 @@ using UEHVote.Models;
 
 namespace UEHVote.Pages.CreateElection
 {
-    public partial class CreateElectionForm
+    public partial class CreateElectionForm : ComponentBase
     {
         [Parameter] 
         public Models.Election election { get; set; } = new Models.Election();

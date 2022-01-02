@@ -38,6 +38,8 @@ namespace UEHVote.Pages.DetailElection
         private ICandidateService ICandidateService { get; set; }
         [Inject]
         private IOrganizationService IOrganizationService { get; set; }
+        [Inject]
+        private IUserService IUserService { get; set; }
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -52,7 +54,7 @@ namespace UEHVote.Pages.DetailElection
             candidates = await ICandidateService.GetAllCandidatesAsync();
             listVotes = await IActivityVoteService.GetAllVotesAsync();
             listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
-            organization = "";
+            organization =IUserService.GetOrganizationByUser(await IUserService.GetUserById(election.UserId),listOrganizations);
             totalVote = IActivityVoteService.GetQuantityVoted(election, listVotes);
         }
     }

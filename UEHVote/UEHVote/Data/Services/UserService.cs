@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using Abp.Domain.Repositories;
@@ -29,6 +31,27 @@ namespace UEHVote.Data.Services
         {
             _db = db;
             _userManager = userManager;
+        }
+        public async Task<List<User>> GetAllUser()
+        {
+            return _userManager.Users.ToList();
+        }
+        public async Task<User> GetUserById(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            return user;
+        }
+        public string GetOrganizationByUser(User user,List<Organization> organizations)
+        {
+            string organization = "";
+            foreach (var item in organizations)
+            {
+                if (user is not null && item.Id == user.OrganizationId)
+                {
+                    organization = item.Name;
+                }
+            }
+            return organization;
         }
     }
 }

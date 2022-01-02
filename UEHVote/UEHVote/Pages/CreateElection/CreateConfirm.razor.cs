@@ -11,7 +11,7 @@ using UEHVote.Models;
 
 namespace UEHVote.Pages.CreateElection
 {
-    public partial class CreateConfirm
+    public partial class CreateConfirm : ComponentBase
     {
         [Parameter] 
         public Models.Election election { get; set; }

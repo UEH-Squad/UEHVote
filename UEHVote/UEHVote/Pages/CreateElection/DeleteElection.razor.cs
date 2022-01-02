@@ -12,7 +12,7 @@ using UEHVote.Models;
 
 namespace UEHVote.Pages.CreateElection
 {
-    public partial class DeleteElection
+    public partial class DeleteElection : ComponentBase
     {
         [CascadingParameter] public BlazoredModalInstance Modal { get; set; }
         public List<CandidateImage> listCandidateImages = new List<CandidateImage>();

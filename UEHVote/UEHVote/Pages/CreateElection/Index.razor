@@ -11,7 +11,7 @@
 </div>
 <ListElection organizations="@organizations" candidates="@candidates" result="@result"/>
 <div class="d-flex justify-content-center">
-    <button class="btn btn-cancel me-3">Hủy</button>
+    <button class="btn btn-cancel me-3" @onclick="Cancel">Hủy</button>
     <button type="submit" @onclick="ShowResultModal" class="btn btn-save py-2 px-3">Lưu cuộc bình chọn</button>
 </div>
    

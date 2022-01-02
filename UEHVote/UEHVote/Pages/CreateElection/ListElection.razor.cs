@@ -18,7 +18,7 @@ using UEHVote.Models;
 
 namespace UEHVote.Pages.CreateElection
 {
-    public partial class ListElection
+    public partial class ListElection : ComponentBase
     {
         [Parameter] 
         public bool IsOrg { get; set; } = true;

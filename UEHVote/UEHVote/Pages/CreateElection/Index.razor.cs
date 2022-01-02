@@ -13,7 +13,7 @@ using UEHVote.Models;
 
 namespace UEHVote.Pages.CreateElection
 {
-    public partial class Index
+    public partial class Index : ComponentBase
     {
         private bool IsShowForm = true;
         private Models.Election election = new Models.Election();
@@ -27,6 +27,8 @@ namespace UEHVote.Pages.CreateElection
         public IModalService ResultModal { get; set; }
         [Inject] 
         private IOrganizationService IOrganizationService { get; set; }
+        [Inject]
+        private NavigationManager NavigationManager { get; set; }
         [Inject]
         private ICandidateService ICandidateService { get; set; }
         private void ShowForm()
@@ -50,6 +52,11 @@ namespace UEHVote.Pages.CreateElection
                 UseCustomLayout = true,
             };
             ResultModal.Show<CreateConfirm>("",parameters,options);
+        }
+
+        void Cancel()
+        {
+            NavigationManager.NavigateTo("/danh-sach-cac-cuoc-bau-cu");
         }
     }
 }

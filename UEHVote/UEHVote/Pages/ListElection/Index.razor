@@ -44,21 +44,21 @@
                             <span class="me-2 ms-1">TỔ CHỨC</span>
                         </p>
                         <ul class="dropdown-menu" aria-labelledby="dropdown-org">
-                                @if (listOrganizations != null)
+                            @if (result is not null)
+                            {
+                                @foreach (var item in listOrganizations)
                                 {
-                                    @foreach (var item in listOrganizations)
+                                    bool Checked = false;
+                                    foreach (var t in result)
                                     {
-                                        bool Checked = false;
-                                        foreach (var t in result)
+                                        if (t.Org != null && t.Org.Contains(item.Name))
                                         {
-                                            if (t.Org!=null && t.Org.Contains(item.Name))
-                                            {
-                                                Checked =true;
-                                            }  
+                                            Checked = true;
                                         }
-                                        <li><Checkbox Checked="Checked" CheckedChanged="eventArgs => { FilterOrg(item.Name,eventArgs.ToString()); }">@item.Name</Checkbox></li>
                                     }
+                                    <li><Checkbox Checked="Checked" CheckedChanged="eventArgs => { FilterOrg(item.Name,eventArgs.ToString()); }">@item.Name</Checkbox></li>
                                 }
+                            }
                         </ul>
                     </div>
                 </th>
