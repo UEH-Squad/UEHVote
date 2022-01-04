@@ -18,8 +18,8 @@
         </div>
         <Table  DataSource="data">
 
-            <Column @bind-Field="@context.Name" Style="width: 450px; padding:26px 60px 26px 36px;">
-                <a>@context.Name</a>
+            <Column @bind-Field="@context.Name" Class="column-name">
+                <a href="/admin/chi-tiet-binh-chon">@context.Name</a>
             </Column>
             <Column @bind-Field="@context.Org"></Column>
             <Column @bind-Field="@context.DateSend"></Column>
@@ -55,7 +55,7 @@
     Column[] data = Enumerable.Range(0, 100).Select(i => new Column()
     {
         Key = "1",
-        Name = "Tên gì mà chã được nó phải dài dài như vậy cả lỡ nó dài thật thì quá mệt huhuhuuhu",
+        Name = "Tên gì mà chã được nó phải dài dài như vậy cả lỡ nó dài quas troi dai hu hu",
         Org = "Khoa Công nghệ thông tin kinh doanh",
         DateSend = new DateTime(2021, 12, 1).ToString("dd / MM / yyy"),
     }).ToArray();
