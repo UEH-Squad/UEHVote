@@ -1,9 +1,12 @@
 ﻿using Blazored.Modal;
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using UEHVote.Data.Interfaces;
 using UEHVote.Data.Services;
@@ -11,7 +14,7 @@ using UEHVote.Models;
 
 namespace UEHVote.Pages.NominationEdit
 {
-    public partial class ConfirmPopUp
+    public partial class ConfirmPopUp : ComponentBase
     {
         [Parameter]
         public Models.Candidate candidate { get; set; } = new Models.Candidate();
@@ -34,12 +37,10 @@ namespace UEHVote.Pages.NominationEdit
         [Inject]
         NavigationManager NavigationManager { get; set; }
         List<string> image { get; set; } = new List<string>();
-
         private async Task CloseModal()
         {
             await Modal.CloseAsync();
         }
-
         protected override async Task OnInitializedAsync()
         {
             organizations = await IOrganizationService.GetAllOrganizationsAsync();
@@ -63,7 +64,7 @@ namespace UEHVote.Pages.NominationEdit
         }
         protected async Task CreateCandidate()
         {
-
+            var parameters = new ModalParameters();
             await ICandidateService.InsertCandidate(candidate);
             if (image.Count != 0)
             {

@@ -37,8 +37,7 @@ namespace UEHVote.Pages.NominationEdit
                 DisableBackgroundCancel = true,
                 UseCustomLayout = true,
             };
-
-            Modal.Show<ConfirmPopUp>("",parameters, options);
+            Modal.Show<ConfirmPopUp>("", parameters, options);
         }
     }
 }

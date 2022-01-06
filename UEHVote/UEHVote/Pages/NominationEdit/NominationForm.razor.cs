@@ -2,6 +2,8 @@
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,11 +59,6 @@ namespace UEHVote.Pages.NominationEdit
             };
             ResultModal.Show<ResultPopUp>("", parameters, options);
         }
-
-        /*private void HandleFileChanged(InputFileChangeEventArgs args)
-        {
-            uploadFile = args.File;
-        }*/
         private async Task OnInputFile(InputFileChangeEventArgs e)
         {
             var imageFiles = e.GetMultipleFiles();
@@ -99,9 +96,5 @@ namespace UEHVote.Pages.NominationEdit
             }
             ShowResultModal();
         }
-            /*private async Task HandleImageDiscarded()
-            {
-                uploadFile = null;
-            }*/
     }
 }

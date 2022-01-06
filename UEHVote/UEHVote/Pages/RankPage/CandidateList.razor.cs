@@ -28,7 +28,7 @@ namespace UEHVote.Pages.RankPage
         private List<Fakedata> fakeDatas { get; set; } = new List<Fakedata>();
         private List<Models.Election> listElections { get; set; }
         private List<Organization> listOrganizations { get; set; }
-        private List<Vote> listVotes { get; set; }
+        private List<VotedCandidate> listVotedCandidates { get; set; }
         private List<Models.Candidate> listCandidates { get; set; }
         [Inject] private IJSRuntime JSRuntinme { get; set; }
         [Inject] private IElectionService IElectionService { get; set; }
@@ -92,7 +92,7 @@ namespace UEHVote.Pages.RankPage
         {
             listElections = await IElectionService.GetAllElectionsAsync();
             listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
-            listVotes = await IActivityVoteService.GetAllVotesAsync();
+            listVotedCandidates = await IActivityVoteService.GetAllVotesAsync();
             listCandidates = await ICandidateService.GetAllCandidatesAsync();
             if (listCandidates != null)
             {
@@ -102,7 +102,7 @@ namespace UEHVote.Pages.RankPage
                         {
                             Id = candidate.Id,
                             Name = candidate.Name,
-                            Count = IActivityVoteService.GetQuantityVoted(candidate,listVotes),
+                            Count = IActivityVoteService.GetQuantityVoted(candidate,listVotedCandidates),
                             Rank = ((short)voteCount)
                         });
                     

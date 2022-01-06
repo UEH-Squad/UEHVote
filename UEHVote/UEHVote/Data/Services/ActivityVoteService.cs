@@ -17,16 +17,17 @@ namespace UEHVote.Data.Services
         {
             _db = db;
         }
-        public Task<List<Vote>> GetAllVotesAsync()
+        public Task<List<VotedCandidate>> GetAllVotesAsync()
         {
-            return _db.Votes.ToListAsync();
+            return _db.VotedCandidates.ToListAsync();
         }
-        public int GetQuantityVoted(Election election, List<Vote> listVotes)
+
+        public int GetQuantityVoted(Candidate candidate, List<VotedCandidate> listVotedCandidates)
         {
             int total = 0;
-            foreach (var vote in listVotes)
+            foreach (var vote in listVotedCandidates)
             {
-                if (election.Id == vote.ElectionId)
+                if (candidate.Id == vote.CandidateId)
                 {
                     total++;
                 }

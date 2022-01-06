@@ -12,8 +12,7 @@ namespace UEHVote.Data.Interfaces
         /// IActivityVoteServices
         /// </summary>
         /// <returns></returns>
-        Task<List<Vote>> GetAllVotesAsync();
-        int GetQuantityVoted(Election election, List<Vote> listVotes);
-        int GetQuantityVoted(Candidate candidate, List<Vote> listVotes);
+        Task<List<VotedCandidate>> GetAllVotesAsync();
+        int GetQuantityVoted(Candidate candidate, List<VotedCandidate> listVotedCandidates);
     }
 }
