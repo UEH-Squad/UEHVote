@@ -1,0 +1,88 @@
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.text {
+  margin: 100px 0 50px 0;
+  color: #18A0FB;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 24px;
+  text-align: center; }
+  .text span {
+    color: #FACC14; }
+
+.owl-carousel {
+  position: relative; }
+  .owl-carousel .item {
+    border-radius: 20px;
+    overflow: hidden; }
+  .owl-carousel img {
+    height: 253px; }
+  .owl-carousel .item_content {
+    padding: 20px 50px 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 20px 20px; }
+    .owl-carousel .item_content h3 {
+      color: #3F3F3F;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 30px; }
+    .owl-carousel .item_content p {
+      font-size: 18px;
+      line-height: 24px; }
+    .owl-carousel .item_content .content--left, .owl-carousel .item_content .content--right {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 30px; }
+    .owl-carousel .item_content .blue {
+      color: #18A0FB; }
+    .owl-carousel .item_content .yellow {
+      color: #FACC14; }
+
+::deep .owl-nav {
+  margin: 0; }
+  ::deep .owl-nav .owl-prev {
+    position: absolute;
+    top: 34%;
+    left: 5px;
+    transform: translateY(-65%); }
+    ::deep .owl-nav .owl-prev span {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      line-height: 35px;
+      border-radius: 50%;
+      opacity: 0.6;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      background: #FFFFFF;
+      font-size: 80px;
+      color: #18A0FB;
+      transition: all 0.3s linear; }
+      ::deep .owl-nav .owl-prev span:hover {
+        color: #0B588C;
+        opacity: 0.73; }
+    ::deep .owl-nav .owl-prev:hover {
+      background: none; }
+  ::deep .owl-nav .owl-next {
+    position: absolute;
+    top: 34%;
+    right: 5px;
+    transform: translateY(-65%); }
+    ::deep .owl-nav .owl-next span {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      line-height: 35px;
+      border-radius: 50%;
+      opacity: 0.6;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      background: #FFFFFF;
+      font-size: 80px;
+      color: #18A0FB;
+      transition: all 0.3s linear; }
+      ::deep .owl-nav .owl-next span:hover {
+        color: #0B588C;
+        opacity: 0.73; }
+    ::deep .owl-nav .owl-next:hover {
+      background: none; }

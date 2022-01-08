@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 using UEHVote.Models;
 using UEHVote.Data.Interfaces;
 using UEHVote.Pages.CreateElection;
+using Blazored.Modal.Services;
+using Blazored.Modal;
 
 namespace UEHVote.Pages.ListElection
 {
@@ -19,6 +21,8 @@ namespace UEHVote.Pages.ListElection
         ///  HANDLE LIST INFORMATION ELECTION
         /// </summary>
         private string bg;
+        private string bgBrowse;
+        public bool IsOrg = true;
         private List<string> status = new List<string>();
         private List<Models.Election> listElections { get; set; }
         private List<Organization> listOrganizations { get; set; }
@@ -30,6 +34,8 @@ namespace UEHVote.Pages.ListElection
         [Inject] private IActivityVoteService IActivityVoteService { get; set; }
         [Inject] private IOrganizationService IOrganizationService { get; set; }
         [Inject] private ICandidateService ICandidateService { get; set; }
+        [CascadingParameter] public IModalService Modal { get; set; }
+
         class FakeData
         {
             public int Id { get; set; }
@@ -37,6 +43,7 @@ namespace UEHVote.Pages.ListElection
             public string Name { get; set; }
             public string Status { get; set; }
             public string Org { get; set; }
+            public string StatusBrowse { get; set; }
         }
         private List<FakeData> listInfoElections { get; set; } = new List<FakeData>();
         private List<FakeData> result { get; set; }
@@ -45,7 +52,7 @@ namespace UEHVote.Pages.ListElection
             listElections = await IElectionService.GetAllElectionsAsync();
             listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
             listVotes = await IActivityVoteService.GetAllVotesAsync();
-            users = await IUserService.GetAllUser();
+            users = await IUserService.GetAllUsers();
             candidates = await ICandidateService.GetAllCandidatesAsync();
             if (listElections == null) return;
             foreach (var election in listElections)
@@ -57,7 +64,8 @@ namespace UEHVote.Pages.ListElection
                     Quantity = IActivityVoteService.GetQuantityVoted(election, listVotes),
                     Name = election.Name,
                     Status = IElectionService.StatusElection(election),
-                    Org = IUserService.GetOrganizationByUser(await IUserService.GetUserById(election.UserId), listOrganizations)
+                    Org = IUserService.GetOrganizationByUser(await IUserService.GetUserById(election.UserId), listOrganizations),
+                    StatusBrowse= "Chờ duyệt"
                 });
             }
             result = listInfoElections.ToList();
@@ -72,6 +80,19 @@ namespace UEHVote.Pages.ListElection
         void OnChange(string[] checkedValues)
         {
             Console.WriteLine($"checked = {JsonSerializer.Serialize(checkedValues)}");
+        }
+        private async Task ShowPopupDelete(int Id)
+        {
+            var parameters = new ModalParameters();
+            parameters.Add(nameof(PopupDelete.Id), Id);
+            var options = new Blazored.Modal.ModalOptions()
+            {
+                HideCloseButton = true,
+                DisableBackgroundCancel = true,
+                UseCustomLayout = true,
+            };
+
+            Modal.Show<PopupDelete>("",parameters,options);
         }
         void FilterStatus(string status,object checkedValue)
         {
@@ -121,6 +142,7 @@ namespace UEHVote.Pages.ListElection
                 }
             }
         }
+       
     }
 }
 

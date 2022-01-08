@@ -1,0 +1,54 @@
+﻿@inject MessageService _message
+
+<div class="container-fluid">
+    <div class="row">
+        <EditForm Model="@candidate">
+            <DataAnnotationsValidator />
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    Đơn vị <span class="required-asterick">(*)</span>
+                </div>
+                <InputSelect @bind-Value="candidate.OrganizationId" class="form-control">
+                    @if (organizations != null)
+                    {
+                        @foreach (var organization in organizations)
+                        {
+                            <option value="@organization.Id">@organization.Name</option>
+                        }
+                    }
+                </InputSelect>
+            </div>
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    Tên đề cử <span class="required-asterick">(*)</span>
+                </div>
+                <InputText @bind-Value="candidate.Name" class="form-control" placeholder="Nhập tên đề cử" />
+                <ValidationMessage For=@(() => candidate.Name) />
+            </div>
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    Nội dung <span class="required-asterick">(*)</span>
+                </div>
+                <TinyMCEEditor @bind-Value="candidate.Details" />
+                <ValidationMessage For=@(() => candidate.Details) />
+            </div>
+            <div class="form-group mb-4">
+                <div class="mb-3">
+                    Hình ảnh đề cử
+                </div>
+                <UEHVote.Shared.Components.PicturesWall images="@images"/>
+            </div>
+            <div class="form-group mb-5">
+                <div class="mb-3">
+                    Video đề cử
+                </div>
+                <InputText @bind-Value="candidate.Video" class="form-control" placeholder="Chèn link video" />
+            </div>
+            <div class="d-flex justify-content-center mb-5">
+                <button class="btn btn-cancel me-3" @onclick="CloseModal">Hủy</button>
+                <button type="submit" @onclick="CreateCandidate" class="btn btn-save py-2 px-3">Lưu</button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+

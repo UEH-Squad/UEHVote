@@ -6,19 +6,9 @@
             </div>
             <div class="pop-up__btn d-flex justify-content-center pb-3">
                 <div @onclick="CloseModalAsync" class="btn px-0 pop-up__btn--deny d-flex justify-content-center align-items-center px-3 me-3">Hủy</div>
-                <btn @onclick="CloseModalAsync" class="btn px-0 pop-up__btn--accept d-flex justify-content-center align-items-center px-3">Xóa</btn>
+                <btn @onclick="Delete" class="btn px-0 pop-up__btn--accept d-flex justify-content-center align-items-center px-3">Xóa</btn>
             </div>
         </div>
     </div>
 </div>
 
-@code {
-    [CascadingParameter]
-    public BlazoredModalInstance Modal { get; set; }
-
-
-    private async Task CloseModalAsync()
-    {
-        await Modal.CloseAsync();
-    }
-}

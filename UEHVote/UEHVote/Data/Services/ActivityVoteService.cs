@@ -9,7 +9,7 @@ using UEHVote.Models;
 
 namespace UEHVote.Data.Services
 {
-    public class ActivityVoteService:IActivityVoteService
+    public class ActivityVoteService : IActivityVoteService
     {
         /// <summary>
         /// Handle ActivityVote
@@ -20,9 +20,24 @@ namespace UEHVote.Data.Services
         {
             _db = db;
         }
+        public Task<List<VotedCandidate>> GetAllVotedCandidateAsync()
+        {
+            return _db.VotedCandidates.ToListAsync();
+
+        }
         public Task<List<Vote>> GetAllVotesAsync()
         {
             return _db.Votes.ToListAsync();
+        }
+        public int GetQuantityVotedCandidate(Candidate candidate, List<VotedCandidate> listVotedCandidates)
+        {
+            int total = 0;
+            foreach (var vote in listVotedCandidates)
+            {
+                if (candidate.Id == vote.CandidateId)
+                    total++;
+            }
+            return total;
         }
         public int GetQuantityVoted(Election election, List<Vote> listVotes)
         {

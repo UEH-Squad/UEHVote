@@ -1,9 +1,13 @@
-﻿@using UEHVote.Models;
+﻿@attribute [Route(Routes.ListElection)];
+@using System.Text.Json
+@using UEHVote.Models;
 @using System.Linq
-@attribute [Route(Routes.ListElection)];
 
 <div class="my-election container">
-    <h3 >Các cuộc bình chọn</h3>
+    <div class="d-flex align-content-center">
+        <h3>Các cuộc bình chọn</h3>
+        <button class="btn btn-success" style="height:40px;margin:auto" onclick="window.location.href='tao-va-chinh-sua-cuoc-bau-cu'">Tạo bình chọn mới</button>
+    </div>
     <div class="election">
         <table class="election__table">
             <tr class="election__table--header">
@@ -82,11 +86,22 @@
                                 bg = "#FF4444";
                                 break;
                         }
+                        switch (item.StatusBrowse)
+                        {
+                            case "Đã duyệt": bgBrowse = "#18A0FB"; break;
+                            case "Chờ duyệt": bgBrowse = "#FACC14"; break;
+                            case "Từ chối": bgBrowse = "#FC0C0C"; break;
+                        }
                         <tr>
                             <td class="election__text election__text--name" onclick="window.location.href='/chi-tiet-de-cu/@item.Id'">@item.Name</td>
                             <td class="election__text election__text--quantity">@item.Quantity</td>
                             <td class="election__text election__text--status"><span style="background-color: @bg">@item.Status</span></td>
                             <td class="election__text election__text--org">@item.Org</td>
+                            <td class="d-flex align-items-center flex-end election__text election__text--function @(IsOrg ? "d-block" : "d-none")">
+                                <p class="election__statusBrowse mb-0 me-5" style="color: @bgBrowse">@item.StatusBrowse</p>
+                                <a class="me-3"><span class="material-icons-outlined icon-edit">edit</span></a>
+                                <span @onclick="()=>ShowPopupDelete(item.Id)" class="material-icons-outlined icon-delete">delete</span>
+                            </td>
                         </tr>
                     }
                 }

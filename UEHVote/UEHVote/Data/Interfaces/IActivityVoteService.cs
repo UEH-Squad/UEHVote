@@ -14,5 +14,7 @@ namespace UEHVote.Data.Interfaces
         /// <returns></returns>
         Task<List<Vote>> GetAllVotesAsync();
         int GetQuantityVoted(Election election, List<Vote> listVotes);
+        Task<List<VotedCandidate>> GetAllVotedCandidateAsync();
+        int GetQuantityVotedCandidate(Candidate candidate, List<VotedCandidate> listVotedCandidates);
     }
 }
