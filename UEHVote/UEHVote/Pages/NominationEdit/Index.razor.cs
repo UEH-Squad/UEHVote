@@ -17,16 +17,19 @@ namespace UEHVote.Pages.NominationEdit
         [Parameter]
         public List<Organization> organizations { get; set; }
         [Parameter]
-        public List<Candidate> candidates { get; set; }
-        [Parameter]
-        public List<Candidate> result { get; set; }
+        public List<Models.Election> elections { get; set; }
         [CascadingParameter] public IModalService Modal { get; set; }
         [CascadingParameter] public IModalService ResultModal { get; set; }
-        
         [Inject]
         private IOrganizationService IOrganizationService { get; set; }
         [Inject]
+        private IElectionService IElectionService { get; set; }
         private ICandidateService ICandidateService { get; set; }
+        protected override async Task OnInitializedAsync()
+        {
+            elections = await IElectionService.GetAllElectionsAsync();
+            organizations = await IOrganizationService.GetAllOrganizationsAsync();
+        }
         private async Task ShowConfirmPopUp()
         {
             var parameters = new ModalParameters();

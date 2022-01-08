@@ -1,8 +1,6 @@
 ﻿@attribute [Route(Routes.RankPage)];
 <img src="./img/decor.png" alt="Alternate Text" class="position-absolute" />
 <div class="container">
-    <RatingDetail />
-    <CandidateList IsLogin="false" IsOrganizer="false" IsAdmin="true"/>
+    <RatingDetail isOrganizer="false" isAdmin="true" />
+    <CandidateList IsLogin="true" IsOrganizer="false" IsAdmin="false"/>
 </div>
-@code {
-}

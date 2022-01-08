@@ -46,9 +46,7 @@ namespace UEHVote.Pages.NominationEdit
             organizations = await IOrganizationService.GetAllOrganizationsAsync();
             candidates = await ICandidateService.GetAllCandidatesAsync();
             result = candidates.ToList();
-
         }
-
         private async Task ShowResultModal()
         {
             var parameters = new ModalParameters();
@@ -79,19 +77,5 @@ namespace UEHVote.Pages.NominationEdit
             }
             ShowResultModal();
         }
-
-
-        /*private async Task ShowResultModal()
-        {
-            var parameters = new ModalParameters();
-            parameters.Add(nameof(CreateConfirm.candidate), candidate);
-            var options = new Blazored.Modal.ModalOptions()
-            {
-                HideCloseButton = true,
-                DisableBackgroundCancel = true,
-                UseCustomLayout = true,
-            };
-            ResultModal.Show<CreateConfirm>("", parameters, options);
-        }*/
     }
 }

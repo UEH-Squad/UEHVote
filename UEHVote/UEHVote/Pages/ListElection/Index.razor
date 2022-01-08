@@ -1,7 +1,10 @@
 ﻿@attribute [Route(Routes.ListElection)];
 @using System.Text.Json
 <div class="my-election container">
-    <h3>Các cuộc bình chọn</h3>
+    <div class="d-flex align-content-center">
+        <h3>Các cuộc bình chọn</h3>
+        <button class="btn btn-success" style="height:40px;margin:auto" onclick="window.location.href='tao-va-chinh-sua-cuoc-bau-cu'">Tạo bình chọn mới</button>
+    </div>
     <div class="election">
         <table class="election__table">
             <tr class="election__table--header">

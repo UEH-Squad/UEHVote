@@ -1,7 +1,7 @@
 ﻿@attribute [Route(Routes.NominationEdit)];
 <div class="container">
     <div class="title mb-5 mt-4 text-center">Thêm/chỉnh sửa đề cử</div>
-    <NominationForm />
+    <NominationForm candidate="@candidate" organizations="@organizations" elections="@elections"/>
     <div class="d-flex justify-content-between mb-5">
         <button @onclick="ShowConfirmPopUp" class="btn btn-add py-2 px-3">Thêm đề cử khác</button>
         <a href="@Routes.ListElection" class="btn btn-return py-2 px-3">Trở về cuộc bình chọn</a>

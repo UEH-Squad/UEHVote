@@ -7,7 +7,7 @@
             <img src="./img/layouttop1.png" alt="Candidate Layout" />
             <img src="./img/meomeo.png" alt="Candidate" class="position-absolute" />
             <div class="@(IsOrganizer ? "d-none" : "d-block")">
-                 @if (IsLogin)
+                 @if (IsLogin && topData is not null)
                 {
                     <button @onclick="() => Rating(topData.Id)" class="position-absolute" style="@(topData.isRated ? "background: rgba(250, 204, 20, 0.2);" : "") @(voteCount == maxVote && !topData.isRated ? "background: #E5E5E5; cursor: default;" : "")">
                         <span class="material-icons-outlined" style="@(topData.isRated ? "color: #FACC14" : "") @(voteCount == maxVote && !topData.isRated ? "background: #E5E5E5; cursor: default;" : "")">
@@ -25,8 +25,11 @@
                 }
             </div>         
         </div>
-        <h6 class="mb-0"><a href="@Routes.DetailVote" >@topData.Name</a></h6>
-        <p><span>@topData.Count</span> lượt bình chọn</p>
+        @if (topData is not null)
+        {
+            <h6 class="mb-0"><a href="@Routes.DetailVote" >@topData.Name</a></h6>
+            <p><span>@topData.Count</span> lượt bình chọn</p>
+        }
     </div>
 </div>
 

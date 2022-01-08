@@ -18,11 +18,11 @@ namespace UEHVote.Pages.NominationEdit
     {
         [Parameter]
         public Models.Candidate candidate { get; set; } = new Models.Candidate();
-        [Parameter]
-        public List<Organization> organizations { get; set; }
+        private List<string> images = new List<string>();
         [Parameter]
         public List<Models.Election> elections { get; set; }
-        private string org;
+        [Parameter]
+        public List<Organization> organizations { get; set; }
         [Inject]
         ICandidateService ICandidateService { get; set; }
         [Inject]
@@ -31,18 +31,14 @@ namespace UEHVote.Pages.NominationEdit
         NavigationManager NavigationManager { get; set; }
         [Inject]
         IUploadService IUploadService { get; set; }
-        [Inject]
-        IOrganizationService IOrganizationService { get; set; }
         List<string> image { get; set; } = new List<string>();
         private bool isChangeFile = false;
-
         private Nomination nomination = new() { };
         private IReadOnlyList<IBrowserFile> uploadFile;
         [CascadingParameter]
         public BlazoredModalInstance Modal { get; set; }
         [CascadingParameter]
         public IModalService ResultModal { get; set; }
-
         private async Task CloseModal()
         {
             await Modal.CloseAsync();
@@ -78,10 +74,16 @@ namespace UEHVote.Pages.NominationEdit
                 }
             }
         }
-
         protected async Task CreateCandidate()
         {
-
+            if(elections is not null)
+            {
+                candidate.ElectionId = elections[elections.Count - 1].Id;
+            }
+            else
+            {
+                candidate.ElectionId = elections[elections.Count - 1].Id;
+            }
             await ICandidateService.InsertCandidate(candidate);
             if (image.Count != 0)
             {
@@ -92,7 +94,6 @@ namespace UEHVote.Pages.NominationEdit
                     candidateImage.Url = item;
                     await ICandidateService.InsertCandidateImage(candidateImage);
                 }
-
             }
             ShowResultModal();
         }

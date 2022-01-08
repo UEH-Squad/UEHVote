@@ -49,6 +49,7 @@ namespace UEHVote
             services.AddTransient<IUploadService, UploadService>();
             services.AddTransient<ICandidateService, CandidateService>();
             services.AddTransient<IOrganizationService, OrganizationService>();
+            services.AddTransient<IActivityVoteService, ActivityVoteService>();
             services.AddTransient<IUserService, UserService>();
             services.AddBlazoredModal();
         }

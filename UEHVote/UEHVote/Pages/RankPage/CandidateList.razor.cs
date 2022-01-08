@@ -66,11 +66,9 @@ namespace UEHVote.Pages.RankPage
 
             Modal.Show<VoteSuccess>("", options);
         }
-
         private void Rating(int id)
         {
             var item = fakeDatas.Find(x => x.Id == id);
-
             if (item.isRated)
             {
                 item.isRated = false;
@@ -87,28 +85,54 @@ namespace UEHVote.Pages.RankPage
                 }
             }
         }
-
         protected override async Task OnInitializedAsync()
         {
             listElections = await IElectionService.GetAllElectionsAsync();
             listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
-            listVotedCandidates = await IActivityVoteService.GetAllVotesAsync();
+            listVotedCandidates = await IActivityVoteService.GetAllVotedCandidateAsync();
             listCandidates = await ICandidateService.GetAllCandidatesAsync();
-            if (listCandidates != null)
+            if (listCandidates != null) 
             {
-                foreach (var candidate in listCandidates)
+                GetInfomationCandidate();
+                GetRankCandidate();
+                topData = fakeDatas.First();
+            }
+        }
+        void GetInfomationCandidate()
+        {
+            int i = 0;
+            foreach (var candidate in listCandidates)
+            {
+                fakeDatas.Add(new Fakedata()
                 {
-                        fakeDatas.Add(new Fakedata()
-                        {
-                            Id = candidate.Id,
-                            Name = candidate.Name,
-                            Count = IActivityVoteService.GetQuantityVoted(candidate,listVotedCandidates),
-                            Rank = ((short)voteCount)
-                        });
-                    
-                    topData = fakeDatas.First();
+                    Id = candidate.Id,
+                    Name = candidate.Name,
+                    Count = IActivityVoteService.GetQuantityVotedCandidate(candidate, listVotedCandidates),
+                    Rank = i + 1
+                });
+                if (i < listCandidates.Count)
+                {
+                    i++;
                 }
             }
+        }
+        void GetRankCandidate()
+        {
+            for(int i=0;i<fakeDatas.Count;i++)
+            {
+                for(int j=i+1;j<fakeDatas.Count;j++)
+                {
+                    if(fakeDatas[i].Count<fakeDatas[j].Count)
+                    {
+                        int rank = fakeDatas[i].Rank;
+                        fakeDatas[i].Rank = fakeDatas[j].Rank;
+                        fakeDatas[j].Rank = rank;
+                        Fakedata kt = fakeDatas[i];
+                        fakeDatas[i] = fakeDatas[j];
+                        fakeDatas[j] = kt;
+                    }
+                }    
+            }    
         }
 
     }
