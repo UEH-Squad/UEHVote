@@ -17,14 +17,15 @@ namespace UEHVote.Data.Services
         /// <summary>
         /// Handle Organization
         /// </summary>
-        private readonly ApplicationDbContext _db;
-        public OrganizationService(ApplicationDbContext db)
+        private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
+        public OrganizationService(IDbContextFactory<ApplicationDbContext> dbContextFactory)
         {
-            _db = db;
+            _dbContextFactory = dbContextFactory;
         }
         public Task<List<Organization>> GetAllOrganizationsAsync()
         {
-            return _db.Organizations.ToListAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            return context.Organizations.ToListAsync();
         }
     }
 }

@@ -11,6 +11,8 @@ namespace UEHVote.Pages.CreateElection
 {
     public partial class CreateElectionForm : ComponentBase
     {
+        [Parameter]
+        public string currentId { get; set; }
         [Parameter] 
         public Models.Election election { get; set; } = new Models.Election();
         [Parameter]
@@ -25,8 +27,6 @@ namespace UEHVote.Pages.CreateElection
         NavigationManager NavigationManager { get; set; }
         [Inject]
         IUploadService IUploadService { get; set; }
-        [Inject]
-        IUserService IUserService { get; set; }
         [Inject] 
         IOrganizationService IOrganizationService { get; set; }
         List<string> image { get; set; } = new List<string>();

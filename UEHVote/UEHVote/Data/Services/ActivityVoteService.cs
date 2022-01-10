@@ -15,19 +15,21 @@ namespace UEHVote.Data.Services
         /// Handle ActivityVote
         /// </summary>
         /// <returns></returns>
-        private readonly ApplicationDbContext _db;
-        public ActivityVoteService(ApplicationDbContext db)
+        private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
+        public ActivityVoteService(IDbContextFactory<ApplicationDbContext> dbContextFactory)
         {
-            _db = db;
+            _dbContextFactory = dbContextFactory;
         }
         public Task<List<VotedCandidate>> GetAllVotedCandidateAsync()
         {
-            return _db.VotedCandidates.ToListAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            return context.VotedCandidates.ToListAsync();
 
         }
         public Task<List<Vote>> GetAllVotesAsync()
         {
-            return _db.Votes.ToListAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            return context.Votes.ToListAsync();
         }
         public int GetQuantityVotedCandidate(Candidate candidate, List<VotedCandidate> listVotedCandidates)
         {

@@ -35,7 +35,6 @@ namespace UEHVote.Pages.ListElection
         [Inject] private IOrganizationService IOrganizationService { get; set; }
         [Inject] private ICandidateService ICandidateService { get; set; }
         [CascadingParameter] public IModalService Modal { get; set; }
-
         class FakeData
         {
             public int Id { get; set; }

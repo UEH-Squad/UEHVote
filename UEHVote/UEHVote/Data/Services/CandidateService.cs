@@ -16,37 +16,47 @@ namespace UEHVote.Data.Services
         /// <summary>
         ///  HANDLE CANDIDATE
         /// </summary>
-        private readonly ApplicationDbContext _db;
-        public CandidateService(ApplicationDbContext db)
+        private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
+        public CandidateService(IDbContextFactory<ApplicationDbContext> dbContextFactory)
         {
-            _db = db;
+            _dbContextFactory = dbContextFactory;
         }
         /// <summary>
         ///  HANDLE CANDIDATE
         /// </summary>
         public Task<List<Candidate>> GetAllCandidatesAsync()
         {
-            return _db.Candidates.ToListAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            return context.Candidates.Include(t => t.Organization).ToListAsync();
+        }
+        public Task<List<Candidate>> GetAllCandidatesById(int id)
+        {
+            var context = _dbContextFactory.CreateDbContext();
+            return context.Candidates.Where(t => t.ElectionId == id).ToListAsync();
         }
         public async Task<Candidate> GetCandidateAsync(int Id)
         {
-            Candidate candidate = await _db.Candidates.FirstOrDefaultAsync(c => c.Id.Equals(Id));
+            var context = _dbContextFactory.CreateDbContext();
+            Candidate candidate = await context.Candidates.FirstOrDefaultAsync(c => c.Id.Equals(Id));
             return candidate;
         }
         public async Task InsertCandidate(Candidate candidate)
         {
-            await _db.Candidates.AddAsync(candidate);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            await context.Candidates.AddAsync(candidate);
+            await context.SaveChangesAsync();
         }
         public async Task UpdateCandidate(Candidate candidate)
         {
-            _db.Candidates.Update(candidate);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            context.Candidates.Update(candidate);
+            await context.SaveChangesAsync();
         }
         public async Task DeleteCandidate(Candidate candidate)
         {
-            _db.Candidates.Remove(candidate);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            context.Candidates.Remove(candidate);
+            await context.SaveChangesAsync();
         }
         /// <summary>
         /// HANDLE Candidate Image
@@ -54,19 +64,21 @@ namespace UEHVote.Data.Services
         /// <returns></returns>
         public Task<List<CandidateImage>> GetAllCandidateImagesAsync()
         {
-            return _db.CandidateImages.ToListAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            return context.CandidateImages.ToListAsync();
         }
-
         public async Task InsertCandidateImage(CandidateImage candidateImage)
         {
-            await _db.CandidateImages.AddAsync(candidateImage);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            await context.CandidateImages.AddAsync(candidateImage);
+            await context.SaveChangesAsync();
         }
 
         public async Task DeleteCandidateImage(CandidateImage candidateImage)
         {
-            _db.CandidateImages.Remove(candidateImage);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            context.CandidateImages.Remove(candidateImage);
+            await context.SaveChangesAsync();
         }
     }
 }

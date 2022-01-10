@@ -15,6 +15,7 @@ namespace UEHVote.Pages.CreateElection
     {
         [Parameter] 
         public Models.Election election { get; set; }
+        private List<ActivityImage> listActivityImages = new List<ActivityImage>();
         [CascadingParameter]
         public BlazoredModalInstance Modal { get; set; }
         [CascadingParameter]
@@ -23,6 +24,8 @@ namespace UEHVote.Pages.CreateElection
         IElectionService IElectionService { get; set; }
         [Inject]
         ICandidateService ICandidateService { get; set; }
+        [Inject]
+        IUploadService IUploadService { get; set; }
         [Inject]
         NavigationManager NavigationManager { get; set; }
         List<string> image { get; set; } = new List<string>();
@@ -39,7 +42,11 @@ namespace UEHVote.Pages.CreateElection
                 UseCustomLayout = true,
             }; 
             await Modal.CloseAsync();
-            await ResultModal.Show<CreateSuccess>("", options).Result;
+            await ResultModal.Show<UEHVote.Pages.CreateElection.CreateSuccess>("", options).Result;
+        }
+        protected override async Task OnInitializedAsync()
+        {
+            listActivityImages = await IElectionService.GetAllActivityImagesAsync();
         }
         protected async Task CreateElection()
         {
@@ -53,6 +60,29 @@ namespace UEHVote.Pages.CreateElection
                     activityImage.Url = item;
                     await IElectionService.InsertActivityImage(activityImage);
                 }
+            }
+            ShowResultModal();
+        }
+        protected async Task Update()
+        {
+            await IElectionService.UpdateElection(election);
+            foreach (ActivityImage item in listActivityImages)
+            {
+                if (image != null)
+                {
+                    if (election.Id == item.ElectionId)
+                    {
+                        IUploadService.RemoveImage(item.Url);
+                        await IElectionService.DeleteActivityImage(item);
+                    }
+                }
+            }
+            foreach (string item in image)
+            {
+                ActivityImage activityImage = new ActivityImage();
+                activityImage.ElectionId = Convert.ToInt32(election.Id);
+                activityImage.Url = item;
+                await IElectionService.InsertActivityImage(activityImage);
             }
             ShowResultModal();
         }

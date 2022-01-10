@@ -25,17 +25,17 @@ namespace UEHVote.Data.Services
         /// <summary>
         /// Handle User
         /// </summary>
-        private readonly ApplicationDbContext _db;
         private readonly UserManager<User> _userManager;
-
-        public UserService(ApplicationDbContext db, UserManager<User> userManager)
+        private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
+        public UserService(IDbContextFactory<ApplicationDbContext> dbContextFactory,UserManager<User> userManager)
         {
-            _db = db;
+            _dbContextFactory = dbContextFactory;
             _userManager = userManager;
         }
         public Task<List<User>> GetAllUsers()
         {
-            return _db.Users.ToListAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            return context.Users.ToListAsync();
         }
         public async Task<User> GetUserById (string userId)
         {

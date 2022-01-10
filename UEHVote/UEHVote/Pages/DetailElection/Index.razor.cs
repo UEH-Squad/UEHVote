@@ -17,13 +17,13 @@ namespace UEHVote.Pages.DetailElection
     public partial class Index: ComponentBase
     {
         Models.Election election = new Models.Election();
+        Candidate candidate = new Candidate();
         [Parameter]
         public string CurrentId { get; set; }
         [Parameter]
         public string org { get; set; }
-        private bool IsAct = true;
+        private bool isAct { get; set; } 
         private List<ActivityImage> listActivityImages { get; set; }
-        private List<Candidate> candidates { get; set; }
         private List<Organization> listOrganizations { get; set; }
         private List<Vote> listVotes { get; set; }
         private string organization { get; set; }
@@ -50,12 +50,20 @@ namespace UEHVote.Pages.DetailElection
         protected override async Task OnInitializedAsync()
         {
             election = await IElectionService.GetElectionAsync(Convert.ToInt32(CurrentId));
-            listActivityImages = await IElectionService.GetAllActivityImagesAsync();
-            candidates = await ICandidateService.GetAllCandidatesAsync();
-            listVotes = await IActivityVoteService.GetAllVotesAsync();
-            listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
-            organization =IUserService.GetOrganizationByUser(await IUserService.GetUserById(election.UserId),listOrganizations);
-            totalVote = IActivityVoteService.GetQuantityVoted(election, listVotes);
+            if (election is not null)
+            {
+                isAct = true;
+                listActivityImages = await IElectionService.GetAllActivityImagesAsync();
+                listVotes = await IActivityVoteService.GetAllVotesAsync();
+                listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
+                organization = IUserService.GetOrganizationByUser(await IUserService.GetUserById(election.UserId), listOrganizations);
+                totalVote = IActivityVoteService.GetQuantityVoted(election, listVotes);
+            }
+            if (isAct)
+            {
+                candidate = await ICandidateService.GetCandidateAsync(Convert.ToInt32(CurrentId));
+                isAct = !isAct;
+            }
         }
     }
 }

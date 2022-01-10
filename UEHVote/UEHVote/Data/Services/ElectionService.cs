@@ -15,9 +15,11 @@ namespace UEHVote.Data.Services
         /// CRUD Election
         /// </summary>
         private readonly ApplicationDbContext _db;
-        public ElectionService(ApplicationDbContext db)
+        private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
+        public ElectionService(ApplicationDbContext db,IDbContextFactory<ApplicationDbContext> dbContextFactory)
         {
             _db = db;
+            _dbContextFactory = dbContextFactory;
         }
         /// <summary>
         ///  HANDLE ELECTION
@@ -25,27 +27,32 @@ namespace UEHVote.Data.Services
         #region HANDLE ELECTION
         public Task<List<Election>> GetAllElectionsAsync()
         {
-            return  _db.Elections.ToListAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            return context.Elections.Include(t => t.User.Organization).ToListAsync();
         }
         public async Task<Election> GetElectionAsync(int Id)
         {
-            Election election = await _db.Elections.FirstOrDefaultAsync(c => c.Id.Equals(Id));
+            var context = _dbContextFactory.CreateDbContext();
+            Election election = await context.Elections.FirstOrDefaultAsync(c => c.Id.Equals(Id));
             return election;
         }
         public async Task InsertElection(Election election)
         {
-           await _db.Elections.AddAsync(election);
-           await  _db.SaveChangesAsync();
+           var context = _dbContextFactory.CreateDbContext();
+           await context.Elections.AddAsync(election);
+           await  context.SaveChangesAsync();
         }
         public async Task UpdateElection(Election election)
         {
-            _db.Elections.Update(election);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            context.Elections.Update(election);
+            await context.SaveChangesAsync();
         }
         public async Task DeleteElection(Election election)
         {
-            _db.Elections.Remove(election);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            context.Elections.Remove(election);
+            await context.SaveChangesAsync();
         }
 
         public string StatusElection(Election election)

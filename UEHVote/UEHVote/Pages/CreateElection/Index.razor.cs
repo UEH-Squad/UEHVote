@@ -20,6 +20,8 @@ namespace UEHVote.Pages.CreateElection
         [Parameter]
         public List<Organization> organizations { get; set; }
         [Parameter]
+        public string currentId { get; set; }
+        [Parameter]
         public List<Candidate> candidates { get; set; }
         [Parameter]
         public List<Candidate> result { get; set; }
@@ -31,6 +33,8 @@ namespace UEHVote.Pages.CreateElection
         private NavigationManager NavigationManager { get; set; }
         [Inject]
         private ICandidateService ICandidateService { get; set; }
+        [Inject]
+        IElectionService IElectionService { get; set; }
         private void ShowForm()
         {
             IsShowForm = !IsShowForm;
@@ -40,6 +44,10 @@ namespace UEHVote.Pages.CreateElection
             organizations = await IOrganizationService.GetAllOrganizationsAsync();
             candidates = await ICandidateService.GetAllCandidatesAsync();
             result = candidates.ToList();
+            if (currentId is not null)
+            {
+                election = await IElectionService.GetElectionAsync(Convert.ToInt32(currentId));
+            }
         }
         private async Task ShowResultModal()
         {

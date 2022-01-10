@@ -99,7 +99,7 @@
                             <td class="election__text election__text--org">@item.Org</td>
                             <td class="d-flex align-items-center flex-end election__text election__text--function @(IsOrg ? "d-block" : "d-none")">
                                 <p class="election__statusBrowse mb-0 me-5" style="color: @bgBrowse">@item.StatusBrowse</p>
-                                <a class="me-3"><span class="material-icons-outlined icon-edit">edit</span></a>
+                                <a class="me-3"><span class="material-icons-outlined icon-edit" onclick="window.location.href = '/tao-va-chinh-sua-cuoc-bau-cu/@item.Id.ToString()'">edit</span></a>
                                 <span @onclick="()=>ShowPopupDelete(item.Id)" class="material-icons-outlined icon-delete">delete</span>
                             </td>
                         </tr>

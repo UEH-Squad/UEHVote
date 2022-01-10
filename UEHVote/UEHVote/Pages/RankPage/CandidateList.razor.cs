@@ -17,25 +17,35 @@ namespace UEHVote.Pages.RankPage
     /// </summary>
     public partial class CandidateList : ComponentBase
     {
-        [CascadingParameter] 
-        public IModalService Modal { get; set; }
-        [Parameter] public bool IsLogin { get; set; }
-        [Parameter] public bool IsOrganizer { get; set; }
-        [Parameter] public bool IsAdmin { get; set; }
         private int maxVote = 3;
         private int voteCount = 0;
         private Fakedata topData;
+        [CascadingParameter] 
+        public IModalService Modal { get; set; }
+        [Parameter]
+        public bool isLogin { get; set; }
+        [Parameter]
+        public bool isOrganizer { get; set; }
+        [Parameter]
+        public bool isAdmin { get; set; }
+        [Parameter]
+        public string currentId { get; set; }
         private List<Fakedata> fakeDatas { get; set; } = new List<Fakedata>();
         private List<Models.Election> listElections { get; set; }
         private List<Organization> listOrganizations { get; set; }
         private List<VotedCandidate> listVotedCandidates { get; set; }
         private List<Models.Candidate> listCandidates { get; set; }
-        [Inject] private IJSRuntime JSRuntinme { get; set; }
-        [Inject] private IElectionService IElectionService { get; set; }
-        [Inject] private IActivityVoteService IActivityVoteService { get; set; }
-        [Inject] private IOrganizationService IOrganizationService { get; set; }
-        [Inject] private ICandidateService ICandidateService { get; set; }
-
+        [Inject] 
+        IJSRuntime JSRuntinme { get; set; }
+        [Inject]
+        IElectionService IElectionService { get; set; }
+        [Inject]
+        IActivityVoteService IActivityVoteService { get; set; }
+        [Inject] 
+        IOrganizationService IOrganizationService { get; set; }
+        [Inject] 
+        ICandidateService ICandidateService { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
         private class Fakedata
         {
             public int Id { get; set; }
@@ -52,8 +62,7 @@ namespace UEHVote.Pages.RankPage
                 DisableBackgroundCancel = true,
                 UseCustomLayout = true,
             };
-
-            Modal.Show<PopUp>("", options);
+            Modal.Show<UEHVote.Pages.RankPage.PopUp>("", options);
         }
         private async Task ShowVoteSuccess()
         {
@@ -63,7 +72,6 @@ namespace UEHVote.Pages.RankPage
                 DisableBackgroundCancel = true,
                 UseCustomLayout = true,
             };
-
             Modal.Show<VoteSuccess>("", options);
         }
         private void Rating(int id)
@@ -87,15 +95,23 @@ namespace UEHVote.Pages.RankPage
         }
         protected override async Task OnInitializedAsync()
         {
+            await GetAllData();
+            LoadingTopRank();
+        }
+        protected async Task GetAllData()
+        {
             listElections = await IElectionService.GetAllElectionsAsync();
             listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
             listVotedCandidates = await IActivityVoteService.GetAllVotedCandidateAsync();
-            listCandidates = await ICandidateService.GetAllCandidatesAsync();
-            if (listCandidates != null) 
+            listCandidates = await ICandidateService.GetAllCandidatesById(Convert.ToInt32(currentId));
+        }
+        protected void LoadingTopRank()
+        {
+            if (listCandidates != null)
             {
                 GetInfomationCandidate();
                 GetRankCandidate();
-                topData = fakeDatas.First();
+                topData = fakeDatas.FirstOrDefault();
             }
         }
         void GetInfomationCandidate()
@@ -134,6 +150,9 @@ namespace UEHVote.Pages.RankPage
                 }    
             }    
         }
-
+        void Cancel()
+        {
+            NavigationManager.NavigateTo("");
+        }
     }
 }
