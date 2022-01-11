@@ -4,7 +4,7 @@
     <hr/>
     <div class="text-end @(IsOrg ? "d-block" : "d-none")">
         <h4 class="text-start">Danh sách đề cử</h4>
-        <button class="btn-addElection btn mb-3">Thêm đề cử</button>
+        <button @onclick="ShowPopuEdit" class="btn-addElection btn mb-3">Thêm đề cử</button>
     </div>
 
     <div class="election">
@@ -103,4 +103,15 @@
         Modal.Show<DeleteElection>("", options);
     }
 
+    private async Task ShowPopuEdit()
+    {
+        var options = new Blazored.Modal.ModalOptions()
+        {
+            HideCloseButton = true,
+            DisableBackgroundCancel = true,
+            UseCustomLayout = true,
+        };
+
+        Modal.Show<UEHVote.Pages.NominationEdit.PopupNominationForm>("", options);
+    }
 }

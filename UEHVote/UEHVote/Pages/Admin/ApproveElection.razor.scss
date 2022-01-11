@@ -65,11 +65,19 @@
 }
 
 ::deep .ant-table-cell {
+    a {
+        color: #252733;
+    }
+
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 0.2px;
     color: #252733;
-    padding: 26px 32px;
+    padding: 26px 14px;
+
+    @include on('xxl') {
+        padding: 26px 20px;
+    }
 }
 
 ::deep .ant-table-thead > tr > th {
@@ -81,4 +89,11 @@
 }
 ::deep .ant-table-pagination{
     padding:27px 32px;
+}
+::deep .column-name {
+    width: 340px;
+
+    @include on('xxl') {
+        width: 400px;
+    }
 }

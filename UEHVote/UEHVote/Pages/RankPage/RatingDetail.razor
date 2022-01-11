@@ -16,12 +16,10 @@
             It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
         </p>
         <div class="owl-carousel owl-theme description__carousel mb-5">
-            <img src="./img/meomeo.png" alt="RatingDetail" />
-            <img src="./img/meomeo.png" alt="RatingDetail" />
-            <img src="./img/meomeo.png" alt="RatingDetail" />
-            <img src="./img/meomeo.png" alt="RatingDetail" />
-            <img src="./img/meomeo.png" alt="RatingDetail" />
-            <img src="./img/meomeo.png" alt="RatingDetail" />
+            @for(int i = 0; i<=10; i++)
+            {
+                <img src="./img/meomeo.png" alt="RatingDetail" />
+            }
         </div>
         <div class="d-flex justify-content-center">
             <iframe class="w-100" height="728" src="https://www.youtube.com/embed/ixdSsW5n2rI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -30,9 +28,9 @@
 </div>
 
 @code {
-    public bool isOrganizer = false;
-    public bool isAdmin = true;
-    public bool isDisplayDetail = false;
+    [Parameter] public bool isOrganizer { get; set; } = false;
+    [Parameter] public bool isAdmin { get; set; } = true;
+    private bool isDisplayDetail = false;
 
     private void DisplayDetail()
     {

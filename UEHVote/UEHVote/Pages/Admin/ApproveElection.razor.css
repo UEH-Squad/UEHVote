@@ -57,7 +57,12 @@
   font-size: 14px;
   letter-spacing: 0.2px;
   color: #252733;
-  padding: 26px 32px; }
+  padding: 26px 14px; }
+  ::deep .ant-table-cell a {
+    color: #252733; }
+  @media (min-width: 1400px) {
+    ::deep .ant-table-cell {
+      padding: 26px 20px; } }
 
 ::deep .ant-table-thead > tr > th {
   font-weight: 500;
@@ -68,3 +73,9 @@
 
 ::deep .ant-table-pagination {
   padding: 27px 32px; }
+
+::deep .column-name {
+  width: 340px; }
+  @media (min-width: 1400px) {
+    ::deep .column-name {
+      width: 400px; } }
