@@ -138,5 +138,9 @@
   {
     "outputFile": "Pages/CreateElection/DeleteElection.razor.css",
     "inputFile": "Pages/CreateElection/DeleteElection.razor.scss"
+  },
+  {
+    "outputFile": "Pages/NominationEdit/PopupNominationForm.razor.css",
+    "inputFile": "Pages/NominationEdit/PopupNominationForm.razor.scss"
   }
 ]
