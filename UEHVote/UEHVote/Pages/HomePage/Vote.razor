@@ -1,13 +1,10 @@
-﻿@inject IJSRuntime JSRuntinme;
-
-<div class="vote container ">
+﻿<div class="vote container ">
     <Row>
         <Col Span="12">
         <div class="vote__content">
-            <h3>Cán bộ đoàn hội xuất sắc niệm kỳ 2020- 2021 để thêm coi dài tới đâu thôi mà.</h3>
+            <h3></h3>
             <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</p>
         </div>
-       
         <Row>
             <Col Span="8">
             <div class="vote__infor">
@@ -40,7 +37,6 @@
             </Col>
         </Row>
         </Col>
-
         <Col Span="12">
         <div class="vote__img">
             <div class="vote__img__vector" style="background-color:@ColorBg">
@@ -51,17 +47,5 @@
             </div>
         </div>
         </Col>
-
     </Row>
 </div>
-
-@code {
-    [Parameter] public string ColorBg { get; set; }
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JSRuntinme.InvokeVoidAsync("uehvote.ShowMess");
-        }
-    }
-}

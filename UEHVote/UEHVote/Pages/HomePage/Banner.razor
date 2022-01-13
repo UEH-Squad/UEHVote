@@ -1,30 +1,22 @@
-﻿@inject IJSRuntime JSRuntinme;
-    
-    <div class="carousel__banner">
-        <Carousel Autoplay="TimeSpan.FromSeconds(2)">
-            <CarouselSlick>
-                <div class="banner__img"></div>
-            </CarouselSlick>
-            <CarouselSlick>
-                <div class="banner__img"></div>
-            </CarouselSlick>
-            <CarouselSlick>
-                <div class="banner__img"></div>
-            </CarouselSlick>
-            <CarouselSlick>
-                <div class="banner__img"></div>
-            </CarouselSlick>
-        </Carousel>
-    </div>
-
-
-
-    @code {
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+﻿<div class="carousel__banner">
+    <Carousel Autoplay="TimeSpan.FromSeconds(2)">
+        @if (elections is not null)
         {
-            if (firstRender)
+            int dem = 0;
+            @foreach (var item in elections)
             {
-                await JSRuntinme.InvokeVoidAsync("uehvote.ShowMess");
+                if (dem < 10)
+                {
+                    <CarouselSlick>
+                        <div class="banner__img"></div>
+                    </CarouselSlick>
+                    dem++;
+                }
+                else 
+                { 
+                    break; 
+                }
             }
         }
-    }
+    </Carousel>
+</div>

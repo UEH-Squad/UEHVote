@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using UEHVote.Data.Context;
 using UEHVote.Data.Interfaces;
 using UEHVote.Models;
+using UEHVote.Data.ViewModels;
+using AutoMapper;
 
 namespace UEHVote.Data.Services
 {
@@ -17,9 +19,11 @@ namespace UEHVote.Data.Services
         ///  HANDLE CANDIDATE
         /// </summary>
         private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
-        public CandidateService(IDbContextFactory<ApplicationDbContext> dbContextFactory)
+        private readonly IMapper _mapper;
+        public CandidateService(IDbContextFactory<ApplicationDbContext> dbContextFactory, IMapper mapper)
         {
             _dbContextFactory = dbContextFactory;
+            _mapper = mapper;
         }
         /// <summary>
         ///  HANDLE CANDIDATE
@@ -39,6 +43,13 @@ namespace UEHVote.Data.Services
             var context = _dbContextFactory.CreateDbContext();
             Candidate candidate = await context.Candidates.FirstOrDefaultAsync(c => c.Id.Equals(Id));
             return candidate;
+        }
+        public async Task<DetailVoteViewModel> GetDetailCandidateAsync(int Id)
+        {
+            DetailVoteViewModel detailVoteViewModel = new DetailVoteViewModel();
+            var context = _dbContextFactory.CreateDbContext();
+            Candidate candidate = await context.Candidates.FirstOrDefaultAsync(c => c.Id.Equals(Id));
+            return _mapper.Map(candidate, detailVoteViewModel);
         }
         public async Task InsertCandidate(Candidate candidate)
         {

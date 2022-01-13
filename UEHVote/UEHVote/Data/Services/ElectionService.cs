@@ -5,7 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using UEHVote.Data.Context;
 using UEHVote.Data.Interfaces;
+using UEHVote.Data.ViewModels;
 using UEHVote.Models;
+using AutoMapper;
 
 namespace UEHVote.Data.Services
 {
@@ -14,11 +16,11 @@ namespace UEHVote.Data.Services
         /// <summary>
         /// CRUD Election
         /// </summary>
-        private readonly ApplicationDbContext _db;
         private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
-        public ElectionService(ApplicationDbContext db,IDbContextFactory<ApplicationDbContext> dbContextFactory)
+        private readonly IMapper _mapper;
+        public ElectionService(IDbContextFactory<ApplicationDbContext> dbContextFactory,IMapper mapper)
         {
-            _db = db;
+            _mapper = mapper;
             _dbContextFactory = dbContextFactory;
         }
         /// <summary>
@@ -35,6 +37,13 @@ namespace UEHVote.Data.Services
             var context = _dbContextFactory.CreateDbContext();
             Election election = await context.Elections.FirstOrDefaultAsync(c => c.Id.Equals(Id));
             return election;
+        }
+        public async Task<DetailVoteViewModel> GetDetailVoteAsync(int Id)
+        {
+            DetailVoteViewModel detailVoteViewModel = new DetailVoteViewModel();
+            var context = _dbContextFactory.CreateDbContext();
+            Election election = await context.Elections.FirstOrDefaultAsync(c => c.Id.Equals(Id));
+            return _mapper.Map(election,detailVoteViewModel);
         }
         public async Task InsertElection(Election election)
         {
@@ -81,17 +90,20 @@ namespace UEHVote.Data.Services
         #region HANDLE ELECTION IMAGES
         public Task<List<ActivityImage>> GetAllActivityImagesAsync()
         {
-            return _db.ActivityImages.ToListAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            return context.ActivityImages.ToListAsync();
         }
         public async Task InsertActivityImage(ActivityImage activityImage)
         {
-            await _db.ActivityImages.AddAsync(activityImage);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            await context.ActivityImages.AddAsync(activityImage);
+            await context.SaveChangesAsync();
         }
         public async Task DeleteActivityImage(ActivityImage activityImage)
         {
-            _db.ActivityImages.Remove(activityImage);
-            await _db.SaveChangesAsync();
+            var context = _dbContextFactory.CreateDbContext();
+            context.ActivityImages.Remove(activityImage);
+            await context.SaveChangesAsync();
         }
         #endregion
     }

@@ -21,6 +21,7 @@ using UEHVote.Models;
 using Blazored.Modal;
 using UEHVote.Pages.CreateElection;
 using UEHVote.Data.Context;
+using AutoMapper;
 
 namespace UEHVote
 {
@@ -44,6 +45,7 @@ namespace UEHVote
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();

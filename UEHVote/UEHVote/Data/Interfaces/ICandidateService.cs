@@ -16,6 +16,7 @@ namespace UEHVote.Data.Interfaces
         Task InsertCandidate(Candidate candidate);
         Task InsertCandidateImage(CandidateImage candidateImage);
         Task<Candidate> GetCandidateAsync(int Id);
+        Task<DetailVoteViewModel> GetDetailCandidateAsync(int Id);
         Task UpdateCandidate(Candidate candidate);
         Task DeleteCandidate(Candidate candidate);
         Task DeleteCandidateImage(CandidateImage candidateImage);
