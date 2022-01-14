@@ -1,6 +1,4 @@
-﻿@inject IJSRuntime JSRuntinme;
-
-<div class="vote container">
+﻿<div class="vote container">
     <div class="row">
         <div class="col">
             <div class="vote__content">
@@ -48,14 +46,3 @@
 
     </div>
 </div>
-
-@code {
-    [Parameter] public string ColorBg { get; set; }
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JSRuntinme.InvokeVoidAsync("uehvote.ShowMess");
-        }
-    }
-}

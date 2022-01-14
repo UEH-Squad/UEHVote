@@ -1,5 +1,6 @@
 ﻿@inject MessageService _message
-
+@using UEHVote.Data.Interfaces;
+@inject IUploadService IUploadService;
 <Upload Name="avatar"
         @bind-FileList="fileList"
         ListType="picture-card"
@@ -10,7 +11,8 @@
                            previewTitle = file.FileName;
                            imgUrl = file.Url;
                        }"
-        OnChange="HandleChange">
+        OnChange="HandleChange"
+        Method="">
     <div>
         <Icon Type="plus"></Icon>
         <div className="ant-upload-text">Upload</div>
@@ -28,6 +30,9 @@
     string previewTitle = string.Empty;
     string imgUrl = string.Empty;
 
+    [Parameter]
+    public List<string> images { get; set; }
+
     List<UploadFileItem> fileList = new List<UploadFileItem>
     {
     };
@@ -38,6 +43,8 @@
         {
             fileinfo.File.Url = fileinfo.File.ObjectURL;
         }
+@*        IUploadService.SaveImageAsync(fileinfo.File, new Random().Next(0, 99).ToString());
+*@
     }
 
     public class ResponseModel

@@ -1,0 +1,51 @@
+﻿@page "/trang-ung-cu-vien"
+
+@using UEHVote.Data.ViewModels;
+@using UEHVote.Data.Interfaces;
+@using UEHVote.Models
+
+@inject ICandidateService CandidateService;
+<h1>Trang Ứng Cử Viên</h1>
+<NavLink href="/them-ung-cu-vien">Thêm ứng cử viên</NavLink>
+@if (candidates != null && candidates.Any())
+{
+    <div class="container-fluid">
+        <table class="table-bordered col-12 table-striped text-center">
+            <thead class="">
+                <tr>
+                    <th>ID</th>
+                    <th>TÊN ỨNG CỬ VIÊN</th>
+                    <th>KHOA</th>
+                    <th>THÔNG TIN CHI TIẾT</th>
+                    <th>CUỘC BÌNH CHỌN</th>
+                    <th>LƯỢT VOTE</th>
+                    <th>VIDEO</th>
+                    <th>HÌNH ẢNH</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in candidates)
+                 {
+                    <tr>
+                        <th>@item.Id</th>
+                        <th>@item.Name</th>
+                        <th>@item.Details</th>
+                        <th>@item.Video</th>
+                    </tr>
+                 }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+<h2>Chưa có ứng cử viên nào.</h2>
+}
+
+@code {
+    private List<Candidate> candidates;
+    protected async override Task OnInitializedAsync()
+    {
+        candidates = await CandidateService.GetAllCandidatesAsync();
+    }
+}

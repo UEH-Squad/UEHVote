@@ -1,7 +1,13 @@
 ﻿@attribute [Route(Routes.ListElection)];
 @using System.Text.Json
+@using UEHVote.Models;
+@using System.Linq
+
 <div class="my-election container">
-    <h3>Các cuộc bình chọn</h3>
+    <div class="d-flex align-content-center">
+        <h3>Các cuộc bình chọn</h3>
+        <button class="btn btn-success" style="height:40px;margin:auto" onclick="window.location.href='tao-va-chinh-sua-cuoc-bau-cu'">Tạo bình chọn mới</button>
+    </div>
     <div class="election">
         <table class="election__table">
             <tr class="election__table--header">
@@ -15,122 +21,91 @@
                 </th>
                 <th class="election__tilte election__tilte--status ">
                     <div class="dropdown">
-                        <p class="dropdown-toggle mb-0 d-inline-block" href="#" role="button" id="dropdown-status" data-bs-toggle="dropdown" aria-expanded="false">
+                        <p class="dropdown-toggle mb-0" href="#" role="button" id="dropdown-status" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="material-icons-outlined me-1">local_offer</i>
                             <span class="me-2 ms-1">TÌNH TRẠNG</span>
                         </p>
-
-                        <ul class="dropdown-menu" aria-labelledby="dropdown-status">                            
-                            <li><Checkbox Label="">ĐANG DIỄN RA</Checkbox></li>
-                            <li><Checkbox Label="A">GẦN KẾT THÚC</Checkbox></li>
-                            <li><Checkbox Label="">KẾT THÚC</Checkbox></li>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown-status">
+                            @foreach (var status in status)
+                            {
+                                bool CheckedStatus = false;
+                                foreach (var t in result)
+                                {
+                                    if (t.Status==status)
+                                    {
+                                        CheckedStatus = true;
+                                    }
+                                }
+                                <li><Checkbox Checked="CheckedStatus" CheckedChanged="eventArgs => { FilterStatus(status, eventArgs.ToString()); }">@status</Checkbox></li>
+                            }
                         </ul>
                     </div>
                 </th>
                 <th class="election__tilte election__tilte--org ">
                     <div class="dropdown">
-                        <p class="dropdown-toggle mb-0 d-inline-block" href="#" role="button" id="dropdown-org" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <p class="dropdown-toggle mb-0" href="#" role="button" id="dropdown-org" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="material-icons ">perm_identity</i>
                             <span class="me-2 ms-1">TỔ CHỨC</span>
                         </p>
-
-                            <ul class="dropdown-menu" aria-labelledby="dropdown-org">
-                                <li><Checkbox Label="">Khoa Công nghệ thông tin kinh doanh</Checkbox></li>
-                                <li><Checkbox Label="">Viện Du lịch</Checkbox></li>
-                                <li><Checkbox Label="">Khoa Kế toán</Checkbox></li>
-                                <li><Checkbox Label="">Khoa Kinh tế</Checkbox></li>
-                                <li><Checkbox Label="">Khoa Quản trị</Checkbox></li>
-                            </ul>
-                        </div>
-
-                    </th>
-                    <th class="election__tilte election__tilte--function @(IsOrg ? "d-block" : "d-none")"></th>
-
-                </tr>
-            </table>
-        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown-org">
+                            @if (result is not null)
+                            {
+                                @foreach (var item in listOrganizations)
+                                {
+                                    bool Checked = false;
+                                    foreach (var t in result)
+                                    {
+                                        if (t.Org != null && t.Org.Contains(item.Name))
+                                        {
+                                            Checked = true;
+                                        }
+                                    }
+                                    <li><Checkbox Checked="Checked" CheckedChanged="eventArgs => { FilterOrg(item.Name,eventArgs.ToString()); }">@item.Name</Checkbox></li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </th>
+            </tr>
+        </table>
         <div class="election__table--body">
             <table class="election__table">
-                @foreach (var item in listVote)
+                @if (result != null)
                 {
-
-                    switch (item.Status)
+                    @foreach (var item in result)
                     {
-                        case "ĐANG DIỄN RA": bg = "#06D295"; break;
-                        case "GẦN KẾT THÚC": bg = "#ECAA00"; break;
-                        case "KẾT THÚC": bg = "#FF4444"; break;
+                        switch (item.Status)
+                        {
+                            case "ĐANG DIỄN RA":
+                                bg = "#06D295";
+                                break;
+                            case "GẦN KẾT THÚC":
+                                bg = "#ECAA00";
+                                break;
+                            case "KẾT THÚC":
+                                bg = "#FF4444";
+                                break;
+                        }
+                        switch (item.StatusBrowse)
+                        {
+                            case "Đã duyệt": bgBrowse = "#18A0FB"; break;
+                            case "Chờ duyệt": bgBrowse = "#FACC14"; break;
+                            case "Từ chối": bgBrowse = "#FC0C0C"; break;
+                        }
+                        <tr>
+                            <td class="election__text election__text--name" onclick="window.location.href='/chi-tiet-de-cu/@item.Id'">@item.Name</td>
+                            <td class="election__text election__text--quantity">@item.Quantity</td>
+                            <td class="election__text election__text--status"><span style="background-color: @bg">@item.Status</span></td>
+                            <td class="election__text election__text--org">@item.Org</td>
+                            <td class="d-flex align-items-center flex-end election__text election__text--function @(IsOrg ? "d-block" : "d-none")">
+                                <p class="election__statusBrowse mb-0 me-5" style="color: @bgBrowse">@item.StatusBrowse</p>
+                                <a class="me-3"><span class="material-icons-outlined icon-edit" onclick="window.location.href = '/tao-va-chinh-sua-cuoc-bau-cu/@item.Id.ToString()'">edit</span></a>
+                                <span @onclick="()=>ShowPopupDelete(item.Id)" class="material-icons-outlined icon-delete">delete</span>
+                            </td>
+                        </tr>
                     }
-                    switch (item.StatusBrowse)
-                    {
-                        case "Đã duyệt": bgBrowse = "#18A0FB"; break;
-                        case "Chờ duyệt": bgBrowse = "#FACC14"; break;
-                        case "Từ chối": bgBrowse = "#FC0C0C"; break;
-                    }
-                    <tr>
-                        <td class="election__text election__text--name"><a href="@Routes.DetailVote">@item.Name</a></td>
-                        <td class="election__text election__text--quantity">@item.Quantity</td>
-                        <td class="election__text election__text--status"><span style="background-color: @bg">@item.Status</span></td>
-                        <td class="election__text election__text--org">@item.Org</td>
-                        <td class="d-flex align-items-center flex-end election__text election__text--function @(IsOrg ? "d-block" : "d-none")">
-                            <p class="election__statusBrowse mb-0 me-5" style="color: @bgBrowse">Đã duyệt</p>
-                            <a class="me-3"><span class="material-icons-outlined icon-edit">edit</span></a>
-                            <span @onclick="ShowPopupDelete" class="material-icons-outlined icon-delete">delete</span>
-                        </td>
-                    </tr>
                 }
             </table>
         </div>
-        
-
     </div>
-@code {
-    private string bg;
-    private string bgBrowse;
-    public bool IsOrg = true;
-
-    class FakeData
-    {
-        public int Id { get; set; }
-        public int Quantity { get; set; }
-        public string Name { get; set; }
-        public string Status { get; set; }
-        public string Org { get; set; }
-        public string StatusBrowse { get; set; }
-    }
-    private List<FakeData> listVote = new();
-    protected override void OnInitialized()
-    {
-
-        for (int i = 1; i < 14; i++)
-        {
-            listVote.Add(new FakeData()
-            {
-                Id = i,
-                Name = "Hoạt động xuất sắc năm 2022 ",
-                Quantity = 10,
-                Status = "ĐANG DIỄN RA",
-                Org = "Khoa Công nghệ Thông tin Kinh doanh",
-                StatusBrowse = "Chờ duyệt"
-            });
-        }
-    }
-
-    void OnChange(string[] checkedValues)
-    {
-        Console.WriteLine($"checked = {JsonSerializer.Serialize(checkedValues)}");
-    }
-
-    [CascadingParameter] public IModalService Modal { get; set; }
-    private async Task ShowPopupDelete()
-    {
-        var options = new Blazored.Modal.ModalOptions()
-        {
-            HideCloseButton = true,
-            DisableBackgroundCancel = true,
-            UseCustomLayout = true,
-        };
-
-        Modal.Show<PopupDelete>("", options);
-    }
-
-}
+</div>

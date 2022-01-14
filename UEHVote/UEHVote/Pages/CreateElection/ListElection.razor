@@ -1,12 +1,9 @@
-﻿
-@using System.Text.Json
-<div class="my-election container">
-    <hr/>
+﻿<div class="my-election container">
+    <hr />
     <div class="text-end @(IsOrg ? "d-block" : "d-none")">
         <h4 class="text-start">Danh sách đề cử</h4>
-        <button @onclick="ShowPopuEdit" class="btn-addElection btn mb-3">Thêm đề cử</button>
+        <button @onclick="ShowPopupEdit" class="btn-addElection btn mb-3">Thêm đề cử</button>
     </div>
-
     <div class="election">
         <div class="election__table--header">
             <table class="election__table">
@@ -21,97 +18,45 @@
                                 <i class="material-icons ">perm_identity</i>
                                 <span class="me-2 ms-1">TỔ CHỨC</span>
                             </p>
-
                             <ul class="dropdown-menu" aria-labelledby="dropdown-org">
-                                <li><Checkbox Label="">Khoa Công nghệ thông tin kinh doanh</Checkbox></li>
-                                <li><Checkbox Label="">Viện Du lịch</Checkbox></li>
-                                <li><Checkbox Label="">Khoa Kế toán</Checkbox></li>
-                                <li><Checkbox Label="">Khoa Kinh tế</Checkbox></li>
-                                <li><Checkbox Label="">Khoa Quản trị</Checkbox></li>
-                            </ul>
+                                @if (organizations != null)
+                                {
+                                    @foreach (var item in organizations)
+                                    {
+                                        bool Checked = false;
+                                        foreach (var t in result)
+                                        {
+                                            if (t.Organization.Name.Contains(item.Name))
+                                            {
+                                                Checked = true;
+                                            }
+                                        }
+                                    <li><Checkbox Checked="Checked" CheckedChanged="eventArgs => { FilterOrg(item.Name, eventArgs.ToString()); }">@item.Name</Checkbox></li>}
+                                }
+                            </ul>    
                         </div>
-
                     </th>
-
                 </tr>
             </table>
         </div>
         <div class="election__table--body">
             <table class="election__table w-100">
-                @foreach (var item in listVote)
+                @if (candidates != null)
                 {
-                    <tr>
-                        <td class="election__text election__text--name">@item.Name</td>
-                        <td class="election__text election__text--org">@item.Org</td>
-                        <td class="d-flex align-items-center flex-end election__text election__text--function">
-                            <a class="me-3"><span class="material-icons-outlined icon-edit">edit</span></a>
-                            <span @onclick="ShowPopupDelete" class="material-icons-outlined icon-delete">delete</span>
-                        </td>
-                    </tr>
+                    @foreach (var item in result)
+                    {
+                        <tr>
+                            <td class="election__text election__text--name">@item.Name</td>
+                            <td class="election__text election__text--org">@item.Organization.Name</td>
+                            <td class="d-flex align-items-center flex-end election__text election__text--function">
+                                <a class="me-3"><span class="material-icons-outlined icon-edit">edit</span></a>
+                                <span @onclick="() => ShowPopupDelete(item.Id)" class="material-icons-outlined icon-delete">delete</span>
+                            </td>
+                        </tr>
+                    }
                 }
             </table>
         </div>
-
-
     </div>
 </div>
-@code {
-    private string bg;
-    [Parameter] public bool IsOrg { get; set; } = true;
 
-    class FakeData
-    {
-        public int Id { get; set; }
-        public int Quantity { get; set; }
-        public string Name { get; set; }
-        public string Status { get; set; }
-        public string Org { get; set; }
-
-    }
-    private List<FakeData> listVote = new();
-    protected override void OnInitialized()
-    {
-
-        for (int i = 1; i < 14; i++)
-        {
-            listVote.Add(new FakeData()
-            {
-                Id = i,
-                Name = "Hoạt động xuất sắc năm 2022 ",
-                Quantity = 10,
-                Status = "ĐANG DIỄN RA",
-                Org = "Khoa Công nghệ Thông tin Kinh doanh",
-            });
-        }
-    }
-
-    void OnChange(string[] checkedValues)
-    {
-        Console.WriteLine($"checked = {JsonSerializer.Serialize(checkedValues)}");
-    }
-
-    [CascadingParameter] public IModalService Modal { get; set; }
-    private async Task ShowPopupDelete()
-    {
-        var options = new Blazored.Modal.ModalOptions()
-        {
-            HideCloseButton = true,
-            DisableBackgroundCancel = true,
-            UseCustomLayout = true,
-        };
-
-        Modal.Show<DeleteElection>("", options);
-    }
-
-    private async Task ShowPopuEdit()
-    {
-        var options = new Blazored.Modal.ModalOptions()
-        {
-            HideCloseButton = true,
-            DisableBackgroundCancel = true,
-            UseCustomLayout = true,
-        };
-
-        Modal.Show<UEHVote.Pages.NominationEdit.PopupNominationForm>("", options);
-    }
-}

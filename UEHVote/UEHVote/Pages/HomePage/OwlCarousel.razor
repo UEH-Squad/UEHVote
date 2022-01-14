@@ -1,49 +1,29 @@
-﻿@inject IJSRuntime JSRuntinme;
-
-<div class="container">
+﻿<div class="container">
     <h3 class="text">CÁC CUỘC BÌNH CHỌN <span class="yellow">ĐANG</span> DIỄN RA</h3>
     <div class="owl-carousel owl-theme">
-            @foreach (var item in imgDetail)
+        @if (elections is not null)
+        {
+            int i = 0;
+
+            @foreach (var item in elections)
             {
-                <div class="item px-2 py-3">
-                    <img class="w-100" src="@item.Img" />
-                    <div class="item_content">
-                        <h3>Chương trình xuất sắc trong năm 2021</h3>
-                        <p class="mb-4">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
-                        <div class="d-flex">
-                            <p class="content--left text-countdown">Còn <span class="blue">18</span> ngày</p> 
-                            <p class="content--right mx-1 text-countdown"><span class="yellow">14440</span> lượt bình chọn</p>
-                        </div>                        
+                if (i < 10 && i<elections.Count)
+                {
+                    <div class="item px-2 py-3">
+                        <img class="w-100" src="@item.Banner" />
+                        <div class="item_content">
+                            <h3 onclick="window.location.href='/chi-tiet-de-cu/@item.Id.ToString()'" style="cursor:pointer">@item.Name</h3>
+                            <p>@item.Details</p>
+                            <div class="d-flex justify-content-between">
+                                <p class="content--left">Còn <span class="blue">@((item.FinishDate.Date-DateTime.Now.Date).Days)</span> ngày</p>
+                                <p class="content--right"><span class="yellow">14440</span> lượt bình chọn</p>
+                            </div>                        
+                        </div>
                     </div>
-                </div>
+                    i++;
+                }
             }
+         }
     </div>
 </div>
 
-@code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JSRuntinme.InvokeVoidAsync("uehvote.DetailVoteCarousel");
-        }
-    }
-    private bool IsAct = true;
-    class FakeData
-    {
-        public int Id { get; set; }
-        public string Img { get; set; }
-    }
-    private List<FakeData> imgDetail = new();
-    protected override void OnInitialized()
-    {
-        for (int i = 1; i < 7; i++)
-        {
-            imgDetail.Add(new FakeData()
-            {
-                Id = i,
-                Img ="./img/chương-trình"+ i + ".png",
-            });
-        }
-    }
-}
