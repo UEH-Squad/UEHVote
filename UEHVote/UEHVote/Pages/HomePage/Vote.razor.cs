@@ -11,7 +11,7 @@ namespace UEHVote.Pages.HomePage
     public partial class Vote:ComponentBase
     {
         [Inject]
-        IJSRuntime JSRuntinme { get; set; }
+        IJSRuntime JSRuntime { get; set; }
         [Parameter] 
         public string ColorBg { get; set; }
         [Inject]
@@ -21,7 +21,7 @@ namespace UEHVote.Pages.HomePage
         {
             if (firstRender)
             {
-                await JSRuntinme.InvokeVoidAsync("uehvote.ShowMess");
+                await JSRuntime.InvokeVoidAsync("uehvote.ShowMess");
             }
         }
         protected override async Task OnInitializedAsync()

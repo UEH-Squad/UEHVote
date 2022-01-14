@@ -48,6 +48,17 @@ namespace UEHVote.Pages.CreateElection
             };
             Modal.Show<UEHVote.Pages.CreateElection.DeleteElection>("",parameters,options);
         }
+        private async Task ShowPopupEdit()
+        {
+            var options = new Blazored.Modal.ModalOptions()
+            {
+                HideCloseButton = true,
+                DisableBackgroundCancel = true,
+                UseCustomLayout = true,
+            };
+
+            Modal.Show<UEHVote.Pages.NominationEdit.PopupNominationForm>("", options);
+        }
         void FilterOrg(string key, object checkedValue)
         {
             List<Candidate> list = candidates.Where(t => t.Organization.Name == key).Select(t => t).ToList();
