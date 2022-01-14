@@ -86,3 +86,6 @@
         opacity: 0.73; }
     ::deep .owl-nav .owl-next:hover {
       background: none; }
+
+.text-countdown {
+  font-weight: 600 !important; }
