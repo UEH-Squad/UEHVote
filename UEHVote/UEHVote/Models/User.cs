@@ -13,7 +13,7 @@ namespace UEHVote.Models
         public string FullName { get; set; }
         public string Batch { get; set; }
         [ForeignKey(nameof(Organization))]
-        public int OrganizationId { get; set; }
+        public int? OrganizationId { get; set; }
         public virtual Organization Organization { get; set; }
         public virtual ICollection<Election> Elections { get; set; }
         public virtual ICollection<Vote> Votes { get; set; }
