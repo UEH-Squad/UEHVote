@@ -104,15 +104,12 @@
     "inputFile": "Pages/NominationEdit/ConfirmPopUp.razor.scss"
   },
   {
-<<<<<<< HEAD
     "outputFile": "Pages/NominationEdit/ResultPopUp.razor.css",
     "inputFile": "Pages/NominationEdit/ResultPopUp.razor.scss"
-    //"outputFile": "Pages/Admin/ApproveConfirm.razor.css",
-    //"inputFile": "Pages/Admin/ApproveConfirm.razor.scss"
-=======
+  },
+  {
     "outputFile": "Pages/Admin/ApproveConfirm.razor.css",
     "inputFile": "Pages/Admin/ApproveConfirm.razor.scss"
->>>>>>> 7cc00e01599922dad6d9e521f3122d67d9b126e6
   },
   {
     "outputFile": "Pages/ListElection/Index.razor.css",
@@ -149,5 +146,9 @@
   {
     "outputFile": "Pages/NominationEdit/PopupNominationForm.razor.css",
     "inputFile": "Pages/NominationEdit/PopupNominationForm.razor.scss"
+  },
+  {
+    "outputFile": "Shared/LoginDisplay.razor.css",
+    "inputFile": "Shared/LoginDisplay.razor.scss"
   }
 ]
