@@ -108,3 +108,24 @@
         .my-navbar .my-collapse .my-collapse__login-area {
           flex-direction: row;
           margin-left: 20px; } }
+
+.menu__btn__login {
+    font-size: 1.5rem;
+    padding: 20px;
+}
+    .menu__btn__login button {
+        padding: 5px 20px;
+        background-color: #18A0FB;
+        color: #fff;
+        border: 0px;
+        border-radius: 2px;
+    }
+    .menu__btn__login img {
+        width: 50px;
+        border-radius: 50%;
+    }
+
+.drop__down {
+    font-size: 1.5rem;
+    margin-top: 13px;
+}

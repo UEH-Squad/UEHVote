@@ -13,17 +13,21 @@
                 </span>
             </button>
         </div>
-        <div id="navbarSupportedContent" class="collapse navbar-collapse style-collapse bg-white my-collapse">
-            <ul class="navbar-nav navbar-list mb-4 mb-xl-0 text-center fw-bold my-collapse__list">
-                <li class="nav-item">
-                    <NavLink href="@Routes.HomePage" Match="NavLinkMatch.All" class=" nav-link  text-decoration-none mx-2 mx-xxl-4  py-2 py-lg-3 position-relative my-collapse__list__link">Trang chủ</NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink href="@Routes.ListElection" class="nav-link text-decoration-none mx-2 mx-xxl-4  py-2 py-lg-3 position-relative my-collapse__list__link">Danh sách bình chọn</NavLink>
-                </li>
-            </ul>
+        <div id="navbarSupportedContent" class="collapse navbar-collapse style-collapse bg-white my-collapse d-flex justify-content-between" >
+            <div>
+                <ul class="navbar-nav navbar-list mb-4 mb-xl-0 text-center fw-bold my-collapse__list">
+                    <li class="nav-item">
+                        <NavLink href="@Routes.HomePage" Match="NavLinkMatch.All" class=" nav-link  text-decoration-none mx-2 mx-xxl-4  py-2 py-lg-3 position-relative my-collapse__list__link">Trang chủ</NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink href="@Routes.ListElection" class="nav-link text-decoration-none mx-2 mx-xxl-4  py-2 py-lg-3 position-relative my-collapse__list__link">Danh sách bình chọn</NavLink>
+                    </li>
+                </ul>
+            </div>
+           
+            
         </div>
-
+        <LoginDisplay/>
     </div>
 </nav>
 
