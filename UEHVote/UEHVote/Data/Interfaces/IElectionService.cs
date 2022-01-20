@@ -14,6 +14,7 @@ namespace UEHVote.Data.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<List<Election>> GetAllElectionsAsync();
+        List<DetailVoteViewModel> GetAllElection();
         Task<List<ActivityImage>> GetAllActivityImagesAsync();
         Task InsertElection(Election election);
         Task InsertActivityImage(ActivityImage activityImage);

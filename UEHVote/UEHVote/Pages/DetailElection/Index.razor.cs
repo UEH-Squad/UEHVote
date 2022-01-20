@@ -50,9 +50,9 @@ namespace UEHVote.Pages.DetailElection
         protected override async Task OnInitializedAsync()
         {
             isAct = true;
-            detailVoteViewModel = await IElectionService.GetDetailVoteAsync(Convert.ToInt32(CurrentId));
-            if (detailVoteViewModel is not null)
+            if (CurrentId.Contains("id=")==false)
             {
+                detailVoteViewModel = await IElectionService.GetDetailVoteAsync(Convert.ToInt32(CurrentId));
                 election = await IElectionService.GetElectionAsync(Convert.ToInt32(CurrentId));
                 detailVoteViewModel.ActivityImages = (await IElectionService.GetAllActivityImagesAsync()).Where(t=>t.ElectionId==detailVoteViewModel.Id).ToList();
                 listVotes = await IActivityVoteService.GetAllVotesAsync();
@@ -63,6 +63,7 @@ namespace UEHVote.Pages.DetailElection
             else
             {
                 isAct = !isAct;
+                CurrentId = CurrentId.Replace("id=","");
                 Candidate candidate = await ICandidateService.GetCandidateAsync(Convert.ToInt32(CurrentId));
                 votedCandidates = await IActivityVoteService.GetAllVotedCandidateAsync();
                 detailVoteViewModel = await ICandidateService.GetDetailCandidateAsync(Convert.ToInt32(CurrentId));

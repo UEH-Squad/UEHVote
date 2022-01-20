@@ -15,31 +15,32 @@ namespace UEHVote.Pages.CreateElection
         public string currentId { get; set; }
         [Parameter] 
         public Models.Election election { get; set; } = new Models.Election();
-        [Parameter]
-        public List<Organization> organizations { get; set; }
-        [Parameter]
-        public List<Candidate> candidates { get; set; }
+        private List<Organization> organizations = new List<Organization>();
         [Parameter]
         public string org { get; set; }
-        [Inject]
-        IElectionService IElectionService { get; set; }
-        [Inject]
-        NavigationManager NavigationManager { get; set; }
         [Inject]
         IUploadService IUploadService { get; set; }
         [Inject] 
         IOrganizationService IOrganizationService { get; set; }
+        
         List<string> image { get; set; } = new List<string>();
-        private bool isChangeFile = false;
-        private bool isChangeBanner = false;
         private IReadOnlyList<IBrowserFile> selectedImages;
         private IReadOnlyList<IBrowserFile> selectedBanner;
+        private IBrowserFile uploadFile;
+        protected override async Task OnInitializedAsync()
+        {
+            organizations = await IOrganizationService.GetAllOrganizationsAsync();
+        }
+      
+        private async Task HandleImageDiscarded()
+        {
+            uploadFile = null;
+        }
         private async Task OnInputFile(InputFileChangeEventArgs e)
         {
             var imageFiles = e.GetMultipleFiles();
             selectedImages = imageFiles;
             image.Clear();
-            isChangeFile = true;
             foreach (var file in imageFiles)
             {
                 if (file.ContentType != "image/jpeg")
@@ -57,7 +58,6 @@ namespace UEHVote.Pages.CreateElection
         {
             var bannerFiles = e.GetMultipleFiles();
             selectedBanner = bannerFiles;
-            isChangeBanner = true;
             foreach (var file in bannerFiles)
             {
                 if (file.ContentType != "image/jpeg")
@@ -69,6 +69,47 @@ namespace UEHVote.Pages.CreateElection
                     string x = await IUploadService.SaveImageAsync(file, Convert.ToString(election.Id));
                     if (election.Banner == null)
                     {
+                        election.Banner = election.Banner + x;
+                    }
+                }
+            }
+        }
+        private async Task OnUpdateFile(InputFileChangeEventArgs e)
+        {
+            var imageFiles = e.GetMultipleFiles();
+            selectedImages = imageFiles;
+            image.Clear();
+            foreach (var file in imageFiles)
+            {
+                if (file.ContentType != "image/jpeg")
+                {
+                    this.StateHasChanged();
+                }
+                else
+                {
+                    string x = await IUploadService.SaveImageAsync(file, Convert.ToString(election.Id));
+                    image.Add(x);
+                }
+            }
+        }
+        private async Task OnUpdateBanner(InputFileChangeEventArgs e)
+        {
+            var bannerFiles = e.GetMultipleFiles();
+            selectedBanner = bannerFiles;
+            foreach (var file in bannerFiles)
+            {
+                if (file.ContentType != "image/jpeg")
+                {
+                    this.StateHasChanged();
+                }
+                else
+                {
+                    string x = await IUploadService.SaveImageAsync(file, Convert.ToString(election.Id));
+                    if (election.Banner == null)
+                    { election.Banner = election.Banner + x; }
+                    else
+                    {
+                        election.Banner = "";
                         election.Banner = election.Banner + x;
                     }
                 }

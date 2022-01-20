@@ -1,48 +1,69 @@
-﻿<div class="vote container">
-    <div class="row">
-        <div class="col">
-            <div class="vote__content">
-                <h3>Cán bộ đoàn hội xuất sắc niệm kỳ 2020- 2021 để thêm coi dài tới đâu thôi mà.</h3>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</p>
-            </div>
-       
-            <div class="row">
-                <div class="col-4">
-                    <div class="vote__infor">                
-                        <span class='material-icons vote__icon__voted'>thumb_up_off_alt</span>              
-                        <h4 class="number__votes__voted"> 14440 </h4>
-                        <p class="sub-votes">Tổng lượt bình chọn</p>
+﻿@if (elections is not null)
+{
+    int dem = 0;
+    @foreach (var item in elections)
+    {
+        @if (dem < 3 && dem < elections.Count)
+        {
+            <div class="vote container">
+                <div class="row">
+                    <div class="col">
+                        <div class="vote__content">
+                            <h3>@item.Name</h3>
+                            <p>@item.Details</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="vote__infor">                
+                                    <span class='material-icons vote__icon__voted'>thumb_up_off_alt</span>              
+                                    <h4 class="number__votes__voted"> @IActivityVoteService.GetQuantityVoted(item,votes) </h4>
+                                    <p class="sub-votes">Tổng lượt bình chọn</p>
+                                </div>
+                            </div>
+                            <div class="col-4">   
+                                <div class="vote__infor">                
+                                    <span class="material-icons vote__icon__number">auto_awesome</span>                
+                                    <h4 class="number__votes__number"> @ICandidateService.GetAllCandidatesById(item.Id).Count </h4>
+                                    <p class="sub-votes">Đề cử</p>
+                                </div> 
+                            </div>
+                            <div class="col-4">   
+                                <div class="vote__infor">                
+                                    <span class='material-icons vote__icon__date'>date_range</span>                
+                                    <h4 class="number__votes__date"> @((item.FinishDate.Date-item.StartDate.Date).Days) </h4>
+                                    <p class="sub-votes">@(item.StartDate.ToString()+" - "+item.FinishDate.ToString())</p>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="col">
+                        <div class="vote__img">
+                            @switch (dem % 2)
+                            {
+                                case 0:
+                                    {
+                                        ColorBg= "#FACC14";
+                                        break;
+                                    }
+                                case 1:
+                                    {
+                                        ColorBg= "#18A0FB";
+                                        break;
+                                    }
+                            }
+                            <div class="vote__img__vector" style="background-color:@ColorBg">
+                                <img src="./img/Vector.png" alt="Alternate Text" />
+                            </div>
+                            <div class="vote__img__avt">
+                                <img src="@item.Banner" alt="Alternate Text" />
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="col-4">   
-                    <div class="vote__infor">                
-                        <span class="material-icons vote__icon__number">auto_awesome</span>                
-                        <h4 class="number__votes__number"> 10 </h4>
-                        <p class="sub-votes">Đề cử</p>
-                    </div> 
-                </div>
-
-                <div class="col-4">   
-                    <div class="vote__infor">                
-                        <span class='material-icons vote__icon__date'>date_range</span>                
-                        <h4 class="number__votes__date"> 24 </h4>
-                        <p class="sub-votes">20/02/2021 - 20/10/2021</p>
-                    </div> 
                 </div>
             </div>
-        </div>
+            dem++;
+        }
+    }
+}
 
-        <div class="col">
-            <div class="vote__img">
-                <div class="vote__img__vector" style="background-color:@ColorBg">
-                    <img src="./img/Vector.png" alt="Alternate Text" />
-                </div>
-                <div class="vote__img__avt">
-                    <img src="./img/image 2.png" alt="Alternate Text" />
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>

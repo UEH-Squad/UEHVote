@@ -1,18 +1,18 @@
 ﻿@attribute [Route(Routes.CreateAndEditElection + "/{currentId}")];
 @attribute [Route(Routes.CreateAndEditElection)];
 <div class="text-end container">
-    <h3 class="text-center">Tạo/ chỉnh sửa cuộc bình chọn</h3>
+    <h3 class="text-center">Chỉnh sửa cuộc bình chọn</h3>
     <div class="d-flex justify-content-between">
         <h4 class="text-start">Mô tả cuộc bình chọn</h4>
         <button @onclick="ShowForm" class="btn-addElection btn mt-0 mb-3">@(IsShowForm ? "Thu" : "Mở")</button>
     </div>
 </div>
 <div class="@(IsShowForm ? "d-block" : "d-none")">
-    <CreateElectionForm election="@election" organizations="@organizations" candidates="@candidates" />
+    <CreateElectionForm election="@election" />
 </div>
-<ListElection organizations="@organizations" candidates="@candidates" result="@result" />
+<ListCandidate currentId="@currentId" Candidates="candidates" HandleCandidates="HandleCandidates"/>
 <div class="d-flex justify-content-center">
     <button class="btn btn-cancel me-3" @onclick="Cancel">Hủy</button>
-    <button type="submit" @onclick="ShowResultModal" class="btn btn-save py-2 px-3">Lưu cuộc bình chọn</button>
+    <button type="submit" @onclick="CreateOrEditElection" class="btn btn-save py-2 px-3">Lưu cuộc bình chọn</button>
 </div>
 

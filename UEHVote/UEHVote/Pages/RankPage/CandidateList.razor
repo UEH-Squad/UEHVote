@@ -1,6 +1,4 @@
-﻿@using Blazored.Modal;
-
-<div class="row mb-5 d-flex flex-wrap justify-content-around @(isAdmin ? "d-none" : "d-block")">
+﻿<div class="row mb-5 d-flex flex-wrap justify-content-around @(isAdmin ? "d-none" : "d-block")">
     <div class="col-4 d-flex flex-column align-items-center">
         <h4>Top 1</h4>
         <div class="position-relative">
@@ -27,7 +25,7 @@
         </div>
         @if (topData is not null)
         {
-            <h6 class="mb-0"><a href="@Routes.DetailElection/@topData.Id" >@topData.Name</a></h6>
+            <h6 class="mb-0"><a href="@Routes.DetailElection/@("id="+topData.Id.ToString())" >@topData.Name</a></h6>
             <p><span>@topData.Count</span> lượt bình chọn</p>
         }
     </div>
@@ -62,12 +60,11 @@
                 <img src="./img/layout.png" alt="Candidate Layout" class="position-absolute" />
                 <img src="./img/meomeo.png" alt="Candidate" />
             </div>
-            <h6 class="mt-4 mb-5 text-center"><a href="@Routes.DetailElection/@item.Id" >@item.Name</a></h6>
+            <h6 class="mt-4 mb-5 text-center"><a href="@Routes.DetailElection/@("id="+item.Id.ToString())" >@item.Name</a></h6>
         </div>
     }
 
 </div>
-
 <div class="voting-btn d-flex justify-content-center mb-5 @(isOrganizer||isAdmin ? "d-none" : "d-block")">
     <button @onclick="Cancel" class="btn me-2">Hủy</button>
     <button @onclick="ShowVoteSuccess" class="btn">Xác nhận</button>

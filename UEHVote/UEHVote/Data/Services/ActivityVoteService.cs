@@ -33,13 +33,9 @@ namespace UEHVote.Data.Services
         }
         public int GetQuantityVotedCandidate(Candidate candidate, List<VotedCandidate> listVotedCandidates)
         {
-            int total = 0;
-            foreach (var vote in listVotedCandidates)
-            {
-                if (candidate.Id == vote.CandidateId)
-                    total++;
-            }
-            return total;
+            if (candidate is null) return 0;
+            var result = listVotedCandidates.Where(t => t.CandidateId == candidate.Id).ToList();
+            return result.Count;
         }
         public int GetQuantityVoted(Election election, List<Vote> listVotes)
         {

@@ -14,7 +14,10 @@ namespace UEHVote.Pages.HomePage
         IJSRuntime JSRuntinme { get; set; }
         [Inject]
         IElectionService IElectionService { get; set; }
+        [Inject]
+        IActivityVoteService IActivityVoteService { get; set; }
         List<Models.Election> elections = new List<Models.Election>();
+        List<Models.Vote> votes = new List<Models.Vote>();
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -24,7 +27,8 @@ namespace UEHVote.Pages.HomePage
         }
         protected override async Task OnInitializedAsync()
         {
-           await SortHappingElections();
+            votes = await IActivityVoteService.GetAllVotesAsync();
+            await SortHappingElections();
         }
         protected async Task<List<Models.Election>> SortHappingElections()
         {

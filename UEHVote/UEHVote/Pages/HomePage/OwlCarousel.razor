@@ -4,7 +4,6 @@
         @if (elections is not null)
         {
             int i = 0;
-
             @foreach (var item in elections)
             {
                 if (i < 10 && i<elections.Count)
@@ -16,7 +15,7 @@
                             <p>@item.Details</p>
                             <div class="d-flex justify-content-between">
                                 <p class="content--left">Còn <span class="blue">@((item.FinishDate.Date-DateTime.Now.Date).Days)</span> ngày</p>
-                                <p class="content--right"><span class="yellow">14440</span> lượt bình chọn</p>
+                                <p class="content--right"><span class="yellow">@IActivityVoteService.GetQuantityVoted(item,votes)</span> lượt bình chọn</p>
                             </div>                        
                         </div>
                     </div>

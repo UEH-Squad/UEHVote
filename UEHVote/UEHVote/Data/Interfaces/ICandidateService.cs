@@ -11,7 +11,7 @@ namespace UEHVote.Data.Interfaces
     public interface ICandidateService
     {
         Task<List<Candidate>> GetAllCandidatesAsync();
-        Task<List<Candidate>> GetAllCandidatesById(int id);
+        List<Candidate> GetAllCandidatesById(int id);
         Task<List<CandidateImage>> GetAllCandidateImagesAsync();
         Task InsertCandidate(Candidate candidate);
         Task InsertCandidateImage(CandidateImage candidateImage);

@@ -9,6 +9,7 @@ using System.Globalization;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.JSInterop;
 using Blazored.Modal.Services;
+using Blazored.Modal;
 
 namespace UEHVote.Pages.RankPage
 {
@@ -103,7 +104,7 @@ namespace UEHVote.Pages.RankPage
             listElections = await IElectionService.GetAllElectionsAsync();
             listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
             listVotedCandidates = await IActivityVoteService.GetAllVotedCandidateAsync();
-            listCandidates = await ICandidateService.GetAllCandidatesById(Convert.ToInt32(currentId));
+            listCandidates = ICandidateService.GetAllCandidatesById(Convert.ToInt32(currentId));
         }
         protected void LoadingTopRank()
         {

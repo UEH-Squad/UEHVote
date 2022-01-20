@@ -33,15 +33,15 @@ namespace UEHVote.Data.Services
             var context = _dbContextFactory.CreateDbContext();
             return context.Candidates.Include(t => t.Organization).ToListAsync();
         }
-        public Task<List<Candidate>> GetAllCandidatesById(int id)
+        public List<Candidate> GetAllCandidatesById(int id)
         {
             var context = _dbContextFactory.CreateDbContext();
-            return context.Candidates.Where(t => t.ElectionId == id).ToListAsync();
+            return context.Candidates.Where(t => t.ElectionId == id).ToList();
         }
         public async Task<Candidate> GetCandidateAsync(int Id)
         {
             var context = _dbContextFactory.CreateDbContext();
-            Candidate candidate = await context.Candidates.FirstOrDefaultAsync(c => c.Id.Equals(Id));
+            Candidate candidate = await context.Candidates.FirstOrDefaultAsync(c => c.Id==Id);
             return candidate;
         }
         public async Task<DetailVoteViewModel> GetDetailCandidateAsync(int Id)

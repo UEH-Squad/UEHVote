@@ -32,6 +32,12 @@ namespace UEHVote.Data.Services
             var context = _dbContextFactory.CreateDbContext();
             return context.Elections.Include(t => t.User.Organization).ToListAsync();
         }
+        public List<DetailVoteViewModel> GetAllElection()
+        {
+            var context = _dbContextFactory.CreateDbContext();
+            List<Election> elections = context.Elections.Include(t => t.User.Organization).ToList();
+            return _mapper.Map<List<Election>, List<DetailVoteViewModel>>(elections);
+        }
         public async Task<Election> GetElectionAsync(int Id)
         {
             var context = _dbContextFactory.CreateDbContext();
