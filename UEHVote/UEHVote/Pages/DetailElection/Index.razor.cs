@@ -47,14 +47,25 @@ namespace UEHVote.Pages.DetailElection
                 await JSRuntinme.InvokeVoidAsync("uehvote.DetailVoteCarousel");
             }
         }
+        public bool IsNumber(string pValue)
+        {
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         protected override async Task OnInitializedAsync()
         {
             isAct = true;
-            if (CurrentId.Contains("id=")==false)
+            if (CurrentId.Contains("id=") == false)
             {
+                if (!IsNumber(CurrentId)) return;
                 detailVoteViewModel = await IElectionService.GetDetailVoteAsync(Convert.ToInt32(CurrentId));
                 election = await IElectionService.GetElectionAsync(Convert.ToInt32(CurrentId));
-                detailVoteViewModel.ActivityImages = (await IElectionService.GetAllActivityImagesAsync()).Where(t=>t.ElectionId==detailVoteViewModel.Id).ToList();
+                if (election is null) return;
+                detailVoteViewModel.ActivityImages = (await IElectionService.GetAllActivityImagesAsync()).Where(t => t.ElectionId == detailVoteViewModel.Id).ToList();
                 listVotes = await IActivityVoteService.GetAllVotesAsync();
                 listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
                 detailVoteViewModel.Organization = IUserService.GetOrganizationByUser(await IUserService.GetUserById(election.UserId), listOrganizations);
@@ -63,12 +74,14 @@ namespace UEHVote.Pages.DetailElection
             else
             {
                 isAct = !isAct;
-                CurrentId = CurrentId.Replace("id=","");
+                CurrentId = CurrentId.Replace("id=", "");
+                if (!IsNumber(CurrentId)) return;
                 Candidate candidate = await ICandidateService.GetCandidateAsync(Convert.ToInt32(CurrentId));
+                if (candidate is null) return;
                 votedCandidates = await IActivityVoteService.GetAllVotedCandidateAsync();
                 detailVoteViewModel = await ICandidateService.GetDetailCandidateAsync(Convert.ToInt32(CurrentId));
                 detailVoteViewModel.TotalVoted = IActivityVoteService.GetQuantityVotedCandidate(candidate, votedCandidates);
-                detailVoteViewModel.CandidateImages = (await ICandidateService.GetAllCandidateImagesAsync()).Where(t=>t.CandidateId==detailVoteViewModel.Id).ToList();
+                detailVoteViewModel.CandidateImages = (await ICandidateService.GetAllCandidateImagesAsync()).Where(t => t.CandidateId == detailVoteViewModel.Id).ToList();
             }
         }
     }
