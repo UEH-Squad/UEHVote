@@ -119,7 +119,9 @@ namespace UEHVote.Pages.CreateElection
                 {
                     item.ElectionId = election.Id;
                     await ICandidateService.InsertCandidate(item);
-                    if (imagesCandidate.Count == 0) return;
+                }
+                if (imagesCandidate.Count != 0)
+                {
                     foreach (string image in imagesCandidate)
                     {
                         CandidateImage candidateImage = new CandidateImage();
@@ -128,6 +130,7 @@ namespace UEHVote.Pages.CreateElection
                         await ICandidateService.InsertCandidateImage(candidateImage);
                     }
                 }
+
             }
         }
         void Cancel()
