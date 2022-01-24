@@ -64,6 +64,13 @@ h4 {
         font-size: 16px;
     }
 }
+.my-poster {
+    img {
+        height: 650px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
 .my-description {
     margin-top: 40px;
 

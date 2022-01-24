@@ -14,9 +14,12 @@
     font-size: 24px;
     color: #18A0FB; }
   .my-election .btn-addElection {
+    position: absolute;
+    top: 200px;
+    right: 115px;
     width: 205px;
     height: 50px;
-    border: 1px solid #18A0FB;
+    border: 2px solid #18A0FB;
     border-radius: 2px;
     font-weight: normal;
     font-size: 16px;
@@ -53,6 +56,10 @@
     font-weight: 600;
     font-size: 12px; }
 
+.election__table .election__text {
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
 .election__table .election__tilte--name, .election__table .election__text--name {
   width: 355px; }
 
@@ -72,10 +79,10 @@
   text-align: center; }
 
 .election__table .election__tilte--status, .election__table .election__text--status {
-  width: 380px; }
+  width: 220px; }
 
 .election__table .election__tilte--status .dropdown-menu {
-  padding: 22px 35px;
+  padding: 22px 30px;
   border-radius: 10px; }
 
 .election__table .election__tilte--status li {
@@ -92,10 +99,10 @@
     border-radius: 4px; }
 
 .election__table .election__tilte--org {
-  width: 502px; }
+  width: 600px; }
 
 .election__table .election__text--org {
-  width: 500px; }
+  width: 400px; }
 
 .election__table .election__tilte--org .dropdown-menu {
   padding: 22px 35px;
@@ -120,7 +127,7 @@
   color: black; }
 
 .election__table .election__tilte--function, .election__table .election__text--function {
-  width: 200px; }
+  width: 205px; }
 
 .election__table .election__text--function .election__statusBrowse {
   font-weight: 400;

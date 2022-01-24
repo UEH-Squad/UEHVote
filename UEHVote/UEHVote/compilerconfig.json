@@ -150,5 +150,9 @@
   {
     "outputFile": "Shared/LoginDisplay.razor.css",
     "inputFile": "Shared/LoginDisplay.razor.scss"
+  },
+  {
+    "outputFile": "Pages/DetailElection/Index.razor.css",
+    "inputFile": "Pages/DetailElection/Index.razor.scss"
   }
 ]

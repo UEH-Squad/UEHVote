@@ -53,6 +53,11 @@ h4 {
     line-height: 24px;
     font-size: 16px; }
 
+.my-poster img {
+  height: 650px;
+  object-fit: cover;
+  object-position: center; }
+
 .my-description {
   margin-top: 40px; }
   .my-description p {

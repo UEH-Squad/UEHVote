@@ -17,9 +17,12 @@
     }
 
     .btn-addElection {
+        position: absolute;
+        top: 200px;
+        right: 115px;
         width: 205px;
         height: 50px;
-        border: 1px solid #18A0FB;
+        border: 2px solid #18A0FB;
         border-radius: 2px;
         font-weight: normal;
         font-size: 16px;
@@ -72,6 +75,11 @@
         }
     }
 
+    .election__text {
+        margin: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
     .election__tilte--name, .election__text--name {
         width: 355px;
     }
@@ -95,12 +103,12 @@
     }
 
     .election__tilte--status, .election__text--status {
-        width: 380px;
+        width: 220px;
     }
 
     .election__tilte--status {
         .dropdown-menu {
-            padding: 22px 35px;
+            padding: 22px 30px;
             border-radius: 10px;
         }
 
@@ -125,11 +133,11 @@
     }
 
     .election__tilte--org {
-        width: 502px;
+        width: 600px;
     }
 
     .election__text--org {
-        width: 500px;
+        width: 400px;
     }
 
     .election__tilte--org {
@@ -166,7 +174,7 @@
     }
 
     .election__tilte--function, .election__text--function {
-        width: 200px;
+        width: 205px;
     }
 
     .election__text--function {

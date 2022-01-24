@@ -6,12 +6,12 @@
 }
 
 .banner__img {
-    background:{
+    background: {
         position: center;
         repeat: no-repeat;
         size: cover;
-    }   
+    }
 
-    width: 100%;
     height: 644px;
+    object-fit: cover;
 }
