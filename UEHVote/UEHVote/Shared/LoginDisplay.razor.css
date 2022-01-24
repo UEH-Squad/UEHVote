@@ -1,0 +1,52 @@
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.menu__btn__login .menu__btn__login-img {
+  border-radius: 50%;
+  overflow: hidden; }
+  .menu__btn__login .menu__btn__login-img img {
+    width: 58px;
+    height: 58px;
+    object-fit: cover; }
+
+::deep .dropdown .dropdown-toggle {
+  font-size: 36px;
+  color: black; }
+  ::deep .dropdown .dropdown-toggle::after {
+    display: none; }
+
+::deep .dropdown .dropdown-menu {
+  padding: 26px;
+  left: -400%;
+  top: 130%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.2);
+  border-radius: 10px; }
+  ::deep .dropdown .dropdown-menu a {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 24px;
+    color: black; }
+    ::deep .dropdown .dropdown-menu a:hover {
+      color: #FACC14; }
+    ::deep .dropdown .dropdown-menu a.active {
+      background-color: transparent !important; }
+    ::deep .dropdown .dropdown-menu a:hover {
+      background-color: transparent !important; }
+
+::deep .dropdown .hr {
+  height: 1px;
+  width: 100%;
+  background: #C4C4C4;
+  margin: 23px 0; }
+
+.btn-login {
+  width: 163px;
+  height: 56px;
+  background: #18A0FB;
+  border-radius: 2px;
+  font-weight: normal;
+  font-size: 24px;
+  color: white; }
+  .btn-login:hover {
+    background: #18A0FB; }

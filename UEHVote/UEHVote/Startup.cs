@@ -19,6 +19,9 @@ using UEHVote.Data.Interfaces;
 using UEHVote.Data.Services;
 using UEHVote.Models;
 using Blazored.Modal;
+using UEHVote.Pages.CreateElection;
+using UEHVote.Data.Context;
+using AutoMapper;
 
 namespace UEHVote
 {
@@ -34,21 +37,27 @@ namespace UEHVote
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContextFactory<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddScoped(x => x.GetRequiredService<IDbContextFactory<ApplicationDbContext>>().CreateDbContext());
+            services.AddIdentity<User,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders()
                     .AddDefaultUI();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
             services.AddAntDesign();
             services.AddTransient<IElectionService,ElectionService>();
             services.AddTransient<IUploadService, UploadService>();
+            services.AddTransient<IOrganizationService,OrganizationService>();
+            services.AddTransient<ICandidateService, CandidateService>();
+            services.AddTransient<IActivityVoteService, ActivityVoteService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddBlazoredModal();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

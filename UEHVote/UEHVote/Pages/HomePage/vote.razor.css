@@ -16,7 +16,7 @@
 
 .vote__icon__voted, .vote__icon__date, .vote__icon__number {
   margin: 0px 70px 10px;
-  padding: 5px 0 15px;
+  padding: 20px;
   font-size: 1.5rem;
   color: #18A0FB;
   background: rgba(24, 160, 251, 0.2);
@@ -66,3 +66,6 @@
   border-radius: 20px;
   height: 500px;
   width: 85%; }
+
+.material-icons {
+  font-size: 2rem; }

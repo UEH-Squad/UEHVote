@@ -3,9 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using UEHVote.Models;
 
-namespace UEHVote.Data
+namespace UEHVote.Data.Context
 {
     public class ApplicationDbContext : IdentityDbContext
     {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UEHVote.Data;
+using UEHVote.Data.Context;
 
 namespace UEHVote.Migrations
 {
@@ -560,7 +560,9 @@ namespace UEHVote.Migrations
                 {
                     b.HasOne("UEHVote.Models.Organization", "Organization")
                         .WithMany("Users")
-                        .HasForeignKey("OrganizationId");
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Organization");
                 });

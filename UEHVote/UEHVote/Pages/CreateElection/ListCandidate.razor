@@ -1,0 +1,65 @@
+﻿<div class="my-election container">
+    <hr />
+    <div class="text-end @(IsOrg ? "d-block" : "d-none")">
+        <h4 class="text-start">Danh sách đề cử</h4>
+        <button @onclick="CreateCandidatePopup" class="btn-addElection btn mb-3">Thêm đề cử</button>
+    </div>
+    <div class="election">
+        <div class="election__table--header">
+            <table class="election__table">
+                <tr class="">
+                    <th class="election__tilte election__tilte--name ">
+                        <i class="material-icons me-1">perm_identity</i>
+                        <span>TÊN ĐỀ CỬ</span>
+                    </th>
+                    <th class="election__tilte election__tilte--org ">
+                        <div class="dropdown">
+                            <p class="dropdown-toggle mb-0" href="#" role="button" id="dropdown-org" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="material-icons ">perm_identity</i>
+                                <span class="me-2 ms-1">TỔ CHỨC</span>
+                            </p>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown-org">
+                                @if (organizations != null)
+                                {
+                                    @foreach (var item in organizations)
+                                    {
+                                        bool Checked = false;
+                                        if (result is null) return;
+                                        foreach (var t in result)
+                                        {
+                                            if (t.OrganizationId == item.Id)
+                                            {
+                                                Checked = true;
+                                            }
+                                        }
+                                        <li><Checkbox Checked="Checked" CheckedChanged="eventArgs => { FilterOrg(item.Id.ToString(), eventArgs.ToString()); }">@item.Name</Checkbox></li>
+                                    }
+                                }
+                            </ul>    
+                        </div>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div class="election__table--body">
+            <table class="election__table w-100">
+                @if (Candidates != null)
+                {
+                    @foreach (var item in result)
+                    {
+                        var org = organizations.Where(t => t.Id == item.OrganizationId).SingleOrDefault();
+                        <tr>
+                            <td class="election__text election__text--name">@item.Name</td>
+                            <td class="election__text election__text--org">@org.Name</td>
+                            <td class="d-flex align-items-center flex-end election__text election__text--function">
+                                <a class="me-3" @onclick="()=>EditCandidatePopup(item)"><span class="material-icons-outlined icon-edit">edit</span></a>
+                                <span @onclick="() => Delete(item)" class="material-icons-outlined icon-delete">delete</span>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

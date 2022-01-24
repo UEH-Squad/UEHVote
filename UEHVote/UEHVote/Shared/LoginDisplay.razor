@@ -1,12 +1,33 @@
 ﻿<AuthorizeView>
     <Authorized>
-        <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
-        <form method="post" action="Identity/Account/LogOut">
-            <button type="submit" class="nav-link btn btn-link">Log out</button>
-        </form>
+        <div class="menu__btn__login">
+            <div class="d-flex align-items-center">
+                <div class="menu__btn__login-img">
+                    <img src="./img/meomeo.png" alt="Alternate Text" />
+                </div>
+
+                <div class="dropdown">
+                    <i class='material-icons drop__down dropdown-toggle' role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">arrow_drop_down</i>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                        <hr />
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="material-icons-outlined me-3">
+                                    logout
+                                </i>
+                                <span>Đăng xuất</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
     </Authorized>
-    <NotAuthorized>
-        <a href="/dang-ky">Register</a>
-        <a href="/dang-nhap">Log in</a>
+    <NotAuthorized>       
+        <button class="btn-login btn">
+            Đăng nhập
+        </button>
     </NotAuthorized>
 </AuthorizeView>

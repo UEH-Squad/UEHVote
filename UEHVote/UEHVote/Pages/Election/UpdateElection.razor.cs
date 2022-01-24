@@ -14,7 +14,7 @@ namespace UEHVote.Pages.Election
     public partial class UpdateElection:ComponentBase
     {
         Models.Election election = new Models.Election();
-        List<ActivityImage> listActivityImages = new List<ActivityImage>();
+        private List<ActivityImage> listActivityImages { get; set; }
         List<string> image { get; set; } = new List<string>();
         bool disabledIsFor = false;
         bool disabledIsAllowed = false;
@@ -33,6 +33,7 @@ namespace UEHVote.Pages.Election
         protected override async Task OnInitializedAsync()
         {
             election = await IElectionService.GetElectionAsync(Convert.ToInt32(CurrentId));
+            listActivityImages = await IElectionService.GetAllActivityImagesAsync();
         }
         void ToggleDisable()
         {
@@ -42,11 +43,15 @@ namespace UEHVote.Pages.Election
         protected async Task Update()
         {
             await IElectionService.UpdateElection(election);
-            foreach(ActivityImage item in listActivityImages)
+            foreach (ActivityImage item in listActivityImages)
             {
-                if (CurrentId.Equals(Convert.ToString(item.ElectionId)))
+                if (image != null)
                 {
-                    await IElectionService.DeleteActivityImage(item);
+                    if (CurrentId == Convert.ToString(item.ElectionId))
+                    {
+                        IUploadService.RemoveImage(item.Url);
+                        await IElectionService.DeleteActivityImage(item);
+                    }
                 }
             }
             foreach (string item in image)
@@ -56,7 +61,7 @@ namespace UEHVote.Pages.Election
                 activityImage.Url = item;
                 await IElectionService.InsertActivityImage(activityImage);
             }
-            NavigationManager.NavigateTo("Election");
+            NavigationManager.NavigateTo("them-");
         }
         void Cancel()
         {
