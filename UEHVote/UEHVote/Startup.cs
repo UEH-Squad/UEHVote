@@ -42,7 +42,9 @@ namespace UEHVote
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(x => x.GetRequiredService<IDbContextFactory<ApplicationDbContext>>().CreateDbContext());
             services.AddIdentity<User,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders()
+                    .AddDefaultUI();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

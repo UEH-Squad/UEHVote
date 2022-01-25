@@ -18,6 +18,8 @@ namespace UEHVote.Data.Context
         {
             base.OnModelCreating(builder);
             builder.Entity<VotedCandidate>().HasOne(x => x.Vote).WithMany(x => x.VotedCandidates).OnDelete(DeleteBehavior.Restrict);
+
+            //builder.Entity<>
         }
         public DbSet<ActivityImage> ActivityImages { get; set; }
         public DbSet<Candidate> Candidates { get; set; }

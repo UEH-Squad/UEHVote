@@ -30,6 +30,12 @@
                     <input asp-for="Input.Password" class="form-control text-center" placeholder="Mật khẩu" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
+                @if (!ModelState.IsValid)
+                    {
+                        <div class="">
+                            <label class="text-danger">Email hoặc mật khẩu không hợp lệ.</label>
+                        </div>
+                    }
                 <div class="form-group d-flex justify-content-between">
                     <div class="checkbox">
                         <label asp-for="Input.RememberMe">
