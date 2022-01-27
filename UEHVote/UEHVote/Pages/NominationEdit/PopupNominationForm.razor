@@ -26,7 +26,7 @@
                                             }
                                         }
                                     </InputSelect>
-                                    <ValidationMessage For=@(() => candidate.Organization) />
+                                    <ValidationMessage For=@(() => candidate.OrganizationId) />
                                 </div>
                                 <div class="form-group mb-4">
                                     <div class="mb-3">
@@ -42,12 +42,11 @@
                                     <TinyMCEEditor @bind-Value="candidate.Details" />
                                     <ValidationMessage For=@(() => candidate.Details) />
                                 </div>
-
                                 <div class="form-group mb-4">
                                     <div class="mb-3">
                                         Hình ảnh đề cử
                                     </div>
-                                    <UEHVote.Shared.Components.PicturesWall />
+                                    <UEHVote.Shared.Components.PicturesWall imagesCandidate="@imagesCandidate" HandleImagesElection="HandleImagesCandidate" CurrentId="@(candidate.Id!=0?"id="+candidate.Id.ToString():"id=0")"/>
                                 </div>
 
                                 <div class="form-group mb-5">

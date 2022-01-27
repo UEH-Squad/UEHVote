@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using UEHVote.Common;
 
 namespace UEHVote.Models
 {
@@ -14,6 +15,7 @@ namespace UEHVote.Models
         [ForeignKey(nameof(Organization))]
         public int OrganizationId { get; set; }
         public string Details { get; set; }
+        [RequiredLinkValid(ErrorMessage = "Video không hợp lệ")]
         public string Video { get; set; }
         [ForeignKey(nameof(Election))]
         public int ElectionId { get; set; }

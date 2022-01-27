@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Internal;
 using UEHVote.Data.Interfaces;
 using UEHVote.Models;
+using UEHVote.Pages.NominationEdit;
 
 namespace UEHVote.Pages.CreateElection
 {
@@ -28,7 +29,15 @@ namespace UEHVote.Pages.CreateElection
         [Parameter]
         public List<Candidate> Candidates { get; set; }
         [Parameter]
-        public EventCallback<List<Candidate>> HandleCandidates { get; set; } 
+        public List<string> imagesCandidate { get; set; }
+        [Parameter]
+        public EventCallback<List<Candidate>> HandleCandidates { get; set; }
+        [Parameter]
+        public EventCallback<List<string>> HandleImagesCandidate { get; set; }
+        [Parameter]
+        public Dictionary<Candidate,List<string>> InformationCandidate { get; set; }
+        [Parameter]
+        public EventCallback<Dictionary<Candidate,List<string>>> HandleInformationCandidate { get; set; }
         [Parameter]
         public List<Organization> organizations { get; set; }
         [Parameter]
@@ -43,9 +52,20 @@ namespace UEHVote.Pages.CreateElection
         {
             Console.WriteLine($"checked = {JsonSerializer.Serialize(checkedValues)}");
         }
+        public bool IsNumber(string pValue)
+        {
+            if (pValue is null) return false;
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         protected override async Task OnInitializedAsync()
         {
             organizations = await IOrganizationService.GetAllOrganizationsAsync();
+            if (!IsNumber(currentId)) return;
             Candidates = (await ICandidateService.GetAllCandidatesAsync()).Where(t=>t.ElectionId==Convert.ToInt32(currentId)).ToList();
             result = Candidates.ToList();
             listCandidateImages = await ICandidateService.GetAllCandidateImagesAsync();
@@ -82,6 +102,8 @@ namespace UEHVote.Pages.CreateElection
         {
             var parameters = new ModalParameters();
             parameters.Add(("Candidates"), Candidates);
+            parameters.Add(("imagesCandidate"), imagesCandidate);
+            parameters.Add("InformationCandidate", InformationCandidate);
             var options = new Blazored.Modal.ModalOptions()
             {
                 HideCloseButton = true,
@@ -91,6 +113,8 @@ namespace UEHVote.Pages.CreateElection
             await Modal.Show<UEHVote.Pages.NominationEdit.PopupNominationForm>("",parameters, options).Result;
             result = Candidates.ToList();
             await HandleCandidates.InvokeAsync(Candidates);
+            await HandleImagesCandidate.InvokeAsync(imagesCandidate);
+            await HandleInformationCandidate.InvokeAsync(InformationCandidate);
             await InvokeAsync(StateHasChanged);
         }
         private async Task EditCandidatePopup(Candidate candidate)
@@ -98,6 +122,8 @@ namespace UEHVote.Pages.CreateElection
             var parameters = new ModalParameters();
             parameters.Add(("candidate"), candidate);
             parameters.Add(("Candidates"), Candidates);
+            parameters.Add(("imagesCandidate"), imagesCandidate);
+            parameters.Add("InformationCandidate", InformationCandidate);
             var options = new Blazored.Modal.ModalOptions()
             {
                 HideCloseButton = true,
@@ -107,6 +133,8 @@ namespace UEHVote.Pages.CreateElection
             await Modal.Show<UEHVote.Pages.NominationEdit.PopupNominationForm>("", parameters, options).Result;
             result = Candidates.ToList();
             await HandleCandidates.InvokeAsync(Candidates);
+            await HandleImagesCandidate.InvokeAsync(imagesCandidate);
+            await HandleInformationCandidate.InvokeAsync(InformationCandidate);
             await InvokeAsync(StateHasChanged);
         }
         void FilterOrg(string key, object checkedValue)

@@ -25,8 +25,18 @@ namespace UEHVote.Pages.RankPage
         public Models.Election election { get; set; }
         [Inject]
         IElectionService IElectionService { get; set; }
-       /* [Inject]
-        public HttpContextAccessor HttpContextAccessor { get; set; }*/
+        /* [Inject]
+         public HttpContextAccessor HttpContextAccessor { get; set; }*/
+        public bool IsNumber(string pValue)
+        {
+            if (pValue is null) return false;
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         protected override async Task OnInitializedAsync()
         {
             /*var currentUser = HttpContextAccessor.HttpContext.User;
@@ -35,6 +45,7 @@ namespace UEHVote.Pages.RankPage
                 isLogin = true;
                 isOrganizer = currentUser.IsInRole("");
             }*/
+            if (!IsNumber(CurrentId)) return;
             election = await IElectionService.GetElectionAsync(Convert.ToInt32(CurrentId));
             images=await IElectionService.GetAllActivityImagesAsync();
         }

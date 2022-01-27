@@ -75,7 +75,7 @@ namespace UEHVote.Pages.DetailElection
             {
                 isAct = !isAct;
                 CurrentId = CurrentId.Replace("id=", "");
-                if (!IsNumber(CurrentId)) return;
+                if (!IsNumber(CurrentId) || CurrentId == "") return;
                 Candidate candidate = await ICandidateService.GetCandidateAsync(Convert.ToInt32(CurrentId));
                 if (candidate is null) return;
                 votedCandidates = await IActivityVoteService.GetAllVotedCandidateAsync();

@@ -99,11 +99,22 @@ namespace UEHVote.Pages.RankPage
             await GetAllData();
             LoadingTopRank();
         }
+        public bool IsNumber(string pValue)
+        {
+            if (pValue is null) return false;
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         protected async Task GetAllData()
         {
             listElections = await IElectionService.GetAllElectionsAsync();
             listOrganizations = await IOrganizationService.GetAllOrganizationsAsync();
             listVotedCandidates = await IActivityVoteService.GetAllVotedCandidateAsync();
+            if (!IsNumber(currentId)) return;
             listCandidates = ICandidateService.GetAllCandidatesById(Convert.ToInt32(currentId));
         }
         protected void LoadingTopRank()

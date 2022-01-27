@@ -1,18 +1,17 @@
-﻿@inject MessageService _message
-@using UEHVote.Data.Interfaces;
-@inject IUploadService IUploadService;
-<Upload Name="avatar"
+﻿
+<Upload
+        Name="avatar"
         @bind-FileList="fileList"
         ListType="picture-card"
-        OnPreview="(file)=> {
-                           Console.WriteLine(file.FileName);
-                           Console.WriteLine(file.Url);
-                           previewVisible = true;
-                           previewTitle = file.FileName;
-                           imgUrl = file.Url;
-                       }"
-        OnChange="HandleChange"
-        Method="">
+        OnPreview="(file) => {
+                        previewVisible = true;
+                        previewTitle = file.FileName;
+                        imgUrl = file.ObjectURL;
+                    }"
+        Action="/api/test"
+        OnSingleCompleted="(file)=>UploadCompleted(file)"
+        OnRemove="(file)=> RemoveImage(file)"
+>
     <div>
         <Icon Type="plus"></Icon>
         <div className="ant-upload-text">Upload</div>
@@ -21,40 +20,34 @@
 </Upload>
 <Modal Visible="previewVisible"
        Title="previewTitle"
-       OnCancel="()=> previewVisible=false">
-    <img style="width: 100%" src="@imgUrl" />
-</Modal>
-
-@code {
-    bool previewVisible = false;
-    string previewTitle = string.Empty;
-    string imgUrl = string.Empty;
-
-    [Parameter]
-    public List<string> images { get; set; }
-
-    List<UploadFileItem> fileList = new List<UploadFileItem>
+       OnCancel="() => previewVisible = false">
+    @if (!CurrentId.Contains("id="))
     {
-    };
-
-    void HandleChange(UploadInfo fileinfo)
-    {
-        if (fileinfo.File.State == UploadState.Success)
+        if (activityImages is not null)
         {
-            fileinfo.File.Url = fileinfo.File.ObjectURL;
+            foreach (var item in activityImages)
+            {
+                <img style="width: 100%" src="@item.Url" />
+            }
         }
-@*        IUploadService.SaveImageAsync(fileinfo.File, new Random().Next(0, 99).ToString());
-*@
+        else
+        {
+            <img style="width: 100%" src="@imgUrl" />
+        }
     }
-
-    public class ResponseModel
+    else
     {
-        public string name { get; set; }
-
-        public string status { get; set; }
-
-        public string url { get; set; }
-
-        public string thumbUrl { get; set; }
+        if (candidateImages is not null)
+        {
+            foreach (var item in candidateImages)
+            {
+                <img style="width: 100%" src="@item.Url" />
+            }
+        }
+        else
+        {
+            <img style="width: 100%" src="@imgUrl" />
+        }
     }
-}
+</Modal>
+			
