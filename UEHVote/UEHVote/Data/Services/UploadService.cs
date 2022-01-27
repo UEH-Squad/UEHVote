@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using UEHVote.Data.Interfaces;
+using UEHVote.Models;
 
 namespace UEHVote.Data.Services
 {
@@ -40,7 +42,7 @@ namespace UEHVote.Data.Services
                 throw new Exception("Invalid file type!");
             }
             file = await file.RequestImageFileAsync(FormatFile, MaxWidthFile, MaxHeightFile);
-            const string imgFolder = @"img\election";
+            const string imgFolder = @"img/elections";
             string fileName = @$"{imgFolder}\{DateTime.Now.ToFileTime()}_{ElectionId}.jpg";
             Directory.CreateDirectory(System.IO.Path.Combine(_webHostEnvironment.WebRootPath, imgFolder));
             using FileStream fileStream = File.Create(@$"{Path}\{fileName}");
@@ -51,6 +53,10 @@ namespace UEHVote.Data.Services
         public void RemoveImage(string fileName)
         {
             File.Delete(@$"{Path}\{fileName}");
+        }
+        public void HandleData(List<ActivityImage> activityImages,List<CandidateImage> candidateImages)
+        {
+            List<string> imagesModel = new List<string>();
         }
     }
 }

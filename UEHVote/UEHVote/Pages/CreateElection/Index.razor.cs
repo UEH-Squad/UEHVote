@@ -21,12 +21,11 @@ namespace UEHVote.Pages.CreateElection
         private List<Candidate> candidates = new();
         private List<ActivityImage> listActivityImages = new List<ActivityImage>();
         private Models.Election election = new Models.Election();
+        private Dictionary<Candidate, List<string>> informationCandidate = new Dictionary<Candidate, List<string>>();
         [Parameter]
         public string currentId { get; set; }
         [CascadingParameter]
         public IModalService ResultModal { get; set; }
-        [Inject] 
-        private IOrganizationService IOrganizationService { get; set; }
         [Inject]
         private NavigationManager NavigationManager { get; set; }
         [Inject]
@@ -41,10 +40,20 @@ namespace UEHVote.Pages.CreateElection
         {
             IsShowForm = !IsShowForm;
         }
+        public bool IsNumber(string pValue)
+        {
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         protected override async Task OnInitializedAsync()
         {
             if (currentId is not null)
             {
+                if (!IsNumber(currentId)) return;
                 election = await IElectionService.GetElectionAsync(Convert.ToInt32(currentId));
             }
             listActivityImages = await IElectionService.GetAllActivityImagesAsync();
@@ -69,6 +78,14 @@ namespace UEHVote.Pages.CreateElection
                     return;
                 }
             }
+        }
+        void HandleInformationCandidate(Dictionary<Candidate, List<string>> informationCandidate)
+        {
+            this.informationCandidate = informationCandidate;
+        }
+        void HandleImagesElection(List<string> images)
+        {
+            this.images = images;
         }
         private void HandleCandidates(List<Candidate> candidates)
         {
@@ -115,14 +132,16 @@ namespace UEHVote.Pages.CreateElection
             if(candidates is null) return;
             foreach (var item in candidates)
             {
-                if (item.ElectionId == 0 && election.Id != 0)
+                var info = informationCandidate.Where(t => t.Key == item).FirstOrDefault();
+                if (info.Key == null) continue;
+                if (info.Key.ElectionId == 0 && election.Id != 0)
                 {
-                    item.ElectionId = election.Id;
-                    await ICandidateService.InsertCandidate(item);
+                    info.Key.ElectionId = election.Id;
+                    await ICandidateService.InsertCandidate(info.Key);
                 }
-                if (imagesCandidate.Count != 0)
+                if(info.Value.Count!=0)
                 {
-                    foreach (string image in imagesCandidate)
+                    foreach (string image in info.Value)
                     {
                         CandidateImage candidateImage = new CandidateImage();
                         candidateImage.CandidateId = item.Id;

@@ -15,9 +15,12 @@ namespace UEHVote.Pages.NominationEdit
     {
         private List<Organization> organizations = new List<Organization>();
         private List<CandidateImage> candidateImages = new List<CandidateImage>();
-        private List<string> images = new List<string>();
         [Parameter]
         public Models.Candidate candidate { get; set; } = new Models.Candidate();
+        [Parameter]
+        public List<string> imagesCandidate { get; set; }
+        [Parameter]
+        public Dictionary<Candidate,List<string>> InformationCandidate { get; set; }
         [CascadingParameter]
         public BlazoredModalInstance Modal { get; set; }
         [CascadingParameter]
@@ -53,11 +56,32 @@ namespace UEHVote.Pages.NominationEdit
                     if (candidate.Id != 0)
                     {
                         await UpdateCandidate();
+                        if (InformationCandidate.Count == 0)
+                        {
+                            InformationCandidate.Add(candidate, imagesCandidate);
+                        }
+                        else
+                        {
+                            var info = InformationCandidate.Where(t => t.Key == candidate).SingleOrDefault();
+                            if (info.Key != null)
+                            {
+                                info.Value.Clear();
+                                foreach (var item in imagesCandidate)
+                                {
+                                    info.Value.Add(item);
+                                }
+                            }
+                        }
+                        imagesCandidate.Clear();
                     }
                     if (!Candidates.Contains(candidate))
                     {
                         Candidates.Add(candidate);
+                        List<string> list = imagesCandidate.ToList();
+                        InformationCandidate.Add(candidate, list);
+                        imagesCandidate.Clear();
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -71,7 +95,7 @@ namespace UEHVote.Pages.NominationEdit
             await ICandidateService.UpdateCandidate(candidate);
             foreach (CandidateImage item in candidateImages)
             {
-                if (images != null)
+                if (imagesCandidate != null)
                 {
                     if (candidate.Id == item.CandidateId)
                     {
@@ -80,13 +104,17 @@ namespace UEHVote.Pages.NominationEdit
                     }
                 }
             }
-            foreach (string item in images)
+            foreach (string item in imagesCandidate)
             {
                 CandidateImage activityImage = new CandidateImage();
                 activityImage.CandidateId = Convert.ToInt32(candidate.Id);
                 activityImage.Url = item;
                 await ICandidateService.InsertCandidateImage(activityImage);
             }
+        }
+        public void HandleImagesCandidate(List<string> imagesCandidate)
+        {
+            this.imagesCandidate = imagesCandidate;
         }
     }
 }

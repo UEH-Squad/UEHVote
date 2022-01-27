@@ -17,13 +17,15 @@ namespace UEHVote.Pages.CreateElection
         public Models.Election election { get; set; } = new Models.Election();
         private List<Organization> organizations = new List<Organization>();
         [Parameter]
+        public EventCallback<List<string>> HandleImagesElection { get; set; }
+        [Parameter]
         public string org { get; set; }
         [Inject]
         IUploadService IUploadService { get; set; }
         [Inject] 
         IOrganizationService IOrganizationService { get; set; }
-        
-        List<string> image { get; set; } = new List<string>();
+        [Parameter]
+        public List<string> images { get; set; } 
         private IReadOnlyList<IBrowserFile> selectedImages;
         private IReadOnlyList<IBrowserFile> selectedBanner;
         private IBrowserFile uploadFile;
@@ -36,23 +38,9 @@ namespace UEHVote.Pages.CreateElection
         {
             uploadFile = null;
         }
-        private async Task OnInputFile(InputFileChangeEventArgs e)
+        void HandleImages(List<string> images)
         {
-            var imageFiles = e.GetMultipleFiles();
-            selectedImages = imageFiles;
-            image.Clear();
-            foreach (var file in imageFiles)
-            {
-                if (file.ContentType != "image/jpeg")
-                {
-                    this.StateHasChanged();
-                }
-                else
-                {
-                    string x = await IUploadService.SaveImageAsync(file, Convert.ToString(election.Id));
-                    image.Add(x);
-                }
-            }
+            this.images = images;
         }
         private async Task OnInputBanner(InputFileChangeEventArgs e)
         {
@@ -71,24 +59,6 @@ namespace UEHVote.Pages.CreateElection
                     {
                         election.Banner = election.Banner + x;
                     }
-                }
-            }
-        }
-        private async Task OnUpdateFile(InputFileChangeEventArgs e)
-        {
-            var imageFiles = e.GetMultipleFiles();
-            selectedImages = imageFiles;
-            image.Clear();
-            foreach (var file in imageFiles)
-            {
-                if (file.ContentType != "image/jpeg")
-                {
-                    this.StateHasChanged();
-                }
-                else
-                {
-                    string x = await IUploadService.SaveImageAsync(file, Convert.ToString(election.Id));
-                    image.Add(x);
                 }
             }
         }

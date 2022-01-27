@@ -22,6 +22,10 @@ using Blazored.Modal;
 using UEHVote.Pages.CreateElection;
 using UEHVote.Data.Context;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Hangfire;
+using System.Configuration;
+using System.IO;
 
 namespace UEHVote
 {
@@ -59,6 +63,9 @@ namespace UEHVote
             services.AddTransient<IActivityVoteService, ActivityVoteService>();
             services.AddTransient<IUserService, UserService>();
             services.AddBlazoredModal();
+            services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddHangfireServer();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
