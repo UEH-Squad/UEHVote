@@ -39,16 +39,9 @@ namespace UEHVote.Pages.RankPage
         }
         protected override async Task OnInitializedAsync()
         {
-            /*var currentUser = HttpContextAccessor.HttpContext.User;
-            if(currentUser is not null)
-            {
-                isLogin = true;
-                isOrganizer = currentUser.IsInRole("");
-            }*/
             if (!IsNumber(CurrentId)) return;
             election = await IElectionService.GetElectionAsync(Convert.ToInt32(CurrentId));
             images=await IElectionService.GetAllActivityImagesAsync();
         }
-      
     }
 }

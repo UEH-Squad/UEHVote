@@ -16,5 +16,6 @@ namespace UEHVote.Data.Interfaces
         Task<string> GetDataUriAsync(IBrowserFile file);
         Task<string> SaveImageAsync(IBrowserFile file, string userId);
         void RemoveImage(string fileName);
+        void JobCleaning(string urlFile);
     }
 }

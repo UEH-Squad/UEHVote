@@ -46,7 +46,8 @@ namespace UEHVote.Pages.RankPage
         IOrganizationService IOrganizationService { get; set; }
         [Inject] 
         ICandidateService ICandidateService { get; set; }
-        [Inject] NavigationManager NavigationManager { get; set; }
+        [Inject] 
+        NavigationManager NavigationManager { get; set; }
         private class Fakedata
         {
             public int Id { get; set; }
@@ -54,6 +55,7 @@ namespace UEHVote.Pages.RankPage
             public int Rank { get; set; }
             public int Count { get; set; }
             public bool isRated { get; set; } = false;
+            public string Image { get; set; }
         }
         private async Task ShowLoginRequire()
         {
@@ -136,7 +138,8 @@ namespace UEHVote.Pages.RankPage
                     Id = candidate.Id,
                     Name = candidate.Name,
                     Count = IActivityVoteService.GetQuantityVotedCandidate(candidate, listVotedCandidates),
-                    Rank = i + 1
+                    Rank = i + 1,
+                    Image=ICandidateService.GetCandidateImageById(candidate.Id)
                 });
                 if (i < listCandidates.Count)
                 {

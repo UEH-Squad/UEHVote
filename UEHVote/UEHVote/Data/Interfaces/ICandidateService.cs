@@ -13,6 +13,7 @@ namespace UEHVote.Data.Interfaces
         Task<List<Candidate>> GetAllCandidatesAsync();
         List<Candidate> GetAllCandidatesById(int id);
         Task<List<CandidateImage>> GetAllCandidateImagesAsync();
+        string GetCandidateImageById(int id);
         Task InsertCandidate(Candidate candidate);
         Task InsertCandidateImage(CandidateImage candidateImage);
         Task<Candidate> GetCandidateAsync(int Id);

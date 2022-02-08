@@ -1,12 +1,11 @@
-﻿
-<Upload
+﻿<Upload
         Name="avatar"
-        @bind-FileList="fileList"
+        DefaultFileList="fileList"
         ListType="picture-card"
         OnPreview="(file) => {
                         previewVisible = true;
                         previewTitle = file.FileName;
-                        imgUrl = file.ObjectURL;
+                        imgUrl = file.Url;
                     }"
         Action="/api/test"
         OnSingleCompleted="(file)=>UploadCompleted(file)"
@@ -16,38 +15,10 @@
         <Icon Type="plus"></Icon>
         <div className="ant-upload-text">Upload</div>
     </div>
-
 </Upload>
 <Modal Visible="previewVisible"
        Title="previewTitle"
        OnCancel="() => previewVisible = false">
-    @if (!CurrentId.Contains("id="))
-    {
-        if (activityImages is not null)
-        {
-            foreach (var item in activityImages)
-            {
-                <img style="width: 100%" src="@item.Url" />
-            }
-        }
-        else
-        {
-            <img style="width: 100%" src="@imgUrl" />
-        }
-    }
-    else
-    {
-        if (candidateImages is not null)
-        {
-            foreach (var item in candidateImages)
-            {
-                <img style="width: 100%" src="@item.Url" />
-            }
-        }
-        else
-        {
-            <img style="width: 100%" src="@imgUrl" />
-        }
-    }
+       <img style="width: 100%" src="@imgUrl" />
 </Modal>
 			

@@ -10,6 +10,7 @@ namespace UEHVote.Common
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            if (value == null) return new ValidationResult("");
             string link = value.ToString();
             if (link.Contains("http:") || link.Contains("https:") || link=="")
             {

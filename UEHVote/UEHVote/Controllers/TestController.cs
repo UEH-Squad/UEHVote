@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using UEHVote.Data.Interfaces;
 using UEHVote.Data.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,10 +20,16 @@ namespace UEHVote.Controllers
     public class TestController : ControllerBase
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IJobTestService _jobTestService;
+        private readonly IBackgroundJobClient _backgroundJobClient;
+        private readonly IRecurringJobManager _recurringJobManager;
         private string path => @$"{_webHostEnvironment.WebRootPath}\";
-        public TestController(IWebHostEnvironment webHostEnvironment)
+        public TestController(IWebHostEnvironment webHostEnvironment,IJobTestService jobTestService,IBackgroundJobClient backgroundJobClient,IRecurringJobManager recurringJobManager)
         {
             _webHostEnvironment = webHostEnvironment;
+            _jobTestService = jobTestService;
+            _backgroundJobClient = backgroundJobClient;
+            _recurringJobManager = recurringJobManager;
         }
         // GET: api/<TestController>
         [HttpGet]
@@ -35,7 +43,13 @@ namespace UEHVote.Controllers
         {
             return "value";
         }
-
+        [HttpGet("/ReccuringJob")]
+        public ActionResult CreateReccuringJob()
+        {
+/*            _backgroundJobClient.Schedule(() => _jobTestService.ReccuringJob(), TimeSpan.FromMinutes(1));
+*/            _recurringJobManager.AddOrUpdate("jobId", () => _jobTestService.ReccuringJob(), Cron.Daily);
+            return Ok();
+        }
         // POST api/<TestController>
         [HttpPost]
         public IActionResult Post()

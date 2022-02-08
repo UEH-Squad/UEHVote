@@ -42,7 +42,7 @@ namespace UEHVote.Data.Services
                 throw new Exception("Invalid file type!");
             }
             file = await file.RequestImageFileAsync(FormatFile, MaxWidthFile, MaxHeightFile);
-            const string imgFolder = @"img/elections";
+            const string imgFolder = @"img\elections";
             string fileName = @$"{imgFolder}\{DateTime.Now.ToFileTime()}_{ElectionId}.jpg";
             Directory.CreateDirectory(System.IO.Path.Combine(_webHostEnvironment.WebRootPath, imgFolder));
             using FileStream fileStream = File.Create(@$"{Path}\{fileName}");
@@ -54,9 +54,9 @@ namespace UEHVote.Data.Services
         {
             File.Delete(@$"{Path}\{fileName}");
         }
-        public void HandleData(List<ActivityImage> activityImages,List<CandidateImage> candidateImages)
+        public void JobCleaning(string urlFile)
         {
-            List<string> imagesModel = new List<string>();
+            File.Delete(urlFile);
         }
     }
 }

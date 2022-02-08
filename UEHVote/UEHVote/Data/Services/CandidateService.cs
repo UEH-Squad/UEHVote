@@ -78,6 +78,15 @@ namespace UEHVote.Data.Services
             var context = _dbContextFactory.CreateDbContext();
             return context.CandidateImages.ToListAsync();
         }
+        public string GetCandidateImageById(int id)
+        {
+            var context = _dbContextFactory.CreateDbContext();
+            var url = "./img/meomeo.png";
+            var list = context.CandidateImages.Where(t => t.CandidateId == id).Select(t => t.Url).ToList();
+            if (list.Count != 0)
+                url = list[0];
+            return url;
+        }
         public async Task InsertCandidateImage(CandidateImage candidateImage)
         {
             var context = _dbContextFactory.CreateDbContext();

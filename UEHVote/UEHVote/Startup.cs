@@ -64,8 +64,16 @@ namespace UEHVote
             services.AddTransient<IUserService, UserService>();
             services.AddBlazoredModal();
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            /*services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "UEHVote", Version = "v1" });
+            });*/
+            services.AddHangfire(x =>
+            {
+                x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection"));
+            });
             services.AddHangfireServer();
+            services.AddScoped<IJobTestService, JobTestService>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -92,6 +100,7 @@ namespace UEHVote
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+            app.UseHangfireDashboard();
         }
     }
 }
