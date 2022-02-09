@@ -36,42 +36,6 @@ namespace UEHVote.Shared.Components
         public EventCallback<List<string>> HandleImagesElection { get; set; }
         [Parameter]
         public EventCallback<List<string>> HandleImagesCandidate { get; set; }
-        [Inject]
-        IElectionService IElectionService { get; set; }
-        [Inject]
-        ICandidateService ICandidateService { get; set; }
-        protected override async Task OnInitializedAsync()
-        {
-            await HandleListImage();
-        }
-        private async Task HandleListImage()
-        {
-            fileList.Clear();
-            if (!CurrentId.Contains("id="))
-            {
-                activityImages = (await IElectionService.GetAllActivityImagesAsync()).Where(t => t.ElectionId.ToString() == CurrentId).ToList();
-                if (activityImages is null) return;
-                foreach (var item in activityImages)
-                    fileList.Add(new UploadFileItem
-                    {
-                        State = UploadState.Success,
-                        Url = item.Url
-                    });
-            }
-            else
-            {
-                candidateImages = await ICandidateService.GetAllCandidateImagesAsync();
-                if (candidateImages is null) return;
-                foreach (var item in candidateImages)
-                    fileList.Add(new UploadFileItem
-                    {
-                        State = UploadState.Success,
-                        Url = item.Url
-                    });
-            }
-            if (fileList.Count == 0) return;
-            result = fileList.ToList();
-        }
         void UploadCompleted(UploadInfo uploadInfo)
         {
             var response = uploadInfo.File.GetResponse<UploadResponseViewModel>();

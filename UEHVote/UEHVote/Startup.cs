@@ -76,7 +76,7 @@ namespace UEHVote
             services.AddScoped<IJobTestService, JobTestService>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IJobTestService jobTestService, IRecurringJobManager recurringJobManager)
         {
             if (env.IsDevelopment())
             {
@@ -101,6 +101,7 @@ namespace UEHVote
                 endpoints.MapFallbackToPage("/_Host");
             });
             app.UseHangfireDashboard();
+            recurringJobManager.AddOrUpdate("jobId", () => jobTestService.ReccuringJob(), Cron.Daily);
         }
     }
 }
