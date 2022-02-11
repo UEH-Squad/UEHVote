@@ -1,13 +1,13 @@
 ﻿<Upload
         Name="avatar"
-        DefaultFileList="fileList"
+        @bind-FileList="fileList"
         ListType="picture-card"
         OnPreview="(file) => {
                         previewVisible = true;
                         previewTitle = file.FileName;
                         imgUrl = file.Url;
                     }"
-        Action="/api/test"
+        Action="/api/upload"
         OnSingleCompleted="(file)=>UploadCompleted(file)"
         OnRemove="(file)=> RemoveImage(file)"
 >

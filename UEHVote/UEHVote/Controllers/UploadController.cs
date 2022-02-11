@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 using UEHVote.Data.Interfaces;
 using UEHVote.Data.ViewModels;
@@ -17,27 +18,27 @@ namespace UEHVote.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController : ControllerBase
+    public class UploadController : ControllerBase
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IJobTestService _jobTestService;
         private readonly IBackgroundJobClient _backgroundJobClient;
         private readonly IRecurringJobManager _recurringJobManager;
         private string path => @$"{_webHostEnvironment.WebRootPath}\";
-        public TestController(IWebHostEnvironment webHostEnvironment,IJobTestService jobTestService,IBackgroundJobClient backgroundJobClient,IRecurringJobManager recurringJobManager)
+        public UploadController(IWebHostEnvironment webHostEnvironment,IJobTestService jobTestService,IBackgroundJobClient backgroundJobClient,IRecurringJobManager recurringJobManager)
         {
             _webHostEnvironment = webHostEnvironment;
             _jobTestService = jobTestService;
             _backgroundJobClient = backgroundJobClient;
             _recurringJobManager = recurringJobManager;
         }
-        // GET: api/<TestController>
+        // GET: api/<UploadController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
-        // GET api/<TestController>/5
+        // GET api/<UploadController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
@@ -46,11 +47,15 @@ namespace UEHVote.Controllers
         [HttpGet("/ReccuringJob")]
         public ActionResult CreateReccuringJob()
         {
-/*            _backgroundJobClient.Schedule(() => _jobTestService.ReccuringJob(), TimeSpan.FromMinutes(1));
-*/            _recurringJobManager.AddOrUpdate("jobId", () => _jobTestService.ReccuringJob(), Cron.Daily);
+            Thread tt = new Thread(new ThreadStart(HandleReccuringJob));
+            tt.Start();
             return Ok();
         }
-        // POST api/<TestController>
+        public void HandleReccuringJob()
+        {
+            _jobTestService.ReccuringJob();
+        }
+        // POST api/<UploadController>
         [HttpPost]
         public IActionResult Post()
         {
@@ -83,13 +88,13 @@ namespace UEHVote.Controllers
             }
         }
 
-        // PUT api/<TestController>/5
+        // PUT api/<UploadController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<TestController>/5
+        // DELETE api/<UploadController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
