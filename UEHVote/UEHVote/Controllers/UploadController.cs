@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 using UEHVote.Data.Interfaces;
 using UEHVote.Data.ViewModels;
@@ -46,8 +47,13 @@ namespace UEHVote.Controllers
         [HttpGet("/ReccuringJob")]
         public ActionResult CreateReccuringJob()
         {
-            _recurringJobManager.AddOrUpdate("jobId", () => _jobTestService.ReccuringJob(), Cron.Daily);
+            Thread tt = new Thread(new ThreadStart(HandleReccuringJob));
+            tt.Start();
             return Ok();
+        }
+        public void HandleReccuringJob()
+        {
+            _jobTestService.ReccuringJob();
         }
         // POST api/<UploadController>
         [HttpPost]
