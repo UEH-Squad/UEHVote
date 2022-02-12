@@ -385,283 +385,283 @@ namespace UEHVote.Migrations
                         {
                             Id = 6,
                             Name = "Khoa Luật",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 7,
                             Name = "Khoa Kế toán",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 8,
                             Name = "Khoa Kinh tế",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 9,
                             Name = "Khoa Khoa học xã hội",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 10,
                             Name = "Khoa Ngân hàng",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 11,
                             Name = "Khoa Ngoại ngữ",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 12,
                             Name = "Khoa Quản lý nhà nước",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 13,
                             Name = "Khoa Quản trị",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 14,
                             Name = "Khoa Tài chính",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 15,
                             Name = "Khoa Tài chính công",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 16,
                             Name = "Khoa Công nghệ thông tin kinh doanh",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 17,
                             Name = "Khoa Kinh doanh quốc tế - Marketing",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 18,
                             Name = "Khoa Toán - Thống kê",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 19,
                             Name = "Viện Du lịch",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 20,
                             Name = "Viện Đào tạo quốc tế",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 21,
                             Name = "KTX 135 Trần Hưng Đạo",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 22,
                             Name = "KT 43-45 Nguyễn Chí Thanh",
-                            Type = 0
+                            Type = 1
                         },
                         new
                         {
                             Id = 23,
                             Name = "Câu lạc bộ Anh Văn - BELL",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 24,
                             Name = "Câu lạc bộ Bóng chuyền",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 25,
                             Name = "Câu lạc bộ Dân ca",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 26,
                             Name = "Câu lạc bộ Giai điệu trẻ",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 27,
                             Name = "Câu lạc bộ Guitar - UEHG",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 28,
                             Name = "Câu lạc bộ Tiếng Pháp - CFE",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 29,
                             Name = "Câu lạc bộ Võ thuật",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 30,
                             Name = "Câu lạc bộ Chuyện to nhỏ",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 31,
                             Name = "Câu lạc bộ Dynamic",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 32,
                             Name = "Đội Công tác xã hội",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 33,
                             Name = "Đội Văn nghệ xung kích",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 34,
                             Name = "Đội Cộng tác viên",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 35,
                             Name = "Nhóm Truyền thông Sinh viên - S Communications",
-                            Type = 0
+                            Type = 2
                         },
                         new
                         {
                             Id = 36,
                             Name = "Câu lạc bộ Bất động sản - REC",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 37,
                             Name = "Câu lạc bộ Chuyên viên Nhân sự Tập sự - HuReA",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 38,
                             Name = "Câu lạc bộ Chứng khoán - SCUE",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 39,
                             Name = "Câu lạc bộ Công nghệ Kinh tế - ET Group",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 40,
                             Name = "Câu lạc bộ Kế toán - Kiểm toán A²C",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 41,
                             Name = "Câu lạc bộ Kinh doanh quốc tế - IBC",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 42,
                             Name = "Câu lạc bộ Nghiên cứu Kinh tế Trẻ - YoRE",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 43,
                             Name = "Câu lạc bộ Nhân Sự Khởi Nghiệp - HR Startup",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 44,
                             Name = "Câu lạc bộ Pháp lý",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 45,
                             Name = "Câu lạc bộ Thương mại - IC",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 46,
                             Name = "Câu lạc bộ Tiếng Anh - Apple Club",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 47,
                             Name = "Câu lạc bộ Lý luận trẻ",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 48,
                             Name = "Nhóm Hỗ Trợ Sinh Viên - SSG",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 49,
                             Name = "Nhóm Sinh viên Nghiên cứu Marketing - Margroup",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 50,
                             Name = "Nhóm Sinh Viên Nghiên Cứu Tài Chính - SFR",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 51,
                             Name = "Nhóm Sinh Viên Nghiên Cứu Thuế - TaxGroup",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
                             Id = 52,
                             Name = "Nhóm Sinh viên Nghiên cứu Du lịch - Travel Group",
-                            Type = 0
+                            Type = 3
                         });
                 });
 
@@ -874,9 +874,7 @@ namespace UEHVote.Migrations
                 {
                     b.HasOne("UEHVote.Models.Organization", "Organization")
                         .WithMany("Users")
-                        .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrganizationId");
 
                     b.Navigation("Organization");
                 });

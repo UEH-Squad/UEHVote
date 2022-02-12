@@ -39,6 +39,7 @@
   <ItemGroup>
     <Folder Include="Common\Image\" />
     <Folder Include="Data\Migrations\" />
+    <Folder Include="Migrations\" />
 
   </ItemGroup>
 
