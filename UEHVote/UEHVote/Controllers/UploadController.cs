@@ -44,16 +44,11 @@ namespace UEHVote.Controllers
         {
             return "value";
         }
-        [HttpGet("/ReccuringJob")]
-        public ActionResult CreateReccuringJob()
+        [HttpGet("/FireAndForgetJob")]
+        public ActionResult CreateFireAndForgetJob()
         {
-            Thread tt = new Thread(new ThreadStart(HandleReccuringJob));
-            tt.Start();
+            _backgroundJobClient.Enqueue(() => _jobTestService.ReccuringJob());
             return Ok();
-        }
-        public void HandleReccuringJob()
-        {
-            _jobTestService.ReccuringJob();
         }
         // POST api/<UploadController>
         [HttpPost]
