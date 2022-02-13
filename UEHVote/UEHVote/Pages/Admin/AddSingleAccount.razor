@@ -1,0 +1,64 @@
+﻿@inject MessageService _message
+
+<div class="pop-up">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="pop-up__container position-relative">
+            <div class="pop-up__content">
+                <div>
+                    <h1 class="text-center mb-4">Thêm 1 tài khoản</h1>
+                    <EditForm Model="@account">
+                        <DataAnnotationsValidator />
+                        <div class="form-group mb-4 d-flex justify-content-between">
+                            <div class="mb-3">
+                                Họ và tên <span class="required-asterick">(*)</span>
+                            </div>
+                            <InputText @bind-Value="account.FullName" class="form-control" placeholder="Nhập họ và tên sinh viên" />
+                            <ValidationMessage For=@(() => account.FullName) />
+                        </div>
+
+                        <div class="form-group mb-4 d-flex justify-content-between">
+                            <div class="mb-3">
+                                Khoa <span class="required-asterick">(*)</span>
+                            </div>
+                            <InputText @bind-Value="account.Organization" class="form-control" placeholder="Nhập tên khoa" />
+                            <ValidationMessage For=@(() => account.Organization) />
+                        </div>
+
+                        <div class="form-group mb-4 d-flex justify-content-between">
+                            <div class="mb-3">
+                                MSSV <span class="required-asterick">(*)</span>
+                            </div>
+                            <InputText @bind-Value="account.StudentId" class="form-control" placeholder="Nhập mã số sinh viên" />
+                            <ValidationMessage For=@(() => account.StudentId) />
+                        </div>
+
+                        <div class="form-group mb-4 d-flex justify-content-between">
+                            <div class="mb-3">
+                                Email <span class="required-asterick">(*)</span>
+                            </div>
+                            <InputText @bind-Value="account.Email" class="form-control" placeholder="Nhập email sinh viên" />
+                            <ValidationMessage For=@(() => account.Email) />
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+            <div class="pop-up__btn d-flex justify-content-end">
+                <div @onclick="CloseModalAsync" class="btn px-0 pop-up__btn--deny d-flex justify-content-center align-items-center px-3 me-3">Hủy</div>
+                <div @onclick="CloseModalAsync" class="btn px-0 pop-up__btn--accept d-flex justify-content-center align-items-center px-3">Ok</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [CascadingParameter]
+    public BlazoredModalInstance Modal { get; set; }
+
+
+    private async Task CloseModalAsync()
+    {
+        await Modal.CloseAsync();
+    }
+
+    private Account account = new() { };
+}

@@ -1,0 +1,46 @@
+﻿/*#region breakpoints */
+/*#endregion */
+/*#region mixins */
+.pop-up {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(196, 196, 196, 0.38);
+  z-index: 100; }
+  .pop-up__container {
+    background-color: #fff;
+    box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.25);
+    padding: 32px 30px 24px;
+    border-radius: 10px; }
+  .pop-up__content {
+    width: 495px; }
+    .pop-up__content h1 {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      color: #18A0FB; }
+    .pop-up__content .form-group div:first-child {
+      font-weight: 600;
+      font-size: 16px; }
+    .pop-up__content .form-group .required-asterick {
+      color: #F14747; }
+  .pop-up__btn--deny {
+    width: 73px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+    border-radius: 2px; }
+  .pop-up__btn--accept {
+    background-color: #18A0FB;
+    color: #fff;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+    border-radius: 2px;
+    width: 50px;
+    height: 32px; }
+
+::deep .form-control {
+  width: 332px; }
