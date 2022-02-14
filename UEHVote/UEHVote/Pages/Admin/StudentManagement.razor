@@ -12,11 +12,11 @@
         <div class="d-flex justify-content-between align-items-center mb-5">
             <h4 class="md-0 ">Danh sách các yêu cầu </h4>
             <div class="d-flex align-items-center me-5">
-                <Dropdown>
+                <Dropdown Trigger="@(new Trigger[] { Trigger.Click })">
                     <Overlay>
                         <Menu>
                             <MenuItem>
-                                <div @onclick="ShowAddSingleAccount" class="add-account-item">
+                                <div @onclick="ShowAddSingleAccount">
                                     Thêm 1 tài khoản
                                 </div>
                             </MenuItem>
@@ -33,8 +33,28 @@
                         </button>
                     </ChildContent>
                 </Dropdown>
-                <i class="material-icons-outlined icon-sort mx-2">sort</i>
-                <span>Sort</span>
+                <Dropdown Trigger="@(new Trigger[] { Trigger.Click })">
+                    <Overlay>
+                        <Menu>
+                            <MenuItem>
+                                <div>
+                                    Từ A tới Z
+                                </div>
+                            </MenuItem>
+                            <MenuItem>
+                                <div>
+                                    Từ Z tới A
+                                </div>
+                            </MenuItem>
+                        </Menu>
+                    </Overlay>
+                    <ChildContent>
+                        <div class="sort-account d-flex justify-content-center">
+                            <i class="material-icons-outlined icon-sort mx-2">sort</i>
+                            <span>Sort</span>
+                        </div>
+                    </ChildContent>
+                </Dropdown>
             </div>
         </div>
         <Table DataSource="data">
@@ -52,7 +72,7 @@
                             <Overlay>
                                 <Menu>
                                     <MenuItem>
-                                        <div @onclick="ShowDeleteAccount" class="add-account-item">
+                                        <div @onclick="ShowDeleteAccount">
                                             Xóa tài khoản
                                         </div>
                                     </MenuItem>

@@ -20,8 +20,23 @@
                             <div class="mb-3">
                                 Khoa <span class="required-asterick">(*)</span>
                             </div>
-                            <InputText @bind-Value="account.Organization" class="form-control" placeholder="Nhập tên khoa" />
-                            <ValidationMessage For=@(() => account.Organization) />
+                            <div class="filter-item position-relative">
+                                <input @onclick="ToggleOrganizationDropdown" @onfocusout="CloseOrganizationDropdown" class="filter-item__btn filter-item__btn--lmtext-1 @(isFilterOrganization ? "bg-grey" : "")" placeholder="@organizationChoosenValue" readonly />
+                                <div @onclick:preventDefault class="filter-item__dropdown" style="display: @(isOrganizationShow ? "block" : "none")">
+                                    <ul>
+                                        @if (organizations is not null)
+                                        {
+                                            @foreach (var organization in organizations)
+                                            {
+                                                <li @onmousedown="() => ChooseOrganizationValue(organization.Name)" class="px-3 py-1">@organization.Name</li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                                <span class="material-icons-outlined position-absolute pe-none">
+                                    expand_more
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group mb-4 d-flex justify-content-between">
@@ -61,4 +76,44 @@
     }
 
     private Account account = new() { };
+
+    private bool isOrganizationShow;
+
+    private bool isFilterOrganization;
+
+    private string organizationChoosenValue = "Chọn khoa";
+
+    private class FakeData
+    {
+        public string Name { get; set; }
+    }
+
+    private List<FakeData> organizations = new();
+
+    protected override void OnInitialized()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            organizations.Add(new FakeData()
+            {
+                Name = "Công nghệ thông tin kinh doanh",
+            });
+        }
+    }
+
+    private void ToggleOrganizationDropdown()
+    {
+        isOrganizationShow = !isOrganizationShow;
+    }
+
+    private void CloseOrganizationDropdown()
+    {
+        isOrganizationShow = false;
+    }
+
+    void ChooseOrganizationValue(string name)
+    {
+        organizationChoosenValue = name;
+        isFilterOrganization = true;
+    }
 }
