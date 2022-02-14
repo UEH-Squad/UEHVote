@@ -37,6 +37,8 @@
     color: #18A0FB; }
   .content .sort-account {
     cursor: pointer; }
+  .content .more-options-icon {
+    cursor: pointer; }
 
 ::deep .ant-table-cell {
   font-weight: 600;
