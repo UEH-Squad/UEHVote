@@ -100,6 +100,16 @@
     color: rgba(0,0,0,.85);
     background-color: none;
 }
+::deep .ant-dropdown-menu {
+    .bg-hover:hover {
+        background: rgba(79, 172, 254, 0.2) !important;
+    }
+}
+
+.bg-hover:hover {
+    background: rgba(79, 172, 254, 0.2) !important;
+}
+
 
 
 
