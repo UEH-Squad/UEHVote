@@ -1,0 +1,42 @@
+﻿@inject MessageService _message
+
+<div class="pop-up">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="pop-up__container position-relative">
+            <div class="pop-up__content">
+                <div>
+                    <h1 class="text-center mb-4">Thêm nhiều tài khoản</h1>
+                    <h3>Tải file excel</h3>
+                    <div class="position-relative my-uploadFile">
+                        <InputFile OnChange="@LoadFiles" class="w-100 uploadFile__input" />
+                        <div class="d-flex align-items-center justify-content-center flex-column">
+                            <div class="d-flex w-100 justify-content-center align-items-center">
+                                <span class="d-block">Tải hoặc thả file tại đây</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-end mt-2"><i>Tải excel file mẫu</i></p>
+                </div>
+                <div class="pop-up__btn d-flex justify-content-end">
+                    <div @onclick="CloseModalAsync" class="btn px-0 pop-up__btn--deny d-flex justify-content-center align-items-center px-3 me-3">Hủy</div>
+                    <div @onclick="CloseModalAsync" class="btn px-0 pop-up__btn--accept d-flex justify-content-center align-items-center px-3">Ok</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [CascadingParameter]
+    public BlazoredModalInstance Modal { get; set; }
+
+
+    private async Task CloseModalAsync()
+    {
+        await Modal.CloseAsync();
+    }
+
+    private void LoadFiles(InputFileChangeEventArgs e)
+    {
+    }
+}

@@ -154,5 +154,21 @@
   {
     "outputFile": "Pages/DetailElection/Index.razor.css",
     "inputFile": "Pages/DetailElection/Index.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/StudentManagement.razor.css",
+    "inputFile": "Pages/Admin/StudentManagement.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/AddSingleAccount.razor.css",
+    "inputFile": "Pages/Admin/AddSingleAccount.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/AddMultipleAccount.razor.css",
+    "inputFile": "Pages/Admin/AddMultipleAccount.razor.scss"
+  },
+  {
+    "outputFile": "Pages/Admin/DeleteAccount.razor.css",
+    "inputFile": "Pages/Admin/DeleteAccount.razor.scss"
   }
 ]

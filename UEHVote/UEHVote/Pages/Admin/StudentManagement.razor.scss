@@ -1,0 +1,115 @@
+﻿@import "../../Resources/scss/common/_variables.scss";
+
+.title {
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.3px;
+    color: #252733;
+}
+
+.linkBack {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    color: #18A0FB;
+}
+
+.content {
+    border: 1px solid #DFE0EB;
+    border-radius: 8px;
+    padding-top: 30px;
+
+    h4 {
+        padding-left: 32px;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        color: #252733;
+    }
+
+    i {
+        color: #C5C7CD;
+    }
+
+    span {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.2px;
+        color: #4B506D;
+    }
+
+    button {
+        border: 1px solid $blue;
+        color: $blue;
+    }
+
+    .sort-account {
+        cursor: pointer;
+    }
+
+    .more-options-icon {
+        cursor: pointer;
+    }
+}
+
+::deep .ant-table-cell {
+    a {
+        color: #252733;
+    }
+
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    color: #252733;
+    padding: 26px 14px;
+
+    @include on('xxl') {
+        padding: 26px 20px;
+    }
+}
+
+::deep .ant-table-thead > tr > th {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    color: #9FA2B4;
+}
+
+::deep .ant-table-pagination {
+    padding: 27px 32px;
+}
+
+::deep .column-name {
+    width: 340px;
+
+    @include on('xxl') {
+        width: 400px;
+    }
+}
+
+::deep .ant-dropdown-menu-item {
+    font-weight: 600 !important;
+    font-size: 16px;
+    padding: 10px 30px;
+}
+
+::deep .ant-dropdown-menu-item-selected {
+    color: rgba(0,0,0,.85);
+    background-color: none;
+}
+::deep .ant-dropdown-menu {
+    .bg-hover:hover {
+        background: rgba(79, 172, 254, 0.2) !important;
+    }
+}
+
+.bg-hover:hover {
+    background: rgba(79, 172, 254, 0.2) !important;
+}
+
+
+
+

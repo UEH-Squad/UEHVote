@@ -19,6 +19,8 @@
         public const string AdminApproveElection = "/admin/duyet-binh-chon";
         public const string AdminDetailElection = "/admin/chi-tiet-binh-chon";
         public const string AdminDetailNomination = "/admin/chi-tiet-de-cu";
+        public const string AdminStudentManagement = "/admin/quan-ly-sinh-vien";
+
         #endregion Admin
     }
 }
